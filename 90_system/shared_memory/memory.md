@@ -19,7 +19,9 @@ status: active
 
 这是一个“跨 agent 任务交接索引”，用于让 Codex 本地任务与手机端 ChatGPT 对话快速对齐：最近做了什么、为什么这么做、产物在哪里、哪些决策已定、接下来谁做什么。
 
-写入前自检：**是否能让未来的 ChatGPT/Codex 少问一次问题、少重复一次判断、少踩一个坑？** 若不能，就不写。
+写入前自检：**是否能让未来的 ChatGPT/Codex 少问一次问题、少重复一次判断、少踩一个坑？**
+
+若不能，就不写。
 
 ## Current Focus
 
@@ -27,7 +29,7 @@ status: active
 - Current goal: 让 ChatGPT 可通过 GitHub 读取共享记忆并对齐上下文
 - Latest artifact: `40_outputs/daily_ai/2026-05-13.md`
 - Memory entry: `90_system/shared_memory/memory.md`
-- Next action for ChatGPT: 基于本文件提出“压缩/维护”与“写入规范”的改进建议（如需）
+- Next action for ChatGPT: 基于本文件和最新输出文件对齐上下文，并提出后续优化建议（如需）
 - Blockers: 暂无
 
 ## Recent Changes
@@ -38,6 +40,11 @@ status: active
 
 ## Artifact Index
 
+### Shared Memory
+
+- memory: `90_system/shared_memory/memory.md`
+- sync script: `90_system/shared_memory/sync.sh`
+
 ### Skills
 
 - ai-news: `90_system/skills/ai-news/SKILL.md`
@@ -46,18 +53,6 @@ status: active
 
 - daily_ai:
   - 2026-05-13: `40_outputs/daily_ai/2026-05-13.md`
-
-### Shared Memory
-
-- memory: `90_system/shared_memory/memory.md`
-
-### Scripts
-
-- sync script: `90_system/shared_memory/sync.sh`
-
-### Docs
-
-- 暂无
 
 ## Active Records
 
@@ -74,7 +69,8 @@ status: active
   - 本地安装：`~/.codex/skills/ai-news` → `90_system/skills/ai-news`
 - Decisions:
   - 采集改为手动触发：用户输入 `ai news` 时执行
-- Risks: 暂无
+- Risks:
+  - 暂无
 - Next:
   - For ChatGPT: 需要时读取 `90_system/shared_memory/memory.md` 与当天输出（见 Artifact Index）来对齐上下文
   - For Codex: 每次完成一个任务，在本文件追加一条记录，并更新 `Recent Changes`（最多保留 5 条）
@@ -101,8 +97,8 @@ status: active
 - **滚动窗口**：保留最近 30 条为“详细条目”；更早条目压缩进“月度摘要”。
 - **压缩目标**：把 N 条归并成 3–5 个要点：哪些项目在推进、哪些决策已定、哪些坑要避。
 - **压缩触发**：当文件 > ~400 行或出现 3 个月以上历史时，立即执行一次压缩。
-  - 压缩时保留：项目名、关键决策、最终产物路径、未完成事项、重要风险
-  - 删除：低价值过程细节与重复信息
+- 压缩时保留：项目名、关键决策、最终产物路径、未完成事项、重要风险
+- 删除：低价值过程细节与重复信息
 
 ## Do Not Record
 
@@ -112,4 +108,3 @@ status: active
 - 不记录完整日报正文，只记录日报路径和一句话摘要。
 - 不记录无复用价值的过程细节。
 - 不记录本地绝对路径，除非该路径对 Codex 复现任务必要（默认使用仓库相对路径）。
-
