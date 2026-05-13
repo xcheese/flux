@@ -34,11 +34,11 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-13: 新增抖音线索 `郭宇：AI会给我们的生活带来什么样的变化`，当前为 raw/low confidence，需补转录或页面内容
 - 2026-05-13: 执行 `AI情报员.skill`，更新当天输出为 Google GTIG AI 安全报告、Mistral 3、RLM + RL 三条非重复情报
 - 2026-05-13: 全面优化 `ai-news`，角色名改为 `AI情报员.skill`，强化全球 AI 跟踪、中文化、去重、时效与价值筛选
 - 2026-05-13: 新增共享记忆入口文件 `90_system/shared_memory/memory.md` 与同步脚本 `90_system/shared_memory/sync.sh`
 - 2026-05-13: `memory.md` 索引路径统一为仓库相对路径（便于远端/手机端引用）
-- 2026-05-13: 新建 `ai-news` skill 并完成本地安装（`ai news` 触发）
 
 ## Artifact Index
 
@@ -55,6 +55,11 @@ status: active
 
 - daily_ai:
   - 2026-05-13: `40_outputs/daily_ai/2026-05-13.md`
+
+### Raw Inputs
+
+- douyin:
+  - 2026-05-13: `10_raw/links/2026-05-13_douyin_guo-yu_ai_life_changes.md`
 
 ## Active Records
 
