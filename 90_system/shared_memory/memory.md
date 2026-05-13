@@ -76,9 +76,9 @@ status: active
   - 采集改为手动触发：用户输入 `ai news` 时执行
 - Risks: 暂无
 - Next:
-  - For ChatGPT: 需要时读取 `90_system/shared_memory/memory.md` 与当天输出（见 Artifacts Index）来对齐上下文
+  - For ChatGPT: 需要时读取 `90_system/shared_memory/memory.md` 与当天输出（见 Artifact Index）来对齐上下文
   - For Codex: 每次完成一个任务，在本文件追加一条记录，并更新 `Recent Changes`（最多保留 5 条）
-  - For User: 在 ChatGPT 中说“先读 shared memory”，让它读取本文件后再继续讨论
+  - For User: 在 ChatGPT 中说“先读 shared memory”，让 ChatGPT 读取本文件后再继续讨论。
 
 ## Monthly Summary
 
@@ -112,3 +112,4 @@ status: active
 - 不记录完整日报正文，只记录日报路径和一句话摘要。
 - 不记录无复用价值的过程细节。
 - 不记录本地绝对路径，除非该路径对 Codex 复现任务必要（默认使用仓库相对路径）。
+
