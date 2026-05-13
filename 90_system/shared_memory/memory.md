@@ -26,14 +26,15 @@ status: active
 ## Current Focus
 
 - Active project: `ai-news`（手动触发的 AI 高价值信息采集）
-- Current goal: 让 ChatGPT 可通过 GitHub 读取共享记忆并对齐上下文
-- Latest artifact: `40_outputs/daily_ai/2026-05-13.md`
+- Current goal: 将 `ai news` 升级为“AI情报员.skill”，用于跟踪全球 AI 发展并服务个人成长
+- Latest artifact: `90_system/skills/ai-news/SKILL.md`
 - Memory entry: `90_system/shared_memory/memory.md`
 - Next action for ChatGPT: 基于本文件和最新输出文件对齐上下文，并提出后续优化建议（如需）
 - Blockers: 暂无
 
 ## Recent Changes
 
+- 2026-05-13: 全面优化 `ai-news`，角色名改为 `AI情报员.skill`，强化全球 AI 跟踪、中文化、去重、时效与价值筛选
 - 2026-05-13: 新增共享记忆入口文件 `90_system/shared_memory/memory.md` 与同步脚本 `90_system/shared_memory/sync.sh`
 - 2026-05-13: `memory.md` 索引路径统一为仓库相对路径（便于远端/手机端引用）
 - 2026-05-13: 新建 `ai-news` skill 并完成本地安装（`ai news` 触发）
@@ -63,17 +64,20 @@ status: active
 - Priority: `medium`
 - Updated: `2026-05-13`
 - Context: 把“每日 AI 高价值信息采集”从 automation 改为手动触发能力，避免依赖本地机器常开。
-- Result: 新建 `ai-news` skill（触发词：`ai news`），并完成本地安装（软链接到 Codex skills 目录）。
+- Result: 新建并优化 `ai-news` skill（角色名：`AI情报员.skill`；触发词：`ai news`），用于采集高时效、高价值、非重复、中文化的全球 AI 情报。
 - Artifacts:
   - `90_system/skills/ai-news/SKILL.md`
   - 本地安装：`~/.codex/skills/ai-news` → `90_system/skills/ai-news`
 - Decisions:
   - 采集改为手动触发：用户输入 `ai news` 时执行
+  - 采集目标从“每日 3 条技术更新”升级为“帮助用户全面跟上全球 AI 发展并促进个人成长”
+  - 信息源优先第一手资料；也允许专业媒体、公知性人物、垂直 AI 大 V，但必须区分事实/观点/线索
+  - 历史推荐过的链接、论文、版本发布、产品更新或核心观点默认跳过
 - Risks:
-  - 暂无
+  - 若未来输出不先查 `40_outputs/daily_ai/`，可能重复推荐历史内容
 - Next:
   - For ChatGPT: 需要时读取 `90_system/shared_memory/memory.md` 与当天输出（见 Artifact Index）来对齐上下文
-  - For Codex: 每次完成一个任务，在本文件追加一条记录，并更新 `Recent Changes`（最多保留 5 条）
+  - For Codex: 下一次执行 `ai news` 前先检查 `40_outputs/daily_ai/`，避免历史重复；完成后更新本文件和 `Recent Changes`
   - For User: 在 ChatGPT 中说“先读 shared memory”，让 ChatGPT 读取本文件后再继续讨论。
 
 ## Monthly Summary
@@ -81,10 +85,10 @@ status: active
 ### 2026-05
 
 - Project: `ai-news`（手动触发采集）
-- Key decisions: 采集从“每日自动”改为“手动触发（ai news）”
+- Key decisions: 采集从“每日自动”改为“手动触发（ai news）”；角色升级为 `AI情报员.skill`；高时效、高价值、中文化、去重优先
 - Final artifacts: `90_system/skills/ai-news/SKILL.md`，`40_outputs/daily_ai/2026-05-13.md`
 - Open todos: 暂无
-- Risks: 暂无
+- Risks: 执行采集时必须先查历史输出，否则会重复推荐旧内容
 
 ## Record Rules（只抓关键）
 
