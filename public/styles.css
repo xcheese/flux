@@ -10,6 +10,7 @@
   --red: #a4473f;
   --yellow: #b88314;
   --shadow: 0 18px 40px rgba(30, 34, 28, 0.08);
+  --topbar-height: 74px;
   color-scheme: light;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -44,12 +45,12 @@ button:hover,
 }
 
 .topbar {
-  min-height: 86px;
+  min-height: var(--topbar-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 18px 24px 16px;
+  padding: 12px 20px;
   border-bottom: 1px solid var(--line);
   background: rgba(247, 247, 244, 0.94);
   position: sticky;
@@ -76,7 +77,7 @@ p {
 
 h1 {
   margin-bottom: 0;
-  font-size: 28px;
+  font-size: 25px;
   line-height: 1.1;
 }
 
@@ -95,7 +96,7 @@ h1 {
 }
 
 .search input {
-  width: min(36vw, 420px);
+  width: min(34vw, 390px);
   min-width: 230px;
   height: 42px;
   border: 1px solid var(--line);
@@ -119,10 +120,10 @@ h1 {
 
 .app-shell {
   display: grid;
-  grid-template-columns: minmax(250px, 310px) minmax(420px, 1.1fr) minmax(380px, 0.9fr);
-  gap: 16px;
-  padding: 16px;
-  height: calc(100vh - 86px);
+  grid-template-columns: 236px 320px minmax(560px, 1fr);
+  gap: 12px;
+  padding: 12px;
+  height: calc(100vh - var(--topbar-height));
 }
 
 .sidebar,
@@ -134,9 +135,9 @@ h1 {
 .sidebar {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
   border-right: 1px solid var(--line);
-  padding-right: 14px;
+  padding-right: 10px;
 }
 
 .sidebar-head,
@@ -162,12 +163,12 @@ h1 {
 .tag-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
 .chip {
-  min-height: 30px;
-  padding: 5px 9px;
+  min-height: 28px;
+  padding: 4px 8px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--surface);
@@ -184,15 +185,15 @@ h1 {
 .note-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 7px;
   overflow: auto;
   padding-bottom: 16px;
 }
 
 .note-item {
   display: grid;
-  gap: 7px;
-  padding: 11px;
+  gap: 5px;
+  padding: 9px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
@@ -207,7 +208,8 @@ h1 {
 
 .note-title {
   font-weight: 750;
-  line-height: 1.25;
+  line-height: 1.22;
+  font-size: 14px;
 }
 
 .note-path {
@@ -219,7 +221,7 @@ h1 {
 .note-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 5px;
   color: var(--muted);
   font-size: 12px;
 }
@@ -227,18 +229,19 @@ h1 {
 .overview {
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
-  gap: 16px;
+  gap: 10px;
+  min-width: 0;
 }
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
 }
 
 .stat-card {
-  min-height: 76px;
-  padding: 13px;
+  min-height: 58px;
+  padding: 9px 11px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
@@ -247,8 +250,8 @@ h1 {
 
 .stat-card strong {
   display: block;
-  margin-bottom: 4px;
-  font-size: 24px;
+  margin-bottom: 1px;
+  font-size: 21px;
 }
 
 .stat-card span {
@@ -259,9 +262,9 @@ h1 {
 .graph-panel {
   min-height: 0;
   display: grid;
-  grid-template-rows: auto minmax(280px, 1fr);
-  gap: 12px;
-  padding: 14px;
+  grid-template-rows: auto minmax(260px, 1fr);
+  gap: 9px;
+  padding: 11px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
@@ -271,13 +274,13 @@ h1 {
 .panel-head p {
   margin: 5px 0 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 12px;
 }
 
 #graphCanvas {
   width: 100%;
   height: 100%;
-  min-height: 300px;
+  min-height: 260px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background:
@@ -289,14 +292,13 @@ h1 {
 
 .reader {
   overflow: auto;
-  border-left: 1px solid var(--line);
-  padding-left: 16px;
+  min-width: 0;
 }
 
 .empty-reader,
 .reader-content {
   min-height: 100%;
-  padding: 24px;
+  padding: 28px 32px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
@@ -305,7 +307,7 @@ h1 {
 
 .reader-title {
   margin-bottom: 8px;
-  font-size: 30px;
+  font-size: 32px;
   line-height: 1.18;
 }
 
@@ -361,8 +363,8 @@ h1 {
 }
 
 .markdown {
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 16.5px;
+  line-height: 1.78;
 }
 
 .markdown h1,
@@ -439,26 +441,61 @@ h1 {
   padding-left: 0;
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1160px) {
   .app-shell {
-    grid-template-columns: minmax(230px, 300px) minmax(0, 1fr);
+    grid-template-columns: 230px minmax(0, 1fr);
     height: auto;
-    min-height: calc(100vh - 86px);
+    min-height: calc(100vh - var(--topbar-height));
   }
 
+  .overview {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    grid-template-columns: 220px minmax(0, 1fr);
+    grid-template-rows: none;
+    align-items: stretch;
+  }
+
+  .reader {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 920px) {
+  .app-shell {
+    grid-template-columns: minmax(230px, 300px) minmax(0, 1fr);
+  }
+
+  .overview,
   .reader {
     grid-column: 1 / -1;
     border-left: 0;
     padding-left: 0;
+  }
+
+  .reader {
+    grid-row: 2;
+  }
+
+  .overview {
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 760px) {
   .topbar,
   .top-actions,
-  .app-shell,
   .relation-grid {
     display: block;
+  }
+
+  .app-shell {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
   .topbar {
@@ -483,10 +520,15 @@ h1 {
   }
 
   .sidebar {
-    max-height: 420px;
-    margin-bottom: 14px;
+    order: 1;
+    max-height: 300px;
+    margin-bottom: 0;
     border-right: 0;
     padding-right: 0;
+  }
+
+  .note-list {
+    max-height: 190px;
   }
 
   .stats {
@@ -494,10 +536,20 @@ h1 {
   }
 
   .overview {
-    margin-bottom: 14px;
+    order: 3;
+    margin-bottom: 0;
+  }
+
+  .reader {
+    order: 2;
   }
 
   .reader-title {
     font-size: 25px;
+  }
+
+  .empty-reader,
+  .reader-content {
+    padding: 20px;
   }
 }
