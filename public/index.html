@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>本地知识库</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Local Knowledge</p>
+        <h1>个人成长知识库</h1>
+      </div>
+      <div class="top-actions">
+        <label class="search">
+          <span>搜索</span>
+          <input id="searchInput" type="search" placeholder="标题、路径、标签或正文" autocomplete="off" />
+        </label>
+        <button id="focusButton" class="icon-button" type="button" title="沉浸阅读" aria-label="沉浸阅读">⛶</button>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="知识库文件">
+        <div class="sidebar-head">
+          <h2>文件</h2>
+          <button id="resetButton" type="button">全部</button>
+        </div>
+        <div id="bucketFilters" class="filter-row"></div>
+        <nav id="noteList" class="note-list"></nav>
+      </aside>
+
+      <section class="overview" aria-label="知识库概览">
+        <div class="stats" id="stats"></div>
+        <div class="graph-panel">
+          <div class="panel-head">
+            <div>
+              <h2>关系图谱</h2>
+              <p>点击节点进入阅读，拖拽画布观察连接。</p>
+            </div>
+            <div id="tagFilters" class="tag-row"></div>
+          </div>
+          <canvas id="graphCanvas" width="900" height="520" aria-label="知识关系图"></canvas>
+        </div>
+      </section>
+
+      <article id="reader" class="reader" aria-label="笔记内容">
+        <div class="empty-reader">
+          <h2>选择一篇笔记</h2>
+          <p>从左侧列表或关系图谱进入具体内容。</p>
+        </div>
+      </article>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
