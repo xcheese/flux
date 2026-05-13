@@ -25,7 +25,8 @@ status: active
 
 - Active project: `ai-news`（手动触发的 AI 高价值信息采集）
 - Current goal: 让 ChatGPT 可通过 GitHub 读取共享记忆并对齐上下文
-- Latest artifact: `90_system/shared_memory/memory.md`
+- Latest artifact: `40_outputs/daily_ai/2026-05-13.md`
+- Memory entry: `90_system/shared_memory/memory.md`
 - Next action for ChatGPT: 基于本文件提出“压缩/维护”与“写入规范”的改进建议（如需）
 - Blockers: 暂无
 
@@ -37,11 +38,6 @@ status: active
 
 ## Artifact Index
 
-### Shared Memory
-
-- memory: `90_system/shared_memory/memory.md`
-- sync script: `90_system/shared_memory/sync.sh`
-
 ### Skills
 
 - ai-news: `90_system/skills/ai-news/SKILL.md`
@@ -50,6 +46,18 @@ status: active
 
 - daily_ai:
   - 2026-05-13: `40_outputs/daily_ai/2026-05-13.md`
+
+### Shared Memory
+
+- memory: `90_system/shared_memory/memory.md`
+
+### Scripts
+
+- sync script: `90_system/shared_memory/sync.sh`
+
+### Docs
+
+- 暂无
 
 ## Active Records
 
@@ -70,7 +78,7 @@ status: active
 - Next:
   - For ChatGPT: 需要时读取 `90_system/shared_memory/memory.md` 与当天输出（见 Artifacts Index）来对齐上下文
   - For Codex: 每次完成一个任务，在本文件追加一条记录，并更新 `Recent Changes`（最多保留 5 条）
-  - For User: 在 ChatGPT 侧启用 GitHub 读取该文件，讨论时让它“先读 shared memory 再回答”
+  - For User: 在 ChatGPT 中说“先读 shared memory”，让它读取本文件后再继续讨论
 
 ## Monthly Summary
 
