@@ -25,13 +25,13 @@ const elements = {
 
 const ctx = elements.canvas.getContext("2d");
 const palette = {
-  concept: "#24715d",
-  wiki: "#24715d",
-  raw: "#a4473f",
-  output: "#245f8f",
-  daily: "#b88314",
-  template: "#70756d",
-  note: "#232521"
+  concept: "#0f8c6f",
+  wiki: "#13a37f",
+  raw: "#b1483f",
+  output: "#1769aa",
+  daily: "#bd8b16",
+  template: "#7b8b83",
+  note: "#17221f"
 };
 
 async function init() {
@@ -414,13 +414,16 @@ function drawGraph() {
   ctx.save();
   ctx.translate(state.offset.x, state.offset.y);
   const visible = visibleNodeIds();
+  const selectedNeighbors = new Set([state.selectedId]);
 
-  ctx.lineWidth = 1.4;
+  ctx.lineWidth = 1.2;
   for (const edge of state.graph.edges) {
     if (!visible.has(edge.source) || !visible.has(edge.target)) continue;
     const a = state.positions.get(edge.source);
     const b = state.positions.get(edge.target);
-    ctx.strokeStyle = edge.source === state.selectedId || edge.target === state.selectedId ? "rgba(36, 113, 93, 0.72)" : "rgba(112, 117, 109, 0.24)";
+    if (edge.source === state.selectedId) selectedNeighbors.add(edge.target);
+    if (edge.target === state.selectedId) selectedNeighbors.add(edge.source);
+    ctx.strokeStyle = edge.source === state.selectedId || edge.target === state.selectedId ? "rgba(15, 140, 111, 0.68)" : "rgba(99, 113, 107, 0.2)";
     ctx.beginPath();
     ctx.moveTo(a.x, a.y);
     ctx.lineTo(b.x, b.y);
@@ -432,16 +435,16 @@ function drawGraph() {
     const pos = state.positions.get(node.id);
     const radius = node.id === state.selectedId ? 13 : Math.max(7, Math.min(11, 6 + node.degree));
     ctx.fillStyle = palette[node.type] || palette.note;
-    ctx.strokeStyle = node.id === state.selectedId ? "#111" : "#fff";
+    ctx.strokeStyle = node.id === state.selectedId ? "#0b1512" : "rgba(255, 255, 252, 0.95)";
     ctx.lineWidth = node.id === state.selectedId ? 3 : 2;
     ctx.beginPath();
     ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
 
-    if (node.id === state.selectedId || node.degree > 0 || visible.size < 20) {
-      ctx.fillStyle = "#232521";
-      ctx.font = "12px Inter, system-ui, sans-serif";
+    if (selectedNeighbors.has(node.id) || visible.size < 10) {
+      ctx.fillStyle = "#1b2622";
+      ctx.font = "12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace";
       ctx.textAlign = "center";
       ctx.fillText(node.title.slice(0, 18), pos.x, pos.y + radius + 15);
     }
