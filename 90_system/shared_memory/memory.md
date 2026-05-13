@@ -28,8 +28,8 @@ status: active
 
 ## 快速索引
 
-- 今日 AI 采集输出：[/Users/momo/Documents/work/知识库/40_outputs/daily_ai/2026-05-13.md](/Users/momo/Documents/work/知识库/40_outputs/daily_ai/2026-05-13.md)
-- 手动触发采集 skill：[/Users/momo/Documents/work/知识库/90_system/skills/ai-news/SKILL.md](/Users/momo/Documents/work/知识库/90_system/skills/ai-news/SKILL.md)
+- 今日 AI 采集输出：`40_outputs/daily_ai/2026-05-13.md`
+- 手动触发采集 skill：`90_system/skills/ai-news/SKILL.md`
 
 ---
 
@@ -40,7 +40,6 @@ status: active
 - Context: 把“每日 AI 高价值信息采集”从 automation 改成手动触发能力，避免依赖本地机器常开。
   - Result: 新建 `ai-news` skill（触发词：`ai news`），并完成安装（软链接到 Codex skills 目录）。
   - Artifacts:
-    - [/Users/momo/Documents/work/知识库/90_system/skills/ai-news/SKILL.md](/Users/momo/Documents/work/知识库/90_system/skills/ai-news/SKILL.md)
-    - `/Users/momo/.codex/skills/ai-news` → `/Users/momo/Documents/work/知识库/90_system/skills/ai-news`
+    - `90_system/skills/ai-news/SKILL.md`
+    - 本地安装：`~/.codex/skills/ai-news` → `90_system/skills/ai-news`
   - Next: 在手机端 ChatGPT 讨论时，直接引用本文件或当天输出笔记对齐上下文。
-
