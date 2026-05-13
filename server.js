@@ -10,6 +10,7 @@ const PUBLIC_DIR = path.join(ROOT, "public");
 const PORT = Number(process.env.PORT || 4321);
 
 const IGNORED_DIRS = new Set([".git", "node_modules", "public"]);
+const IGNORED_FILES = new Set(["AGENTS.md"]);
 const TEXT_EXTENSIONS = new Set([".md", ".markdown", ".txt"]);
 
 function toPosix(value) {
@@ -165,7 +166,7 @@ async function walk(dir, files = []) {
     if (entry.isDirectory()) {
       if (!IGNORED_DIRS.has(entry.name)) await walk(fullPath, files);
     } else if (TEXT_EXTENSIONS.has(path.extname(entry.name).toLowerCase())) {
-      files.push(fullPath);
+      if (!IGNORED_FILES.has(entry.name)) files.push(fullPath);
     }
   }
   return files;
