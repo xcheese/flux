@@ -27,13 +27,14 @@ status: active
 
 - Active project: `ai-news`（手动触发的 AI 高价值信息采集）
 - Current goal: 将 `ai news` 升级为“AI情报员.skill”，用于跟踪全球 AI 发展并服务个人成长
-- Latest artifact: `90_system/skills/ai-news/SKILL.md`
+- Latest artifact: `40_outputs/daily_ai/2026-05-13.md`
 - Memory entry: `90_system/shared_memory/memory.md`
 - Next action for ChatGPT: 基于本文件和最新输出文件对齐上下文，并提出后续优化建议（如需）
 - Blockers: 暂无
 
 ## Recent Changes
 
+- 2026-05-13: 执行 `AI情报员.skill`，更新当天输出为 Google GTIG AI 安全报告、Mistral 3、RLM + RL 三条非重复情报
 - 2026-05-13: 全面优化 `ai-news`，角色名改为 `AI情报员.skill`，强化全球 AI 跟踪、中文化、去重、时效与价值筛选
 - 2026-05-13: 新增共享记忆入口文件 `90_system/shared_memory/memory.md` 与同步脚本 `90_system/shared_memory/sync.sh`
 - 2026-05-13: `memory.md` 索引路径统一为仓库相对路径（便于远端/手机端引用）
@@ -64,9 +65,10 @@ status: active
 - Priority: `medium`
 - Updated: `2026-05-13`
 - Context: 把“每日 AI 高价值信息采集”从 automation 改为手动触发能力，避免依赖本地机器常开。
-- Result: 新建并优化 `ai-news` skill（角色名：`AI情报员.skill`；触发词：`ai news`），用于采集高时效、高价值、非重复、中文化的全球 AI 情报。
+- Result: 已用 `AI情报员.skill` 更新 `2026-05-13` 输出；本轮排除历史推荐过的 OpenAI Realtime、vLLM `v0.20.2`、AutoMat，改选 Google GTIG AI 安全报告、Mistral 3、RLM + RL。
 - Artifacts:
   - `90_system/skills/ai-news/SKILL.md`
+  - `40_outputs/daily_ai/2026-05-13.md`
   - 本地安装：`~/.codex/skills/ai-news` → `90_system/skills/ai-news`
 - Decisions:
   - 采集改为手动触发：用户输入 `ai news` 时执行
