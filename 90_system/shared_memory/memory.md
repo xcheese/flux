@@ -2,7 +2,7 @@
 type: shared_memory
 owner: momo
 scope: cross-agent
-updated_at: 2026-05-13
+updated_at: 2026-05-14
 status: active
 ---
 
@@ -12,7 +12,7 @@ status: active
 
 - Type: `shared_memory`
 - Scope: `cross-agent`
-- Updated: `2026-05-13`
+- Updated: `2026-05-14`
 - Status: `active`
 
 ## Purpose
@@ -25,15 +25,17 @@ status: active
 
 ## Current Focus
 
-- Active project: `ai-news`（手动触发的 AI 高价值信息采集）
-- Current goal: 将 `ai news` 升级为“AI情报员.skill”，用于跟踪全球 AI 发展并服务个人成长
-- Latest artifact: `40_outputs/daily_ai/2026-05-13.md`
+- Active project: `thinking-lens-system`
+- Current goal: 让 ChatGPT 项目“顾问”可通过 GitHub raw 路径感知 Flux thinking lens
+- Latest artifact: `90_system/skills/people/elon-musk.md`
 - Memory entry: `90_system/shared_memory/memory.md`
-- Next action for ChatGPT: 基于本文件和最新输出文件对齐上下文，并提出后续优化建议（如需）
+- Next action for ChatGPT: 先读 `90_system/shared_memory/memory.md`，再按 `90_system/skills/index.md` 或 `90_system/skills/skill_router.md` 选择 thinking lens
 - Blockers: 暂无
 
 ## Recent Changes
 
+- 2026-05-14: 新增 Thinking Lens System，入口为 `90_system/skills/index.md` 与 `90_system/skills/skill_router.md`
+- 2026-05-14: 将 Nuwa / Elon Musk skill 转化为 Flux 可用 thinking lens: `90_system/skills/people/elon-musk.md`
 - 2026-05-13: 新增抖音线索 `郭宇：AI会给我们的生活带来什么样的变化`，当前为 raw/low confidence，需补转录或页面内容
 - 2026-05-13: 执行 `AI情报员.skill`，更新当天输出为 Google GTIG AI 安全报告、Mistral 3、RLM + RL 三条非重复情报
 - 2026-05-13: 全面优化 `ai-news`，角色名改为 `AI情报员.skill`，强化全球 AI 跟踪、中文化、去重、时效与价值筛选
@@ -50,6 +52,9 @@ status: active
 ### Skills
 
 - ai-news: `90_system/skills/ai-news/SKILL.md`
+- thinking lens index: `90_system/skills/index.md`
+- thinking lens router: `90_system/skills/skill_router.md`
+- people/elon-musk: `90_system/skills/people/elon-musk.md`
 
 ### Outputs
 
@@ -61,7 +66,53 @@ status: active
 - douyin:
   - 2026-05-13: `10_raw/links/2026-05-13_douyin_guo-yu_ai_life_changes.md`
 
+## Thinking Lens System
+
+- Status: `active`
+- Updated: `2026-05-14`
+- Skill directory: `90_system/skills/`
+- Router entry: `90_system/skills/skill_router.md`
+- People lens directory: `90_system/skills/people/`
+- Index: `90_system/skills/index.md`
+- Available people lenses:
+  - Elon Musk: `90_system/skills/people/elon-musk.md`
+- GitHub raw paths:
+  - Elon Musk lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/elon-musk.md`
+- Usage:
+  - 不确定用哪个 lens 时，先读 `90_system/skills/skill_router.md`
+  - 明确要分析工程、成本、第一性原理、制造或垂直整合时，直接读 `90_system/skills/people/elon-musk.md`
+- Guardrails:
+  - lens 是思维框架，不模仿名人口吻，不代表本人观点
+  - 每次最多调用 1-2 个 lens
+  - 必须区分事实、推断、行动建议和待验证信息
+  - 涉及最新事实、价格、政策、法律、医学、金融或安全问题时，先验证再判断
+
 ## Active Records
+
+### 2026-05-14 / thinking-lens-system
+
+- Project: `thinking-lens-system`
+- Status: `done`
+- Priority: `medium`
+- Updated: `2026-05-14`
+- Context: 用户希望把 `nuwa-skill` 仓库中 Elon Musk 的 skill 转化为 Flux 可用 thinking lens，并通过 GitHub raw 路径让 ChatGPT 项目“顾问”可感知。
+- Result: 新增 Elon Musk thinking lens、最小 skill router、最小 skills index，并在 shared memory 中加入 Thinking Lens System 入口。
+- Artifacts:
+  - `90_system/skills/people/elon-musk.md`
+  - `90_system/skills/skill_router.md`
+  - `90_system/skills/index.md`
+  - `90_system/shared_memory/memory.md`
+- Decisions:
+  - 不做角色扮演，不模仿名人口吻，只抽象工程 / 成本 / 第一性原理 lens
+  - 每次 lens 调用最多 1-2 个
+  - `Source Notes` 保留 Nuwa 来源、Elon Musk 独立 skill 来源和少量高可信公开来源
+  - GitHub raw 主入口使用 `main` 分支，便于 ChatGPT 项目直接读取
+- Risks:
+  - Elon Musk lens 在工程和成本问题上强，但在公共治理、法律、公关、组织创伤和高信任协作问题上容易误判
+  - 如果 ChatGPT 未先读取 `skill_router.md` 或 lens 文件，可能仍按普通对话而非结构化 lens 工作
+- Next:
+  - For ChatGPT: 先读取 `90_system/shared_memory/memory.md`，再读取 `90_system/skills/index.md`；分析工程/成本问题时可调用 `people.elon-musk`
+  - For Codex: 后续新增人物 lens 时，同步更新 `90_system/skills/index.md`、`90_system/skills/skill_router.md` 与本节
 
 ### 2026-05-13 / ai-news-skill
 
@@ -90,6 +141,12 @@ status: active
 ## Monthly Summary
 
 ### 2026-05
+
+- Project: `thinking-lens-system`
+- Key decisions: 新增 Flux thinking lens 目录、router、index；首个 lens 为 `people.elon-musk`；GitHub raw 入口绑定 `main`
+- Final artifacts: `90_system/skills/people/elon-musk.md`，`90_system/skills/skill_router.md`，`90_system/skills/index.md`
+- Open todos: 可继续扩展其他人物 lens，并完善多 lens 冲突处理
+- Risks: lens 是公开资料抽象，不代表本人观点；必须避免角色扮演和未验证事实判断
 
 - Project: `ai-news`（手动触发采集）
 - Key decisions: 采集从“每日自动”改为“手动触发（ai news）”；角色升级为 `AI情报员.skill`；高时效、高价值、中文化、去重优先
