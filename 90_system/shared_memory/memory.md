@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-14: 记录 ChatGPT stale read 问题：若 GPT 报 `updated_at: 2026-05-13`，说明读到旧缓存/旧项目文件/错误来源；当前 GitHub raw 已验证为 `2026-05-14`
 - 2026-05-14: 记录 ChatGPT 访问限制：项目指令只提供规则，不赋予联网/GitHub 访问能力；若 raw 读取失败，应检查 Web/GitHub connector 或改用项目文件/自定义 GPT
 - 2026-05-14: 明确默认提交推送规则：以后 Codex 对知识库做有效更新后默认 commit + push，尤其是 `memory.md`
 - 2026-05-14: Thinking Lens System 支持受控 persona mode：用户明确要求沉浸式/口吻时可启用，但观点质量、事实边界和行动建议优先
@@ -128,6 +129,25 @@ status: active
   - 若失败，长期方案是启用 GitHub connector / Web browsing，或把 `memory.md`、`skill_router.md`、`index.md` 作为 Project files / Custom GPT knowledge 提供
 - Boundary:
   - Codex 可以保证 GitHub 文件已提交推送且 raw 链接可从本地 curl 访问，但不能保证每个 ChatGPT 会话都有外部读取能力
+
+### 2026-05-14 / chatgpt-stale-memory-read
+
+- Project: `thinking-lens-system`
+- Status: `active`
+- Priority: `high`
+- Updated: `2026-05-14`
+- Context: 用户测试 ChatGPT 读取 shared memory，ChatGPT 回复已成功读取，但返回 `updated_at: 2026-05-13` 且只看到旧的 `ai-news` skill；这与当前 GitHub raw 内容不一致。
+- Verified fact:
+  - Codex 本地执行 `curl -L https://raw.githubusercontent.com/xcheese/flux/main/90_system/shared_memory/memory.md`，返回 `updated_at: 2026-05-14`
+  - 当前 raw 内容包含 Thinking Lens System、Skill router raw、Skills index raw 和 5 个 people lens raw paths
+- Diagnosis:
+  - 若 ChatGPT 报 `updated_at: 2026-05-13`，它没有读取到最新 raw 内容
+  - 可能原因包括：使用了旧 Project file / 旧缓存 / 旧会话记忆 / 错误链接 / 工具缓存
+- Practical rule:
+  - 测试时要求 ChatGPT 回显 `updated_at`、`Recent Changes` 第一条和 `Thinking Lens System` 下的 `Skills index` raw path
+  - 若仍返回旧内容，使用带 cache-busting 的 URL 或 commit 固定 URL，并要求它不要使用项目文件或旧记忆
+  - 推荐 cache-busting URL: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/shared_memory/memory.md?cachebust=2026-05-14-01`
+  - 推荐固定版本 URL: `https://raw.githubusercontent.com/xcheese/flux/c4a25c5/90_system/shared_memory/memory.md`
 
 ### 2026-05-14 / thinking-lens-persona-mode
 
