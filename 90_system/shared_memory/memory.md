@@ -34,6 +34,8 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-14: 新增会话内自动记录规则：本会话产生的高复用价值讨论，Codex 需整理进 shared memory 并单独提交推送
+- 2026-05-14: 本地 dogfood 专家团评价当前知识库：方向正确，下一阶段应收敛为“投喂 -> 消化 -> 下一步行动”的最小闭环
 - 2026-05-14: 扩展 Thinking Lens System，新增 Karpathy、Steve Jobs、Charlie Munger、Naval Ravikant 四个 people lens
 - 2026-05-14: 新增 Thinking Lens System，入口为 `90_system/skills/index.md` 与 `90_system/skills/skill_router.md`
 - 2026-05-14: 将 Nuwa / Elon Musk skill 转化为 Flux 可用 thinking lens: `90_system/skills/people/elon-musk.md`
@@ -103,6 +105,54 @@ status: active
   - 涉及最新事实、价格、政策、法律、医学、金融或安全问题时，先验证再判断
 
 ## Active Records
+
+### 2026-05-14 / memory-auto-capture-rule
+
+- Project: `shared-memory`
+- Status: `active`
+- Priority: `high`
+- Updated: `2026-05-14`
+- Context: 用户要求以后本会话里产生的有价值讨论信息，自动按合适内容整理方式写入记忆文件，并提交到远端。
+- Rule:
+  - 本会话中若出现会影响后续判断/复用的内容，Codex 应主动整理进 `90_system/shared_memory/memory.md`
+  - 记录后应只 stage 相关 memory 文件，单独 commit，并 push 到 `origin/main`
+  - 记录内容以结论、决策、产物、风险、下一步为主，不记录闲聊、完整日志、隐私或低价值过程
+  - 若工作区存在无关未提交改动，必须避开，不得一起提交
+- Trigger examples:
+  - 用户明确做出长期规则或偏好
+  - 新增/调整系统架构、skill、router、workflow
+  - 产出可复用模板、prompt、lens、SOP
+  - 形成影响后续工作的关键判断、风险或下一步
+- Boundaries:
+  - 不能在没有工具执行机会时“后台自动”写入；只能在 Codex 有机会执行文件修改和 git 操作时落实
+  - 不记录敏感信息、账号凭据、客户隐私、完整日志或长篇原文
+
+### 2026-05-14 / local-knowledge-base-review
+
+- Project: `personal-ai-knowledge-base`
+- Status: `reviewed`
+- Priority: `medium`
+- Updated: `2026-05-14`
+- Context: 用户要求本地测试专家团能力，评价当前知识库方案及其对个人成长的价值。
+- Lens used:
+  - `people.steve-jobs`: 产品聚焦、体验、端到端闭环
+  - `people.naval-ravikant`: 个人杠杆、复利资产、时间自由
+- Key judgment:
+  - 当前知识库不只是笔记目录，而是“个人 AI 工作流操作系统”的雏形
+  - 核心闭环 `raw -> wiki -> outputs -> 回写 wiki` 方向正确
+  - 下一阶段不应继续扩目录或自动化，应收敛为 `投喂 -> 消化 -> 下一步行动`
+- Personal growth value:
+  - 高价值不在“保存信息”，而在把 AI 情报、模板、shared memory、thinking lens、复盘结论转化为可复用资产
+  - 北极星指标建议：每周至少沉淀 1 个能让下周更省力的资产
+- Risks:
+  - 系统入口过多，可能变重
+  - `daily_ai` 可能停留在归档，未转化为行动
+  - 本地 Web 图谱可能变成展示性功能，而非决策辅助
+- Suggested next actions:
+  - 跑一次真实周复盘：`40_outputs/weekly_reviews/2026-W20.md`
+  - 给 `daily_ai` 条目增加状态：`已行动 / 已沉淀 / 暂存 / 丢弃`
+  - 给概念笔记补 `next_action` 字段，防止静态收藏
+  - 连续 2 周验证当前闭环，再考虑新增自动化
 
 ### 2026-05-14 / thinking-lens-expansion
 
@@ -201,6 +251,7 @@ status: active
 ## Record Rules（只抓关键）
 
 - 只记录会影响后续判断/复用的内容：**结论、产出物位置、下一步、关键约束/风险、已验证结果**。
+- 本会话启用自动记录：当讨论产生高复用价值结论、规则、产物或下一步时，Codex 应主动整理进本文件，并单独提交推送到远端。
 - 不记录过程细节；不粘贴长日志/完整 diff/完整命令输出；长内容放到独立文件并在 `Artifacts` 引用。
 - 记录时优先短句与列表，字段名保持稳定；路径一律用反引号包裹（仓库相对路径优先）。
 
