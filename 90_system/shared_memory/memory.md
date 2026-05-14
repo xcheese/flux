@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-14: 记录 ChatGPT 访问限制：项目指令只提供规则，不赋予联网/GitHub 访问能力；若 raw 读取失败，应检查 Web/GitHub connector 或改用项目文件/自定义 GPT
 - 2026-05-14: 明确默认提交推送规则：以后 Codex 对知识库做有效更新后默认 commit + push，尤其是 `memory.md`
 - 2026-05-14: Thinking Lens System 支持受控 persona mode：用户明确要求沉浸式/口吻时可启用，但观点质量、事实边界和行动建议优先
 - 2026-05-14: 新增会话内自动记录规则：本会话产生的高复用价值讨论，Codex 需整理进 shared memory 并单独提交推送
@@ -109,6 +110,24 @@ status: active
   - 涉及最新事实、价格、政策、法律、医学、金融或安全问题时，先验证再判断
 
 ## Active Records
+
+### 2026-05-14 / chatgpt-memory-access-limits
+
+- Project: `thinking-lens-system`
+- Status: `active`
+- Priority: `high`
+- Updated: `2026-05-14`
+- Context: 用户已按提示设置 ChatGPT 项目规则，但 ChatGPT 仍回复无法访问 GitHub raw shared memory，需要用户提供 raw 内容或链接。
+- Diagnosis:
+  - ChatGPT Project Instructions / Custom Instructions 只能告诉模型“应该做什么”，不能自动赋予联网、GitHub connector 或浏览 raw URL 的能力
+  - 若当前 ChatGPT 会话没有可用浏览/连接器能力，或 raw.githubusercontent.com 在该环境下访问失败，模型只能承认无法读取
+  - 语音场景尤其可能只传递文本意图，不保证连接器/浏览工具可用
+- Practical rule:
+  - 与 ChatGPT 测试时，先要求它明确报告是否具备联网/浏览/GitHub connector 能力，不要让它基于旧记忆推断
+  - 推荐测试语句：`请不要猜测。请尝试读取 https://raw.githubusercontent.com/xcheese/flux/main/90_system/shared_memory/memory.md，并回报 updated_at 与 Thinking Lens System 下的 raw paths；如果不能读取，请说明是没有工具、工具失败，还是链接访问失败。`
+  - 若失败，长期方案是启用 GitHub connector / Web browsing，或把 `memory.md`、`skill_router.md`、`index.md` 作为 Project files / Custom GPT knowledge 提供
+- Boundary:
+  - Codex 可以保证 GitHub 文件已提交推送且 raw 链接可从本地 curl 访问，但不能保证每个 ChatGPT 会话都有外部读取能力
 
 ### 2026-05-14 / thinking-lens-persona-mode
 
