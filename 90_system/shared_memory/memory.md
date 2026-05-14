@@ -86,14 +86,16 @@ status: active
   - Naval Ravikant: `90_system/skills/people/naval-ravikant.md`
   - Steve Jobs: `90_system/skills/people/steve-jobs.md`
 - GitHub raw paths:
+  - Skills index: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/index.md`
+  - Skill router: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/skill_router.md`
   - Andrej Karpathy lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/andrej-karpathy.md`
   - Charlie Munger lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/charlie-munger.md`
   - Elon Musk lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/elon-musk.md`
   - Naval Ravikant lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/naval-ravikant.md`
   - Steve Jobs lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/steve-jobs.md`
 - Usage:
-  - 不确定用哪个 lens 时，先读 `90_system/skills/skill_router.md`
-  - 明确要调用某个 lens 时，直接读 `90_system/skills/people/` 下对应文件
+  - 不确定用哪个 lens 时，先读取 Skill router raw 路径
+  - 明确要调用某个 lens 时，直接读取对应 people lens raw 路径
 - Guardrails:
   - lens 是思维框架，不模仿名人口吻，不代表本人观点
   - 每次最多调用 1-2 个 lens
