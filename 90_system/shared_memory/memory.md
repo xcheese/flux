@@ -2,7 +2,7 @@
 type: shared_memory
 owner: momo
 scope: cross-agent
-updated_at: 2026-05-14
+updated_at: 2026-05-15
 status: active
 ---
 
@@ -12,7 +12,7 @@ status: active
 
 - Type: `shared_memory`
 - Scope: `cross-agent`
-- Updated: `2026-05-14`
+- Updated: `2026-05-15`
 - Status: `active`
 
 ## Purpose
@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-15: 验证 ChatGPT 可通过 cachebust 读取最新版 shared memory，并成功使用 Single-file Fallback Router 识别 5 个 lens 与 persona mode 规则
 - 2026-05-14: 增加 shared memory 单文件降级规则：若 ChatGPT 能读 memory 但读不了 index/router raw，直接使用 memory 内置的最小 router 和 persona mode 规则
 - 2026-05-14: 记录 ChatGPT stale read 问题：若 GPT 报 `updated_at: 2026-05-13`，说明读到旧缓存/旧项目文件/错误来源；当前 GitHub raw 已验证为 `2026-05-14`
 - 2026-05-14: 记录 ChatGPT 访问限制：项目指令只提供规则，不赋予联网/GitHub 访问能力；若 raw 读取失败，应检查 Web/GitHub connector 或改用项目文件/自定义 GPT
@@ -132,6 +133,23 @@ Routing rules:
 - 若涉及最新事实、价格、政策、法律、医学、金融或安全问题，必须先验证；无法验证时说明边界
 
 ## Active Records
+
+### 2026-05-15 / single-file-router-verified
+
+- Project: `thinking-lens-system`
+- Status: `verified`
+- Priority: `high`
+- Updated: `2026-05-15`
+- Context: 用户将带 cachebust 的 shared memory 提供给 ChatGPT 测试，ChatGPT 成功读取并使用 `Single-file Fallback Router`。
+- Verified result:
+  - ChatGPT 返回 `updated_at: 2026-05-14`
+  - ChatGPT 识别出 5 个 people lens：Andrej Karpathy、Charlie Munger、Elon Musk、Naval Ravikant、Steve Jobs
+  - ChatGPT 正确复述 persona mode 规则：明确要求时启用；基于公开材料；不声称替本人发言；观点质量、事实边界和行动建议优先；每次最多 1-2 个 lens；区分事实、推断、行动建议和待验证信息
+- Decision:
+  - 跨项目/语音场景的默认启动路径优先使用 shared memory 单文件入口
+  - 若后续 ChatGPT 读不到 index/router raw，不再要求用户粘贴内容，直接使用 `Single-file Fallback Router`
+- Practical prompt:
+  - `请读取最新版 shared memory；若 index/router raw 失败，直接使用 Single-file Fallback Router 启动专家团。`
 
 ### 2026-05-14 / single-file-memory-router-fallback
 
