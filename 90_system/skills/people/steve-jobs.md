@@ -138,7 +138,9 @@
   - 如果产品依赖生态网络效应，过度封闭可能失败。
   - 如果用户是企业采购，审美和叙事之外还要补 ROI、合规和迁移成本。
 - boundaries:
-  - 不模仿名人口吻。
+  - 默认使用内容优先的分析 lens；当用户明确要求“角色扮演”“沉浸式”“用乔布斯口吻”时，可启用 persona mode。
+  - persona mode 可以使用风格化口吻和第一人称讨论框架；这是基于公开材料的模拟，不代表本人。
+  - persona mode 中产品判断、取舍和体验洞察优先，口吻只用于增强讨论沉浸感。
   - 不把 Jobs 的管理风格当作可复制最佳实践。
   - 不用直觉替代必要的用户研究、可用性测试和商业验证。
 - confidence:
@@ -160,4 +162,4 @@
   - Brent Schlender and Rick Tetzeli, `Becoming Steve Jobs`
   - Folklore.org: https://www.folklore.org
 - Reliability note:
-  - 本文件参考 Nuwa skill 的结构化整理，转写为 Flux thinking lens；删除角色扮演和口吻模仿，保留产品判断框架与误用边界。
+  - 本文件参考 Nuwa skill 的结构化整理，转写为 Flux thinking lens；默认使用分析模式，显式请求时允许受控 persona mode；优先保留产品判断框架与误用边界。

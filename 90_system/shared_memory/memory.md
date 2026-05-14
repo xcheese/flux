@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-14: Thinking Lens System 支持受控 persona mode：用户明确要求沉浸式/口吻时可启用，但观点质量、事实边界和行动建议优先
 - 2026-05-14: 新增会话内自动记录规则：本会话产生的高复用价值讨论，Codex 需整理进 shared memory 并单独提交推送
 - 2026-05-14: 本地 dogfood 专家团评价当前知识库：方向正确，下一阶段应收敛为“投喂 -> 消化 -> 下一步行动”的最小闭环
 - 2026-05-14: 扩展 Thinking Lens System，新增 Karpathy、Steve Jobs、Charlie Munger、Naval Ravikant 四个 people lens
@@ -99,12 +100,41 @@ status: active
   - 不确定用哪个 lens 时，先读取 Skill router raw 路径
   - 明确要调用某个 lens 时，直接读取对应 people lens raw 路径
 - Guardrails:
-  - lens 是思维框架，不模仿名人口吻，不代表本人观点
+  - lens 默认是分析框架；当用户明确要求“角色扮演”“沉浸式”“用某某口吻”时，可启用受控 persona mode
+  - persona mode 是基于公开材料的风格化讨论，不代表本人，不声称替本人发言
+  - 观点质量、事实边界和行动建议优先于口吻
   - 每次最多调用 1-2 个 lens
   - 必须区分事实、推断、行动建议和待验证信息
   - 涉及最新事实、价格、政策、法律、医学、金融或安全问题时，先验证再判断
 
 ## Active Records
+
+### 2026-05-14 / thinking-lens-persona-mode
+
+- Project: `thinking-lens-system`
+- Status: `active`
+- Priority: `medium`
+- Updated: `2026-05-14`
+- Context: 用户认为专家团应加回角色扮演和口吻，以便讨论时更沉浸；同时强调重心仍然在内容、观点和想法。
+- Decision:
+  - Thinking Lens System 默认仍使用分析型 lens
+  - 用户明确要求“角色扮演”“沉浸式”“用某某口吻”时，可启用受控 persona mode
+  - persona mode 允许轻量风格化表达，但必须说明是基于公开材料的模拟，不代表本人
+  - 内容判断、事实边界、反例和行动建议优先于口吻
+- Updated artifacts:
+  - `90_system/skills/skill_router.md`
+  - `90_system/skills/index.md`
+  - `90_system/skills/people/elon-musk.md`
+  - `90_system/skills/people/andrej-karpathy.md`
+  - `90_system/skills/people/steve-jobs.md`
+  - `90_system/skills/people/charlie-munger.md`
+  - `90_system/skills/people/naval-ravikant.md`
+- Risks:
+  - 沉浸式口吻可能让用户误以为是本人观点
+  - 口吻可能掩盖事实不确定性或模型推断
+- Guardrail:
+  - 必须保留“事实 / lens 推断 / 行动建议 / 待验证信息”的输出习惯
+  - 不编造人物对未查证事件或最新事实的真实看法
 
 ### 2026-05-14 / memory-auto-capture-rule
 
@@ -171,7 +201,7 @@ status: active
   - `90_system/skills/index.md`
   - `90_system/shared_memory/memory.md`
 - Decisions:
-  - 四个 lens 均不做角色扮演，不模仿名人口吻，只抽象可组合的判断框架
+  - 四个 lens 默认内容优先；显式请求沉浸式讨论时允许受控 persona mode 和风格化口吻
   - Karpathy 用于 AI 工程、模型可靠性、教育和开源实现
   - Steve Jobs 用于产品、设计、战略聚焦和端到端体验
   - Charlie Munger 用于投资、商业判断、逆向思考、认知偏误和激励机制
@@ -197,7 +227,7 @@ status: active
   - `90_system/skills/index.md`
   - `90_system/shared_memory/memory.md`
 - Decisions:
-  - 不做角色扮演，不模仿名人口吻，只抽象工程 / 成本 / 第一性原理 lens
+  - 默认内容优先，抽象工程 / 成本 / 第一性原理 lens；显式请求沉浸式讨论时允许受控 persona mode 和风格化口吻
   - 每次 lens 调用最多 1-2 个
   - `Source Notes` 保留 Nuwa 来源、Elon Musk 独立 skill 来源和少量高可信公开来源
   - GitHub raw 主入口使用 `main` 分支，便于 ChatGPT 项目直接读取
@@ -240,7 +270,7 @@ status: active
 - Key decisions: 新增 Flux thinking lens 目录、router、index；people lenses 已包含 Elon Musk、Andrej Karpathy、Steve Jobs、Charlie Munger、Naval Ravikant；GitHub raw 入口绑定 `main`
 - Final artifacts: `90_system/skills/people/elon-musk.md`，`90_system/skills/people/andrej-karpathy.md`，`90_system/skills/people/steve-jobs.md`，`90_system/skills/people/charlie-munger.md`，`90_system/skills/people/naval-ravikant.md`，`90_system/skills/skill_router.md`，`90_system/skills/index.md`
 - Open todos: 可继续扩展其他人物 lens，并完善多 lens 冲突处理
-- Risks: lens 是公开资料抽象，不代表本人观点；必须避免角色扮演和未验证事实判断
+- Risks: lens 是公开资料抽象，不代表本人观点；persona mode 必须避免冒充本人和未验证事实判断
 
 - Project: `ai-news`（手动触发采集）
 - Key decisions: 采集从“每日自动”改为“手动触发（ai news）”；角色升级为 `AI情报员.skill`；高时效、高价值、中文化、去重优先

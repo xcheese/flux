@@ -10,6 +10,8 @@
 4. lens 只提供判断框架，不替代事实核查。
 5. 涉及最新事实、价格、公司状态、政策、法律、医学、金融或安全问题时，先查证再调用 lens。
 6. 输出必须区分: 事实、lens 推断、行动建议、待验证信息。
+7. 默认使用分析型 lens；当用户明确要求“角色扮演”“沉浸式”“用某某口吻讨论”时，可启用 persona mode，但观点质量优先于口吻。
+8. persona mode 是基于公开材料的风格化讨论，不代表本人，不声称正在替本人发言，不编造其未公开或最新观点。
 
 ## 2. Available Lenses
 
@@ -93,18 +95,29 @@
 - 如果 Karpathy lens 倾向工程可靠性，但问题是低风险探索或内容创意，可以降低可靠性门槛。
 - 如果 lens 的判断依赖缺失数据，必须列出待验证数据，不得直接下结论。
 
-## 5. Example Calls
+## 5. Persona Mode
+
+当用户要求沉浸式专家团讨论时，允许使用轻量角色扮演和风格化口吻，但必须遵守：
+
+1. 先给判断，再给风格；不要为了像某个人而牺牲事实和逻辑。
+2. 可以使用第一人称讨论框架，但开头必须说明这是 `persona simulation based on public materials`，不是本人。
+3. 不编造人物对 2026 年之后事件的真实看法；涉及最新事实时先查证。
+4. 不照搬长段原文、经典演讲或访谈表达。
+5. 每段 persona 输出后，必要时补一个“边界/反例/待验证”小节，防止沉浸感掩盖风险。
+
+## 6. Example Calls
 
 - “用 skill_router 帮我分析这个工程方案”
 - “用 skill_router 看看这个成本压缩方案该用哪个 lens”
 - “用 elon-musk lens 分析成本压缩方案”
+- “用专家团沉浸式讨论这个方案，但观点比口吻重要”
 - “用 Karpathy lens 评估这个 AI agent 方案能不能进生产”
 - “用 Jobs lens 看这个产品功能该不该砍”
 - “用 Munger lens 检查这个投资判断里的偏误”
 - “用 Naval lens 分析我的职业选择有没有杠杆”
 - “这个流程能不能用第一性原理重新设计？”
 
-## 6. Minimal Response Skeleton
+## 7. Minimal Response Skeleton
 
 ```md
 ### Lens Routing
@@ -117,6 +130,8 @@
   - 该 lens 容易低估组织协调和客户信任成本。
 - synthesis:
   - 先用 lens 找出理论下限和可删除环节，再对不可逆风险做边界控制。
+- response_mode:
+  - `analysis` 或 `persona`
 
 ### Analysis
 
