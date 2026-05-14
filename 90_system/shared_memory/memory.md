@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-14: 增加 shared memory 单文件降级规则：若 ChatGPT 能读 memory 但读不了 index/router raw，直接使用 memory 内置的最小 router 和 persona mode 规则
 - 2026-05-14: 记录 ChatGPT stale read 问题：若 GPT 报 `updated_at: 2026-05-13`，说明读到旧缓存/旧项目文件/错误来源；当前 GitHub raw 已验证为 `2026-05-14`
 - 2026-05-14: 记录 ChatGPT 访问限制：项目指令只提供规则，不赋予联网/GitHub 访问能力；若 raw 读取失败，应检查 Web/GitHub connector 或改用项目文件/自定义 GPT
 - 2026-05-14: 明确默认提交推送规则：以后 Codex 对知识库做有效更新后默认 commit + push，尤其是 `memory.md`
@@ -110,7 +111,43 @@ status: active
   - 必须区分事实、推断、行动建议和待验证信息
   - 涉及最新事实、价格、政策、法律、医学、金融或安全问题时，先验证再判断
 
+### Single-file Fallback Router
+
+若 ChatGPT 能读取本 `shared_memory`，但读取 `index.md` 或 `skill_router.md` raw URL 失败，则直接使用以下最小路由，不要要求用户粘贴全文：
+
+- `people.elon-musk`: 工程系统、成本压缩、第一性原理、制造与交付、垂直整合、快速迭代
+- `people.andrej-karpathy`: AI 工程、模型可靠性、AI 教育、开源实现、LLM 产品设计
+- `people.steve-jobs`: 产品、设计、战略聚焦、端到端体验、品牌叙事、技术与人文
+- `people.charlie-munger`: 投资、商业判断、多元思维模型、逆向思考、认知偏误、激励机制
+- `people.naval-ravikant`: 财富、杠杆、职业选择、人生哲学、独立思考、一人公司
+
+Routing rules:
+
+- 每次最多选择 1-2 个 lens
+- 选择后必须说明：`selected_lens`、`reason`、`conflict`、`synthesis`、`response_mode`
+- 默认 `response_mode: analysis`
+- 当用户明确要求“角色扮演 / 沉浸式 / 用某某口吻”时，允许 `response_mode: persona`
+- persona mode 可以使用风格化口吻和第一人称讨论框架，但必须说明是基于公开材料的模拟，不代表本人
+- 输出必须区分：事实、lens 推断、行动建议、待验证信息
+- 若涉及最新事实、价格、政策、法律、医学、金融或安全问题，必须先验证；无法验证时说明边界
+
 ## Active Records
+
+### 2026-05-14 / single-file-memory-router-fallback
+
+- Project: `thinking-lens-system`
+- Status: `active`
+- Priority: `high`
+- Updated: `2026-05-14`
+- Context: 用户反馈 ChatGPT 能通过 cachebust 读取最新 shared memory，但继续读取 Skills index / Skill router raw URL 失败，导致无法进入 persona mode 规则。
+- Decision:
+  - 将最小 lens registry、router rules 和 persona mode rules 直接内置到 `memory.md`
+  - 以后 ChatGPT 只要能读 shared memory，就能用最小专家团能力；读取 index/router 失败时不应要求用户粘贴全文
+- Fallback behavior:
+  - ChatGPT 读不到 index/router raw 时，应使用 `Single-file Fallback Router`
+  - 仍需每次最多 1-2 个 lens，并输出选择原因、冲突和综合判断
+- Risk:
+  - shared memory 会稍微变长，但换来跨项目/语音场景更稳定
 
 ### 2026-05-14 / chatgpt-memory-access-limits
 
