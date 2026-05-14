@@ -27,13 +27,14 @@ status: active
 
 - Active project: `thinking-lens-system`
 - Current goal: 让 ChatGPT 项目“顾问”可通过 GitHub raw 路径感知 Flux thinking lens
-- Latest artifact: `90_system/skills/people/elon-musk.md`
+- Latest artifact: `90_system/skills/people/andrej-karpathy.md`, `90_system/skills/people/steve-jobs.md`, `90_system/skills/people/charlie-munger.md`, `90_system/skills/people/naval-ravikant.md`
 - Memory entry: `90_system/shared_memory/memory.md`
 - Next action for ChatGPT: 先读 `90_system/shared_memory/memory.md`，再按 `90_system/skills/index.md` 或 `90_system/skills/skill_router.md` 选择 thinking lens
 - Blockers: 暂无
 
 ## Recent Changes
 
+- 2026-05-14: 扩展 Thinking Lens System，新增 Karpathy、Steve Jobs、Charlie Munger、Naval Ravikant 四个 people lens
 - 2026-05-14: 新增 Thinking Lens System，入口为 `90_system/skills/index.md` 与 `90_system/skills/skill_router.md`
 - 2026-05-14: 将 Nuwa / Elon Musk skill 转化为 Flux 可用 thinking lens: `90_system/skills/people/elon-musk.md`
 - 2026-05-13: 新增抖音线索 `郭宇：AI会给我们的生活带来什么样的变化`，当前为 raw/low confidence，需补转录或页面内容
@@ -54,7 +55,11 @@ status: active
 - ai-news: `90_system/skills/ai-news/SKILL.md`
 - thinking lens index: `90_system/skills/index.md`
 - thinking lens router: `90_system/skills/skill_router.md`
+- people/andrej-karpathy: `90_system/skills/people/andrej-karpathy.md`
+- people/charlie-munger: `90_system/skills/people/charlie-munger.md`
 - people/elon-musk: `90_system/skills/people/elon-musk.md`
+- people/naval-ravikant: `90_system/skills/people/naval-ravikant.md`
+- people/steve-jobs: `90_system/skills/people/steve-jobs.md`
 
 ### Outputs
 
@@ -75,12 +80,20 @@ status: active
 - People lens directory: `90_system/skills/people/`
 - Index: `90_system/skills/index.md`
 - Available people lenses:
+  - Andrej Karpathy: `90_system/skills/people/andrej-karpathy.md`
+  - Charlie Munger: `90_system/skills/people/charlie-munger.md`
   - Elon Musk: `90_system/skills/people/elon-musk.md`
+  - Naval Ravikant: `90_system/skills/people/naval-ravikant.md`
+  - Steve Jobs: `90_system/skills/people/steve-jobs.md`
 - GitHub raw paths:
+  - Andrej Karpathy lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/andrej-karpathy.md`
+  - Charlie Munger lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/charlie-munger.md`
   - Elon Musk lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/elon-musk.md`
+  - Naval Ravikant lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/naval-ravikant.md`
+  - Steve Jobs lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/steve-jobs.md`
 - Usage:
   - 不确定用哪个 lens 时，先读 `90_system/skills/skill_router.md`
-  - 明确要分析工程、成本、第一性原理、制造或垂直整合时，直接读 `90_system/skills/people/elon-musk.md`
+  - 明确要调用某个 lens 时，直接读 `90_system/skills/people/` 下对应文件
 - Guardrails:
   - lens 是思维框架，不模仿名人口吻，不代表本人观点
   - 每次最多调用 1-2 个 lens
@@ -88,6 +101,35 @@ status: active
   - 涉及最新事实、价格、政策、法律、医学、金融或安全问题时，先验证再判断
 
 ## Active Records
+
+### 2026-05-14 / thinking-lens-expansion
+
+- Project: `thinking-lens-system`
+- Status: `done`
+- Priority: `medium`
+- Updated: `2026-05-14`
+- Context: 用户希望继续把 Nuwa 中 Karpathy、乔布斯、芒格、纳瓦尔四个人物 skill 转化为 Flux 可用 thinking lens。
+- Result: 新增四个 people lens，并同步扩展 `skill_router.md`、`index.md` 与 shared memory raw 路径索引。
+- Artifacts:
+  - `90_system/skills/people/andrej-karpathy.md`
+  - `90_system/skills/people/steve-jobs.md`
+  - `90_system/skills/people/charlie-munger.md`
+  - `90_system/skills/people/naval-ravikant.md`
+  - `90_system/skills/skill_router.md`
+  - `90_system/skills/index.md`
+  - `90_system/shared_memory/memory.md`
+- Decisions:
+  - 四个 lens 均不做角色扮演，不模仿名人口吻，只抽象可组合的判断框架
+  - Karpathy 用于 AI 工程、模型可靠性、教育和开源实现
+  - Steve Jobs 用于产品、设计、战略聚焦和端到端体验
+  - Charlie Munger 用于投资、商业判断、逆向思考、认知偏误和激励机制
+  - Naval Ravikant 用于财富、杠杆、职业选择、人生哲学和独立思考
+- Risks:
+  - 多 lens 调用容易制造“看似全面”的噪声；仍维持每次最多调用 1-2 个
+  - 每个 lens 都有明确盲区，必须通过 router 输出冲突和边界
+- Next:
+  - For ChatGPT: 先读 `90_system/skills/index.md`，再按问题类型选择 1-2 个 lens；涉及最新事实时先验证
+  - For Codex: 后续新增 lens 时继续同步 router、index、memory 三处入口
 
 ### 2026-05-14 / thinking-lens-system
 
@@ -143,8 +185,8 @@ status: active
 ### 2026-05
 
 - Project: `thinking-lens-system`
-- Key decisions: 新增 Flux thinking lens 目录、router、index；首个 lens 为 `people.elon-musk`；GitHub raw 入口绑定 `main`
-- Final artifacts: `90_system/skills/people/elon-musk.md`，`90_system/skills/skill_router.md`，`90_system/skills/index.md`
+- Key decisions: 新增 Flux thinking lens 目录、router、index；people lenses 已包含 Elon Musk、Andrej Karpathy、Steve Jobs、Charlie Munger、Naval Ravikant；GitHub raw 入口绑定 `main`
+- Final artifacts: `90_system/skills/people/elon-musk.md`，`90_system/skills/people/andrej-karpathy.md`，`90_system/skills/people/steve-jobs.md`，`90_system/skills/people/charlie-munger.md`，`90_system/skills/people/naval-ravikant.md`，`90_system/skills/skill_router.md`，`90_system/skills/index.md`
 - Open todos: 可继续扩展其他人物 lens，并完善多 lens 冲突处理
 - Risks: lens 是公开资料抽象，不代表本人观点；必须避免角色扮演和未验证事实判断
 
