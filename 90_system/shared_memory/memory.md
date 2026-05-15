@@ -27,7 +27,7 @@ status: active
 
 - Active project: `douyin-video-analysis`
 - Current goal: 将用户投喂的抖音视频链接升级为可产出完整中文分析报告的工作流
-- Latest artifact: `90_system/skills/douyin-video-analysis/SKILL.md`, `90_templates/video_analysis.md`
+- Latest artifact: `10_raw/links/2026-05-13_douyin_guo-yu_ai_life_changes.md`
 - Memory entry: `90_system/shared_memory/memory.md`
 - Next action for ChatGPT: 用户发抖音链接时，优先确认是否有视频正文/字幕/转录；证据不足时只登记 raw，不输出完整报告
 - Blockers: 暂无
@@ -35,6 +35,7 @@ status: active
 ## Recent Changes
 
 - 2026-05-15: 新增 `抖音视频分析员.skill` 与 `video_analysis` 模板，要求先拿证据再分析，避免只凭短链/标题生成报告
+- 2026-05-15: Dogfood 测试抖音视频分析流程，覆盖郭宇视频线索为 `video_analysis` 报告；证据等级 `medium`，来源为抖音分享文本 + 疑似同源转写稿
 - 2026-05-15: 验证 ChatGPT 可通过 cachebust 读取最新版 shared memory，并成功使用 Single-file Fallback Router 识别 5 个 lens 与 persona mode 规则
 - 2026-05-14: 增加 shared memory 单文件降级规则：若 ChatGPT 能读 memory 但读不了 index/router raw，直接使用 memory 内置的最小 router 和 persona mode 规则
 - 2026-05-14: 记录 ChatGPT stale read 问题：若 GPT 报 `updated_at: 2026-05-13`，说明读到旧缓存/旧项目文件/错误来源；当前 GitHub raw 已验证为 `2026-05-14`
@@ -161,6 +162,25 @@ Routing rules:
   - For ChatGPT: 若用户贴抖音链接，先要求或尝试获取转录/截图/视频正文，再按 `video_analysis` 模板分析
   - For Codex: 后续触发该 skill 时，先查重，再尝试浏览器/页面/截图/OCR/转录链路，最后入库并更新 shared memory
   - For User: 若希望得到完整报告，优先提供视频文件、字幕、转录或关键截图；只给短链时可能只能登记待补
+
+### 2026-05-15 / douyin-guoyu-analysis-dogfood
+
+- Project: `douyin-video-analysis`
+- Status: `done`
+- Priority: `medium`
+- Updated: `2026-05-15`
+- Context: 用户要求从近期抖音链接中选一个测试新视频分析能力，并覆盖原始文档。
+- Result:
+  - 选择 `郭宇：AI会给我们的生活带来什么样的变化`
+  - 公开搜索找到疑似同源/同主题转写稿：FinSec `郭宇：知识工作者的职业生涯只剩6个月了`
+  - 原文档已从 `link_note` / `raw` 覆盖为 `video_analysis` / `processed`
+  - 证据等级设为 `medium`，明确标注未拿到抖音原始字幕/视频文件
+- Artifacts:
+  - `10_raw/links/2026-05-13_douyin_guo-yu_ai_life_changes.md`
+- Next:
+  - For ChatGPT: 评估该报告结构是否满足“视频内容 + 观点 + 独立判断 + 行动建议”
+  - For Codex: 下一条抖音链接优先尝试浏览器/截图/OCR；若找到二手转写稿，必须标注证据等级和来源边界
+  - For User: 若想升级为 `high` 置信度，补充视频文件、字幕或关键截图
 
 ### 2026-05-15 / single-file-router-verified
 
