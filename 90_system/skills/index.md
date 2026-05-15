@@ -14,6 +14,19 @@
   - 默认使用分析型 lens；当用户明确要求“角色扮演”“沉浸式”“用某某口吻”时，可启用 persona mode。
   - persona mode 只用于增强讨论沉浸感，观点、事实边界和行动建议优先于口吻。
 
+## Workflow Skills
+
+### 抖音视频分析员
+
+- id: `workflow.douyin-video-analysis`
+- file: `90_system/skills/douyin-video-analysis/SKILL.md`
+- use_when:
+  - 用户发送抖音短链、抖音分享文本、`douyin.com/video/...` 链接，或要求分析抖音视频。
+  - 需要从视频/字幕/截图/页面信息中提取观点、论据质量、噪音风险和可行动作。
+- rule:
+  - 证据不足时只登记为 raw，不做完整报告。
+  - 拿到转录、字幕、视频文件或足够页面内容后，按 `90_templates/video_analysis.md` 输出完整分析。
+
 ## People Lenses
 
 ### Andrej Karpathy

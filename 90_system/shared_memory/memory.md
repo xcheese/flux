@@ -25,15 +25,16 @@ status: active
 
 ## Current Focus
 
-- Active project: `thinking-lens-system`
-- Current goal: 让 ChatGPT 项目“顾问”可通过 GitHub raw 路径感知 Flux thinking lens
-- Latest artifact: `90_system/skills/people/andrej-karpathy.md`, `90_system/skills/people/steve-jobs.md`, `90_system/skills/people/charlie-munger.md`, `90_system/skills/people/naval-ravikant.md`
+- Active project: `douyin-video-analysis`
+- Current goal: 将用户投喂的抖音视频链接升级为可产出完整中文分析报告的工作流
+- Latest artifact: `90_system/skills/douyin-video-analysis/SKILL.md`, `90_templates/video_analysis.md`
 - Memory entry: `90_system/shared_memory/memory.md`
-- Next action for ChatGPT: 先读 `90_system/shared_memory/memory.md`，再按 `90_system/skills/index.md` 或 `90_system/skills/skill_router.md` 选择 thinking lens
+- Next action for ChatGPT: 用户发抖音链接时，优先确认是否有视频正文/字幕/转录；证据不足时只登记 raw，不输出完整报告
 - Blockers: 暂无
 
 ## Recent Changes
 
+- 2026-05-15: 新增 `抖音视频分析员.skill` 与 `video_analysis` 模板，要求先拿证据再分析，避免只凭短链/标题生成报告
 - 2026-05-15: 验证 ChatGPT 可通过 cachebust 读取最新版 shared memory，并成功使用 Single-file Fallback Router 识别 5 个 lens 与 persona mode 规则
 - 2026-05-14: 增加 shared memory 单文件降级规则：若 ChatGPT 能读 memory 但读不了 index/router raw，直接使用 memory 内置的最小 router 和 persona mode 规则
 - 2026-05-14: 记录 ChatGPT stale read 问题：若 GPT 报 `updated_at: 2026-05-13`，说明读到旧缓存/旧项目文件/错误来源；当前 GitHub raw 已验证为 `2026-05-14`
@@ -61,6 +62,7 @@ status: active
 ### Skills
 
 - ai-news: `90_system/skills/ai-news/SKILL.md`
+- douyin-video-analysis: `90_system/skills/douyin-video-analysis/SKILL.md`
 - thinking lens index: `90_system/skills/index.md`
 - thinking lens router: `90_system/skills/skill_router.md`
 - people/andrej-karpathy: `90_system/skills/people/andrej-karpathy.md`
@@ -73,6 +75,10 @@ status: active
 
 - daily_ai:
   - 2026-05-13: `40_outputs/daily_ai/2026-05-13.md`
+
+### Templates
+
+- video analysis: `90_templates/video_analysis.md`
 
 ### Raw Inputs
 
@@ -133,6 +139,28 @@ Routing rules:
 - 若涉及最新事实、价格、政策、法律、医学、金融或安全问题，必须先验证；无法验证时说明边界
 
 ## Active Records
+
+### 2026-05-15 / douyin-video-analysis-workflow
+
+- Project: `douyin-video-analysis`
+- Status: `active`
+- Priority: `high`
+- Updated: `2026-05-15`
+- Context: 用户会经常投喂抖音分享视频链接，并明确要求不满足于标题级摘要，需要视频内容、观点和 Codex 思考后的完整文字分析报告。
+- Decision:
+  - 新增独立 skill：`90_system/skills/douyin-video-analysis/SKILL.md`
+  - 新增报告模板：`90_templates/video_analysis.md`
+  - 后续抖音链接必须先判定证据等级：`high` / `medium` / `low`
+  - 只有拿到转录、字幕、视频文件、关键截图/OCR 或足够页面内容时，才输出完整分析报告
+  - 只有短链/标题时，只能登记为 `raw` / `low confidence`，列出待补材料，不伪装成完整分析
+- Artifacts:
+  - `90_system/skills/douyin-video-analysis/SKILL.md`
+  - `90_templates/video_analysis.md`
+  - `90_system/tools/video_link_ingestion.md`
+- Next:
+  - For ChatGPT: 若用户贴抖音链接，先要求或尝试获取转录/截图/视频正文，再按 `video_analysis` 模板分析
+  - For Codex: 后续触发该 skill 时，先查重，再尝试浏览器/页面/截图/OCR/转录链路，最后入库并更新 shared memory
+  - For User: 若希望得到完整报告，优先提供视频文件、字幕、转录或关键截图；只给短链时可能只能登记待补
 
 ### 2026-05-15 / single-file-router-verified
 
