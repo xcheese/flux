@@ -44,6 +44,7 @@ description: Trigger this skill when the user sends a Douyin, Bilibili, YouTube,
 4. **证据打包**
    - 将视频文件、音频、字幕、转录、关键截图、OCR 结果保存到同一素材目录。
    - 报告必须引用这些证据的路径或说明证据来源。
+   - 知识库展示层只应暴露分析报告；完整字幕、metadata、音频、视频、OCR 原文等只作为本地证据数据保留，不进入文档列表。
 
 ## Acquisition Workflow
 
@@ -58,6 +59,7 @@ description: Trigger this skill when the user sends a Douyin, Bilibili, YouTube,
 3. **决定产物**
    - 内容不足：写入 `10_raw/links/YYYY-MM-DD_douyin_<slug>.md`，`status: raw`，`confidence: low`，列出待补材料。
    - 内容充分：写入 `10_raw/videos/YYYY-MM-DD_douyin_<slug>_analysis.md`，`status: processed`，按 `90_templates/video_analysis.md` 输出完整分析。
+   - 若使用素材目录形态，展示入口固定为 `analysis.md`；其他证据文件用 `.gitignore` 或索引过滤隐藏。
 
 4. **更新共享记忆**
    - 只有当视频与长期方向相关、可复用，或需要后续补材料时，才更新 `90_system/shared_memory/memory.md`。

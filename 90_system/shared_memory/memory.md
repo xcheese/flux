@@ -25,20 +25,20 @@ status: active
 
 ## Current Focus
 
-- Active project: `video-link-analysis`
-- Current goal: 用户只投视频链接（抖音/B站/YouTube 等），Codex 自动取证并尽量产出 high 置信度中文分析报告
-- Latest artifact: `10_raw/videos/2026-05-15_bilibili_BV1Kk9kBAEJv/analysis.md`
+- Active project: `knowledge-web-display`
+- Current goal: 本地知识库展示层只显示可读报告/沉淀笔记，证据数据本地保留但不进入文档列表
+- Latest artifact: `server.js`
 - Memory entry: `90_system/shared_memory/memory.md`
-- Next action for ChatGPT: 用户发视频链接时，默认先尝试获取原视频/字幕/页面/截图/OCR；仅标题或二手材料不能标 high
-- Blockers: 当前本机有 `ffmpeg`/`tesseract`/`yt-dlp`/`whisper-cpp`；未检测到 `whisper`/`faster-whisper`
+- Next action for ChatGPT: 讨论视频内容时读取 `analysis.md`，不要要求用户阅读完整转录/metadata
+- Blockers: 暂无；视频逐字级复刻仍可用更高精度 ASR 改进
 
 ## Recent Changes
 
+- 2026-05-15: 修复知识库展示索引：`10_raw/videos/<slug>/` 只展示 `analysis.md`，隐藏 transcript/audio/metadata；分类标签改为文档类型 + 主题标签
 - 2026-05-15: 分析 B 站 Codex App 教程 `BV1Kk9kBAEJv`；已获取 metadata、原始音频、本地 ASR 转录，报告为 `high` evidence / `medium_high` confidence
 - 2026-05-15: 重新用 link-driven 方式分析郭宇抖音链接；原始页面可访问，拿到视频 ID、标题、发布时间、时长、章节要点和可见字幕片段，报告覆盖为 `high` evidence / `medium_high` confidence
 - 2026-05-15: 将视频分析目标升级为“用户只给链接，Codex 自行取证”；skill 改为 `视频链接分析员.skill`，覆盖抖音/B站/YouTube/TikTok/小红书
 - 2026-05-15: 新增 `抖音视频分析员.skill` 与 `video_analysis` 模板，要求先拿证据再分析，避免只凭短链/标题生成报告
-- 2026-05-15: 验证 ChatGPT 可通过 cachebust 读取最新版 shared memory，并成功使用 Single-file Fallback Router 识别 5 个 lens 与 persona mode 规则
 
 ## Artifact Index
 

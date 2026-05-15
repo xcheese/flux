@@ -12,6 +12,8 @@ const PORT = Number(process.env.PORT || 4321);
 const IGNORED_DIRS = new Set([".git", "node_modules", "public"]);
 const IGNORED_FILES = new Set(["AGENTS.md"]);
 const TEXT_EXTENSIONS = new Set([".md", ".markdown", ".txt"]);
+const CONTENT_EXCLUDED_PREFIXES = ["90_templates/"];
+const VIDEO_DISPLAY_FILES = new Set(["analysis.md"]);
 
 function toPosix(value) {
   return value.split(path.sep).join("/");
@@ -100,6 +102,18 @@ function getExcerpt(body) {
   return text.slice(0, 180);
 }
 
+function plainText(body) {
+  return body
+    .replace(/^---\n[\s\S]*?\n---\n?/, "")
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/^#+\s+/gm, "")
+    .replace(/\[\[([^\]]+)\]\]/g, "$1")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[-*_>`#]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function getSearchText(body) {
   return body
     .replace(/^---\n[\s\S]*?\n---\n?/, "")
@@ -148,6 +162,121 @@ function getMarkdownLinks(body) {
   return [...links];
 }
 
+function getDocumentDate(id, attrs, body, modifiedAt) {
+  const candidates = [
+    attrs.date,
+    attrs.created,
+    attrs.updated,
+    id.match(/(20\d{2}-\d{2}-\d{2})/)?.[1],
+    body.match(/(20\d{2}-\d{2}-\d{2})/)?.[1],
+    modifiedAt.slice(0, 10)
+  ].filter(Boolean);
+  return String(candidates[0]).slice(0, 10);
+}
+
+function getHeadingSection(body, headingNames) {
+  const names = headingNames.map((name) => name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const pattern = new RegExp(`^#{2,4}\\s*(?:${names.join("|")})\\s*$`, "im");
+  const match = body.match(pattern);
+  if (!match || match.index === undefined) return "";
+  const start = match.index + match[0].length;
+  const next = body.slice(start).search(/\n#{1,4}\s+/);
+  return body.slice(start, next === -1 ? undefined : start + next).trim();
+}
+
+function cleanLine(value) {
+  return value
+    .replace(/^\s*[-*]\s+/, "")
+    .replace(/^\s*\d+\.\s+/, "")
+    .replace(/\[\[([^\]]+)\]\]/g, "$1")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[`*_>#]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function sectionItems(body, headingNames, limit = 3) {
+  const section = getHeadingSection(body, headingNames);
+  if (!section) return [];
+  const lines = section
+    .split(/\r?\n/)
+    .map(cleanLine)
+    .filter((line) => line.length > 4 && !/^https?:\/\//.test(line));
+  return lines.slice(0, limit);
+}
+
+function firstMeaningfulSentence(body, fallback) {
+  const text = plainText(body);
+  const sentence = text.split(/[。！？!?]\s*/).find((item) => item.trim().length > 12);
+  return (sentence || fallback || "").trim().slice(0, 88);
+}
+
+function inferDashboardTypes(noteBase, body, markdownLinks) {
+  const text = `${noteBase.title} ${noteBase.path} ${noteBase.tags.join(" ")} ${plainText(body)}`;
+  const titleAndTags = `${noteBase.title} ${noteBase.tags.join(" ")}`;
+  const labels = [];
+  const add = (label) => {
+    if (label && !labels.includes(label)) labels.push(label);
+  };
+  const isSystem = noteBase.path.startsWith("90_system");
+  const isDailyAi = noteBase.type === "daily_ai" || noteBase.path.startsWith("40_outputs/daily_ai");
+  const isVideo = noteBase.type === "video_analysis";
+  const isReadableKnowledge =
+    isDailyAi ||
+    isVideo ||
+    noteBase.type === "concept" ||
+    noteBase.type === "link_note" ||
+    noteBase.path.startsWith("20_wiki");
+
+  if (noteBase.path.startsWith("90_templates")) {
+    add("模板");
+    return labels;
+  }
+
+  if (noteBase.type === "video_analysis") add("视频分析");
+  else if (noteBase.type === "daily_ai" || noteBase.path.startsWith("40_outputs/daily_ai")) add("AI情报");
+  else if (noteBase.type === "concept" || noteBase.path.startsWith("20_wiki/concepts")) add("概念");
+  else if (noteBase.type === "link_note") add("原始线索");
+  else if (noteBase.type === "shared_memory") add("共享记忆");
+  else if (noteBase.path.startsWith("90_system/skills")) add("Skill");
+  else if (noteBase.path.startsWith("90_system")) add("系统");
+  else if (noteBase.path.startsWith("20_wiki")) add("知识笔记");
+  else if (noteBase.path.startsWith("40_outputs")) add("输出产物");
+  else if (noteBase.path.startsWith("10_raw")) add("原始资料");
+
+  if (isReadableKnowledge && /(^|[^A-Za-z])(Codex|Claude Code|ChatGPT|OpenAI|Agent|MCP|Skills?)([^A-Za-z]|$)|AI工具|人工智能/i.test(text)) add("AI工具");
+  if (isReadableKnowledge && /工作流|流程|SOP|复盘|行动|计划模式|自动化|Computer Use|worktree|shared memory|AGENTS\.md/i.test(text)) add("工作流");
+  if (!isSystem && (isDailyAi || /release notes?|发布|上线|版本|模型更新|API|SDK|产品/i.test(titleAndTags))) add("产品更新");
+  if (!isSystem && /论文|paper|arXiv|research|研究报告|实验/i.test(titleAndTags)) add("研究");
+  if ((isVideo || noteBase.type === "link_note" || noteBase.type === "concept") && /郭宇|Karpathy|Munger|Musk|Jobs|Naval|人物|访谈|演讲/i.test(text)) add("人物观点");
+
+  if (!labels.length) add(noteBase.type === "raw" ? "原始资料" : "笔记");
+  return labels.slice(0, 4);
+}
+
+function analyzeNote(noteBase, body, markdownLinks) {
+  const summary =
+    sectionItems(body, ["一句话总结", "一句话结论", "一句话解释"], 1)[0] ||
+    firstMeaningfulSentence(body, noteBase.excerpt);
+  const important =
+    sectionItems(body, ["关键观点", "高价值点", "为什么重要", "核心机制", "当前结论"], 3).join("；") ||
+    noteBase.excerpt;
+  const inspiration =
+    sectionItems(body, ["对我的启发", "我自己的理解", "可行动作", "下周行动"], 3).join("；") ||
+    sectionItems(body, ["典型场景", "适合解决什么问题"], 2).join("；") ||
+    "待进一步沉淀";
+
+  return {
+    documentTime: noteBase.date,
+    typeLabels: inferDashboardTypes(noteBase, body, markdownLinks),
+    topic: noteBase.title,
+    summary: summary.slice(0, 110),
+    important: important.slice(0, 180),
+    inspiration: inspiration.slice(0, 160),
+    documentLink: noteBase.path
+  };
+}
+
 function bucketFromId(id) {
   const [top, second] = id.split("/");
   if (!second) return top;
@@ -180,12 +309,15 @@ async function buildIndex() {
     const raw = await readFile(file, "utf8");
     const { attrs, body } = parseFrontmatter(raw);
     const id = normalizeId(file);
+    if (isExcludedFromContent(id)) continue;
     const stats = await stat(file);
     const title = getTitle(body, attrs.title || slugFromPath(file));
     const tags = getTags(attrs);
     const words = body.replace(/\s+/g, "").length;
+    const modifiedAt = stats.mtime.toISOString();
+    const markdownLinks = getMarkdownLinks(body);
 
-    notes.push({
+    const noteBase = {
       id,
       path: id,
       title,
@@ -194,17 +326,22 @@ async function buildIndex() {
       type: attrs.type || inferType(id),
       area: attrs.area || inferArea(id),
       status: attrs.status || "",
-      date: attrs.date || attrs.created || "",
+      date: getDocumentDate(id, attrs, body, modifiedAt),
       updated: attrs.updated || "",
       tags,
       excerpt: getExcerpt(body),
       searchText: getSearchText(body),
       links: getWikiLinks(body),
-      markdownLinks: getMarkdownLinks(body),
+      markdownLinks,
       wordCount: words,
-      modifiedAt: stats.mtime.toISOString(),
+      modifiedAt,
       attrs,
       body
+    };
+
+    notes.push({
+      ...noteBase,
+      analysis: analyzeNote(noteBase, body, markdownLinks)
     });
   }
 
@@ -232,7 +369,11 @@ async function buildIndex() {
         })
         .filter((item, index, array) => array.findIndex((candidate) => candidate.title === item.title) === index)
     }))
-    .sort((a, b) => a.path.localeCompare(b.path, "zh-Hans-CN"));
+    .sort((a, b) => {
+      const byDate = b.analysis.documentTime.localeCompare(a.analysis.documentTime);
+      if (byDate) return byDate;
+      return a.path.localeCompare(b.path, "zh-Hans-CN");
+    });
 
   return {
     generatedAt: new Date().toISOString(),
@@ -240,6 +381,21 @@ async function buildIndex() {
     edges,
     stats: summarize(enriched, edges)
   };
+}
+
+function isExcludedFromContent(id) {
+  if (CONTENT_EXCLUDED_PREFIXES.some((prefix) => id.startsWith(prefix))) return true;
+  if (isVideoEvidenceArtifact(id)) return true;
+  return false;
+}
+
+function isVideoEvidenceArtifact(id) {
+  if (!id.startsWith("10_raw/videos/")) return false;
+  const parts = id.split("/");
+  if (parts.length < 4) return false;
+  const filename = parts.at(-1);
+  if (VIDEO_DISPLAY_FILES.has(filename) || /_analysis\.md$/i.test(filename)) return false;
+  return true;
 }
 
 function inferType(id) {

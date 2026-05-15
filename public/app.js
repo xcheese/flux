@@ -1,124 +1,73 @@
 const state = {
   notes: [],
-  graph: { nodes: [], edges: [] },
   selectedId: null,
   query: "",
   bucket: "",
-  tag: "",
-  positions: new Map(),
-  drag: null,
-  offset: { x: 0, y: 0 },
-  scale: 1
+  type: ""
 };
 
 const elements = {
   search: document.querySelector("#searchInput"),
   reset: document.querySelector("#resetButton"),
   bucketFilters: document.querySelector("#bucketFilters"),
-  tagFilters: document.querySelector("#tagFilters"),
-  noteList: document.querySelector("#noteList"),
+  typeFilters: document.querySelector("#tagFilters"),
   stats: document.querySelector("#stats"),
+  tableBody: document.querySelector("#documentTableBody"),
+  tableScroll: document.querySelector(".table-scroll"),
+  tableCount: document.querySelector("#tableCount"),
   reader: document.querySelector("#reader"),
-  canvas: document.querySelector("#graphCanvas"),
+  readerOverlay: document.querySelector("#readerOverlay"),
+  readerDialogTitle: document.querySelector("#readerDialogTitle"),
+  closeReader: document.querySelector("#closeReaderButton"),
   focus: document.querySelector("#focusButton")
 };
 
-const ctx = elements.canvas.getContext("2d");
-const palette = {
-  concept: "#0f8c6f",
-  wiki: "#13a37f",
-  raw: "#b1483f",
-  output: "#1769aa",
-  daily: "#bd8b16",
-  template: "#7b8b83",
-  note: "#17221f"
-};
-
 async function init() {
-  const [notesPayload, graphPayload] = await Promise.all([
-    fetch("/api/notes").then((response) => response.json()),
-    fetch("/api/graph").then((response) => response.json())
-  ]);
-  state.notes = notesPayload.notes;
-  state.graph = graphPayload;
-  state.selectedId = state.notes[0]?.id || null;
+  const payload = await fetch("/api/notes").then((response) => response.json());
+  state.notes = payload.notes;
 
-  renderStats(notesPayload.stats);
-  renderFilters(notesPayload.stats);
-  renderNoteList();
-  setupGraph();
+  renderStats(payload.stats);
+  renderFilters(payload.stats);
+  renderTable();
   bindEvents();
-  if (state.selectedId) await openNote(state.selectedId);
 }
 
 function bindEvents() {
   elements.search.addEventListener("input", () => {
     state.query = elements.search.value.trim().toLowerCase();
-    renderNoteList();
-    drawGraph();
+    renderTable();
   });
 
   elements.reset.addEventListener("click", () => {
     state.query = "";
     state.bucket = "";
-    state.tag = "";
+    state.type = "";
     elements.search.value = "";
     renderFiltersFromState();
-    renderNoteList();
-    drawGraph();
+    renderTable();
   });
 
   elements.focus.addEventListener("click", () => {
-    document.body.classList.toggle("focus-mode");
-    elements.focus.textContent = document.body.classList.contains("focus-mode") ? "×" : "⛶";
+    if (state.selectedId) openNote(state.selectedId);
   });
 
-  window.addEventListener("resize", () => {
-    resizeCanvas();
-    drawGraph();
+  elements.closeReader.addEventListener("click", closeReader);
+  elements.readerOverlay.querySelectorAll("[data-close-reader]").forEach((element) => {
+    element.addEventListener("click", closeReader);
   });
-
-  elements.canvas.addEventListener("click", async (event) => {
-    const node = hitNode(event);
-    if (node) await openNote(node.id);
-  });
-
-  elements.canvas.addEventListener("pointerdown", (event) => {
-    const node = hitNode(event);
-    state.drag = node ? { type: "node", node } : { type: "canvas", startX: event.clientX, startY: event.clientY, ...state.offset };
-    elements.canvas.setPointerCapture(event.pointerId);
-  });
-
-  elements.canvas.addEventListener("pointermove", (event) => {
-    if (!state.drag) return;
-    if (state.drag.type === "node") {
-      const point = canvasPoint(event);
-      const pos = state.positions.get(state.drag.node.id);
-      pos.x = point.x;
-      pos.y = point.y;
-      pos.vx = 0;
-      pos.vy = 0;
-    } else {
-      state.offset.x = state.drag.x + event.clientX - state.drag.startX;
-      state.offset.y = state.drag.y + event.clientY - state.drag.startY;
-    }
-    drawGraph();
-  });
-
-  elements.canvas.addEventListener("pointerup", (event) => {
-    state.drag = null;
-    elements.canvas.releasePointerCapture(event.pointerId);
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeReader();
   });
 }
 
 function renderStats(stats) {
-  const cards = [
-    ["笔记", stats.notes],
+  const rows = [
+    ["文档", stats.notes],
     ["双链", stats.edges],
     ["孤岛", stats.isolated],
-    ["标签", stats.topTags.length]
+    ["类型", collectTypeCounts().length]
   ];
-  elements.stats.innerHTML = cards
+  elements.stats.innerHTML = rows
     .map(([label, value]) => `<div class="stat-card"><strong>${value}</strong><span>${label}</span></div>`)
     .join("");
 }
@@ -126,88 +75,151 @@ function renderStats(stats) {
 function renderFilters(stats) {
   elements.bucketFilters.innerHTML = Object.entries(stats.byBucket)
     .sort((a, b) => a[0].localeCompare(b[0], "zh-Hans-CN"))
-    .map(([bucket, count]) => chipHtml(bucket, count, "bucket"))
+    .map(([bucket, count]) => chipHtml(displayBucket(bucket), count, "bucket", bucket))
     .join("");
 
-  elements.tagFilters.innerHTML = stats.topTags
-    .map(({ tag, count }) => chipHtml(tag, count, "tag"))
+  elements.typeFilters.innerHTML = collectTypeCounts()
+    .map(([type, count]) => chipHtml(type, count, "type"))
     .join("");
 
-  elements.bucketFilters.addEventListener("click", (event) => handleChipClick(event, "bucket"));
-  elements.tagFilters.addEventListener("click", (event) => handleChipClick(event, "tag"));
+  elements.bucketFilters.addEventListener("click", (event) => handleChipClick(event));
+  elements.typeFilters.addEventListener("click", (event) => handleChipClick(event));
   renderFiltersFromState();
 }
 
-function chipHtml(value, count, kind) {
-  return `<button class="chip" type="button" data-kind="${kind}" data-value="${escapeHtml(value)}">${escapeHtml(value)} · ${count}</button>`;
+function collectTypeCounts() {
+  const counts = new Map();
+  for (const note of state.notes) {
+    for (const type of note.analysis?.typeLabels || []) {
+      counts.set(type, (counts.get(type) || 0) + 1);
+    }
+  }
+  return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "zh-Hans-CN"));
 }
 
-function handleChipClick(event, kind) {
+function displayBucket(bucket) {
+  return bucket
+    .replace(/^90_system\//, "system/")
+    .replace(/^40_outputs\//, "outputs/")
+    .replace(/^20_wiki\//, "wiki/")
+    .replace(/^10_raw\//, "raw/")
+    .replace(/^00_inbox\//, "inbox/");
+}
+
+function chipHtml(label, count, kind, value = label) {
+  return `<button class="chip" type="button" data-kind="${kind}" data-value="${escapeHtml(value)}">${escapeHtml(label)} · ${count}</button>`;
+}
+
+function handleChipClick(event) {
   const button = event.target.closest("button[data-kind]");
   if (!button) return;
+  const key = button.dataset.kind;
   const value = button.dataset.value;
-  state[kind] = state[kind] === value ? "" : value;
+  state[key] = state[key] === value ? "" : value;
   renderFiltersFromState();
-  renderNoteList();
-  drawGraph();
+  renderTable();
 }
 
 function renderFiltersFromState() {
   document.querySelectorAll(".chip").forEach((button) => {
-    const kind = button.dataset.kind;
-    button.classList.toggle("active", Boolean(kind && state[kind] === button.dataset.value));
+    const key = button.dataset.kind;
+    button.classList.toggle("active", Boolean(key && state[key] === button.dataset.value));
   });
 }
 
 function filteredNotes() {
   return state.notes.filter((note) => {
-    const queryText = `${note.title} ${note.path} ${note.tags.join(" ")} ${note.excerpt} ${note.searchText || ""}`.toLowerCase();
+    const analysis = note.analysis || {};
+    const queryText = [
+      note.title,
+      note.path,
+      note.tags.join(" "),
+      note.excerpt,
+      note.searchText || "",
+      analysis.documentTime,
+      analysis.typeLabels?.join(" "),
+      analysis.topic,
+      analysis.summary,
+      analysis.important,
+      analysis.inspiration
+    ].join(" ").toLowerCase();
     const matchesQuery = !state.query || queryText.includes(state.query);
     const matchesBucket = !state.bucket || note.bucket === state.bucket;
-    const matchesTag = !state.tag || note.tags.includes(state.tag);
-    return matchesQuery && matchesBucket && matchesTag;
+    const matchesType = !state.type || (analysis.typeLabels || []).includes(state.type);
+    return matchesQuery && matchesBucket && matchesType;
   });
 }
 
-function renderNoteList() {
+function renderTable() {
   const notes = filteredNotes();
-  elements.noteList.innerHTML = notes.map(noteListItem).join("") || `<p class="note-path">没有匹配的笔记。</p>`;
-  elements.noteList.querySelectorAll(".note-item").forEach((button) => {
-    button.addEventListener("click", () => openNote(button.dataset.id));
+  elements.tableCount.textContent = `${notes.length} 篇文档 · 按时间倒序`;
+  elements.tableBody.innerHTML = notes.map((note, index) => tableRow(note, index)).join("") || emptyRow();
+  elements.tableScroll.scrollLeft = 0;
+
+  elements.tableBody.querySelectorAll("tr[data-id]").forEach((row) => {
+    row.addEventListener("click", () => openNote(row.dataset.id));
+  });
+  elements.tableBody.querySelectorAll("button[data-open-note]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      openNote(button.dataset.openNote);
+    });
   });
 }
 
-function noteListItem(note) {
-  const tags = note.tags.slice(0, 3).map((tag) => `<span>#${escapeHtml(tag)}</span>`).join("");
+function tableRow(note, index) {
+  const analysis = note.analysis || {};
+  const typeLabels = analysis.typeLabels || [];
+  const typeTags = typeLabels.slice(0, 3)
+    .map((type) => `<span class="type-pill">${escapeHtml(type)}</span>`)
+    .join("");
+  const moreTypes = typeLabels.length > 3 ? `<span class="type-more">+${typeLabels.length - 3}</span>` : "";
   return `
-    <button class="note-item ${note.id === state.selectedId ? "active" : ""}" type="button" data-id="${escapeHtml(note.id)}">
-      <span class="note-title">${escapeHtml(note.title)}</span>
-      <span class="note-path">${escapeHtml(note.path)}</span>
-      <span class="note-meta"><span>${escapeHtml(note.type)}</span><span>${note.wordCount} 字</span>${tags}</span>
-    </button>
+    <tr class="${note.id === state.selectedId ? "active" : ""}" data-id="${escapeHtml(note.id)}">
+      <td class="col-index">${index + 1}</td>
+      <td class="col-date">${escapeHtml(analysis.documentTime || note.date || "")}</td>
+      <td class="col-types"><div class="type-list">${typeTags}${moreTypes}</div></td>
+      <td class="col-topic"><strong>${escapeHtml(analysis.topic || note.title)}</strong></td>
+      <td><div class="cell-clamp clamp-3">${escapeHtml(analysis.summary || note.excerpt)}</div></td>
+      <td><div class="cell-clamp clamp-3">${escapeHtml(analysis.important || "")}</div></td>
+      <td><div class="cell-clamp clamp-3">${escapeHtml(analysis.inspiration || "")}</div></td>
+    </tr>
   `;
+}
+
+function emptyRow() {
+  return `<tr><td colspan="7" class="empty-cell">没有匹配的文档。</td></tr>`;
 }
 
 async function openNote(id) {
   state.selectedId = id;
-  renderNoteList();
-  drawGraph();
+  renderTable();
   const note = await fetch(`/api/note?id=${encodeURIComponent(id)}`).then((response) => response.json());
+  elements.readerDialogTitle.textContent = note.title;
   elements.reader.innerHTML = renderReader(note);
   elements.reader.querySelectorAll("[data-open-note]").forEach((button) => {
     button.addEventListener("click", () => openNote(button.dataset.openNote));
   });
   elements.reader.scrollTop = 0;
+  openReader();
+}
+
+function openReader() {
+  elements.readerOverlay.classList.add("open");
+  elements.readerOverlay.setAttribute("aria-hidden", "false");
+  document.body.classList.add("reader-open");
+}
+
+function closeReader() {
+  elements.readerOverlay.classList.remove("open");
+  elements.readerOverlay.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("reader-open");
 }
 
 function renderReader(note) {
-  const tags = note.tags.map((tag) => `<span class="meta-pill">#${escapeHtml(tag)}</span>`).join("");
-  const meta = [
-    note.type,
-    note.area,
-    note.status,
-    note.date || note.updated
-  ].filter(Boolean);
+  const analysis = note.analysis || {};
+  const tags = (analysis.typeLabels || []).map((tag) => `<span class="meta-pill">${escapeHtml(tag)}</span>`).join("");
+  const meta = [analysis.documentTime, note.bucket, `${note.wordCount} 字`].filter(Boolean);
 
   return `
     <div class="reader-content">
@@ -217,6 +229,14 @@ function renderReader(note) {
         ${meta.map((item) => `<span class="meta-pill">${escapeHtml(item)}</span>`).join("")}
         ${tags}
       </div>
+      <section class="analysis-card">
+        <h2>分析摘要</h2>
+        <dl>
+          <div><dt>一句话总结</dt><dd>${escapeHtml(analysis.summary || note.excerpt)}</dd></div>
+          <div><dt>重要点</dt><dd>${escapeHtml(analysis.important || "待补充")}</dd></div>
+          <div><dt>启发性</dt><dd>${escapeHtml(analysis.inspiration || "待进一步沉淀")}</dd></div>
+        </dl>
+      </section>
       <div class="relation-grid">
         ${relationBox("指向", note.outlinks)}
         ${relationBox("被引用", note.backlinks)}
@@ -322,157 +342,6 @@ function inlineMarkdown(text, linkLookup) {
     return `<button class="relation-link wiki-link" type="button" data-open-note="${escapeHtml(id)}">${escapeHtml(text)}</button>`;
   });
   return value;
-}
-
-function setupGraph() {
-  resizeCanvas();
-  const width = elements.canvas.width;
-  const height = elements.canvas.height;
-  state.graph.nodes.forEach((node, index) => {
-    const angle = (Math.PI * 2 * index) / Math.max(1, state.graph.nodes.length);
-    state.positions.set(node.id, {
-      x: width / 2 + Math.cos(angle) * width * 0.24,
-      y: height / 2 + Math.sin(angle) * height * 0.24,
-      vx: 0,
-      vy: 0
-    });
-  });
-  for (let index = 0; index < 90; index += 1) tickGraph();
-  drawGraph();
-  setInterval(() => {
-    if (!state.drag) {
-      tickGraph();
-      drawGraph();
-    }
-  }, 40);
-}
-
-function resizeCanvas() {
-  const ratio = window.devicePixelRatio || 1;
-  const rect = elements.canvas.getBoundingClientRect();
-  elements.canvas.width = Math.max(320, Math.floor(rect.width * ratio));
-  elements.canvas.height = Math.max(280, Math.floor(rect.height * ratio));
-  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-}
-
-function visibleNodeIds() {
-  return new Set(filteredNotes().map((note) => note.id));
-}
-
-function tickGraph() {
-  const visible = visibleNodeIds();
-  const nodes = state.graph.nodes.filter((node) => visible.has(node.id));
-  const rect = elements.canvas.getBoundingClientRect();
-  const centerX = rect.width / 2;
-  const centerY = rect.height / 2;
-
-  for (let i = 0; i < nodes.length; i += 1) {
-    for (let j = i + 1; j < nodes.length; j += 1) {
-      const a = state.positions.get(nodes[i].id);
-      const b = state.positions.get(nodes[j].id);
-      const dx = a.x - b.x || 0.1;
-      const dy = a.y - b.y || 0.1;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      const force = Math.min(24, 1500 / (distance * distance));
-      a.vx += (dx / distance) * force;
-      a.vy += (dy / distance) * force;
-      b.vx -= (dx / distance) * force;
-      b.vy -= (dy / distance) * force;
-    }
-  }
-
-  for (const edge of state.graph.edges) {
-    if (!visible.has(edge.source) || !visible.has(edge.target)) continue;
-    const a = state.positions.get(edge.source);
-    const b = state.positions.get(edge.target);
-    const dx = b.x - a.x;
-    const dy = b.y - a.y;
-    const distance = Math.sqrt(dx * dx + dy * dy) || 1;
-    const force = (distance - 130) * 0.012;
-    a.vx += (dx / distance) * force;
-    a.vy += (dy / distance) * force;
-    b.vx -= (dx / distance) * force;
-    b.vy -= (dy / distance) * force;
-  }
-
-  for (const node of nodes) {
-    const pos = state.positions.get(node.id);
-    pos.vx += (centerX - pos.x) * 0.004;
-    pos.vy += (centerY - pos.y) * 0.004;
-    pos.vx *= 0.82;
-    pos.vy *= 0.82;
-    pos.x += pos.vx;
-    pos.y += pos.vy;
-    pos.x = Math.max(28, Math.min(rect.width - 28, pos.x));
-    pos.y = Math.max(28, Math.min(rect.height - 28, pos.y));
-  }
-}
-
-function drawGraph() {
-  const rect = elements.canvas.getBoundingClientRect();
-  ctx.clearRect(0, 0, rect.width, rect.height);
-  ctx.save();
-  ctx.translate(state.offset.x, state.offset.y);
-  const visible = visibleNodeIds();
-  const selectedNeighbors = new Set([state.selectedId]);
-
-  ctx.lineWidth = 1.2;
-  for (const edge of state.graph.edges) {
-    if (!visible.has(edge.source) || !visible.has(edge.target)) continue;
-    const a = state.positions.get(edge.source);
-    const b = state.positions.get(edge.target);
-    if (edge.source === state.selectedId) selectedNeighbors.add(edge.target);
-    if (edge.target === state.selectedId) selectedNeighbors.add(edge.source);
-    ctx.strokeStyle = edge.source === state.selectedId || edge.target === state.selectedId ? "rgba(15, 140, 111, 0.68)" : "rgba(99, 113, 107, 0.2)";
-    ctx.beginPath();
-    ctx.moveTo(a.x, a.y);
-    ctx.lineTo(b.x, b.y);
-    ctx.stroke();
-  }
-
-  for (const node of state.graph.nodes) {
-    if (!visible.has(node.id)) continue;
-    const pos = state.positions.get(node.id);
-    const radius = node.id === state.selectedId ? 13 : Math.max(7, Math.min(11, 6 + node.degree));
-    ctx.fillStyle = palette[node.type] || palette.note;
-    ctx.strokeStyle = node.id === state.selectedId ? "#0b1512" : "rgba(255, 255, 252, 0.95)";
-    ctx.lineWidth = node.id === state.selectedId ? 3 : 2;
-    ctx.beginPath();
-    ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.stroke();
-
-    if (selectedNeighbors.has(node.id) || visible.size < 10) {
-      ctx.fillStyle = "#1b2622";
-      ctx.font = "12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace";
-      ctx.textAlign = "center";
-      ctx.fillText(node.title.slice(0, 18), pos.x, pos.y + radius + 15);
-    }
-  }
-
-  ctx.restore();
-}
-
-function canvasPoint(event) {
-  const rect = elements.canvas.getBoundingClientRect();
-  return {
-    x: event.clientX - rect.left - state.offset.x,
-    y: event.clientY - rect.top - state.offset.y
-  };
-}
-
-function hitNode(event) {
-  const point = canvasPoint(event);
-  const visible = visibleNodeIds();
-  for (const node of state.graph.nodes) {
-    if (!visible.has(node.id)) continue;
-    const pos = state.positions.get(node.id);
-    const radius = node.id === state.selectedId ? 15 : 13;
-    const dx = point.x - pos.x;
-    const dy = point.y - pos.y;
-    if (Math.sqrt(dx * dx + dy * dy) <= radius) return node;
-  }
-  return null;
 }
 
 function escapeHtml(value) {
