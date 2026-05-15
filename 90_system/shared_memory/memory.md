@@ -27,32 +27,18 @@ status: active
 
 - Active project: `video-link-analysis`
 - Current goal: 用户只投视频链接（抖音/B站/YouTube 等），Codex 自动取证并尽量产出 high 置信度中文分析报告
-- Latest artifact: `90_system/skills/douyin-video-analysis/SKILL.md`, `90_system/tools/video_link_ingestion.md`
+- Latest artifact: `10_raw/links/2026-05-13_douyin_guo-yu_ai_life_changes.md`
 - Memory entry: `90_system/shared_memory/memory.md`
 - Next action for ChatGPT: 用户发视频链接时，默认先尝试获取原视频/字幕/页面/截图/OCR；仅标题或二手材料不能标 high
-- Blockers: 当前本机有 `ffmpeg`/`tesseract`，未检测到 `yt-dlp`/`whisper`/`faster-whisper`
+- Blockers: 当前本机有 `ffmpeg`/`tesseract`/`yt-dlp`；未检测到 `whisper`/`faster-whisper`
 
 ## Recent Changes
 
+- 2026-05-15: 重新用 link-driven 方式分析郭宇抖音链接；原始页面可访问，拿到视频 ID、标题、发布时间、时长、章节要点和可见字幕片段，报告覆盖为 `high` evidence / `medium_high` confidence
 - 2026-05-15: 将视频分析目标升级为“用户只给链接，Codex 自行取证”；skill 改为 `视频链接分析员.skill`，覆盖抖音/B站/YouTube/TikTok/小红书
 - 2026-05-15: 新增 `抖音视频分析员.skill` 与 `video_analysis` 模板，要求先拿证据再分析，避免只凭短链/标题生成报告
-- 2026-05-15: Dogfood 测试抖音视频分析流程，覆盖郭宇视频线索为 `video_analysis` 报告；证据等级 `medium`，来源为抖音分享文本 + 疑似同源转写稿
 - 2026-05-15: 验证 ChatGPT 可通过 cachebust 读取最新版 shared memory，并成功使用 Single-file Fallback Router 识别 5 个 lens 与 persona mode 规则
 - 2026-05-14: 增加 shared memory 单文件降级规则：若 ChatGPT 能读 memory 但读不了 index/router raw，直接使用 memory 内置的最小 router 和 persona mode 规则
-- 2026-05-14: 记录 ChatGPT stale read 问题：若 GPT 报 `updated_at: 2026-05-13`，说明读到旧缓存/旧项目文件/错误来源；当前 GitHub raw 已验证为 `2026-05-14`
-- 2026-05-14: 记录 ChatGPT 访问限制：项目指令只提供规则，不赋予联网/GitHub 访问能力；若 raw 读取失败，应检查 Web/GitHub connector 或改用项目文件/自定义 GPT
-- 2026-05-14: 明确默认提交推送规则：以后 Codex 对知识库做有效更新后默认 commit + push，尤其是 `memory.md`
-- 2026-05-14: Thinking Lens System 支持受控 persona mode：用户明确要求沉浸式/口吻时可启用，但观点质量、事实边界和行动建议优先
-- 2026-05-14: 新增会话内自动记录规则：本会话产生的高复用价值讨论，Codex 需整理进 shared memory 并单独提交推送
-- 2026-05-14: 本地 dogfood 专家团评价当前知识库：方向正确，下一阶段应收敛为“投喂 -> 消化 -> 下一步行动”的最小闭环
-- 2026-05-14: 扩展 Thinking Lens System，新增 Karpathy、Steve Jobs、Charlie Munger、Naval Ravikant 四个 people lens
-- 2026-05-14: 新增 Thinking Lens System，入口为 `90_system/skills/index.md` 与 `90_system/skills/skill_router.md`
-- 2026-05-14: 将 Nuwa / Elon Musk skill 转化为 Flux 可用 thinking lens: `90_system/skills/people/elon-musk.md`
-- 2026-05-13: 新增抖音线索 `郭宇：AI会给我们的生活带来什么样的变化`，当前为 raw/low confidence，需补转录或页面内容
-- 2026-05-13: 执行 `AI情报员.skill`，更新当天输出为 Google GTIG AI 安全报告、Mistral 3、RLM + RL 三条非重复情报
-- 2026-05-13: 全面优化 `ai-news`，角色名改为 `AI情报员.skill`，强化全球 AI 跟踪、中文化、去重、时效与价值筛选
-- 2026-05-13: 新增共享记忆入口文件 `90_system/shared_memory/memory.md` 与同步脚本 `90_system/shared_memory/sync.sh`
-- 2026-05-13: `memory.md` 索引路径统一为仓库相对路径（便于远端/手机端引用）
 
 ## Artifact Index
 
@@ -155,7 +141,7 @@ Routing rules:
   - 后续视频链接必须先判定证据等级：`high` / `medium` / `low`
   - high 置信度至少需要原视频文件、完整字幕/转录、可访问原视频页面、关键截图 + 页面可见字幕中的一个强证据源
   - 只有短链/标题/二手搜索结果时，只能登记为 `raw` 或 `medium/low confidence`，不能伪装成 high
-  - 当前可用工具：`ffmpeg`、`tesseract`；缺口：`yt-dlp`、`whisper`、`faster-whisper`
+  - 当前可用工具：`ffmpeg`、`tesseract`、`yt-dlp`；缺口：`whisper`、`faster-whisper`
 - Artifacts:
   - `90_system/skills/douyin-video-analysis/SKILL.md`
   - `90_templates/video_analysis.md`
@@ -174,15 +160,16 @@ Routing rules:
 - Context: 用户要求从近期抖音链接中选一个测试新视频分析能力，并覆盖原始文档。
 - Result:
   - 选择 `郭宇：AI会给我们的生活带来什么样的变化`
-  - 公开搜索找到疑似同源/同主题转写稿：FinSec `郭宇：知识工作者的职业生涯只剩6个月了`
-  - 原文档已从 `link_note` / `raw` 覆盖为 `video_analysis` / `processed`
-  - 证据等级设为 `medium`，明确标注未拿到抖音原始字幕/视频文件
+  - 短链展开到 `https://www.douyin.com/video/7635496165231955206`
+  - 本机 Chrome 成功打开原始抖音页面，拿到标题、作者、发布时间 `2026-05-03 15:25`、时长 `13:14`、章节要点和可见字幕片段
+  - 已安装 `yt-dlp`，但直接链接与 Chrome cookies 方式均提示需要 fresh cookies，未拿到视频文件/完整字幕
+  - 原文档已覆盖为 `video_analysis` / `processed`，证据等级设为 `high`，置信度设为 `medium_high`
 - Artifacts:
   - `10_raw/links/2026-05-13_douyin_guo-yu_ai_life_changes.md`
 - Next:
-  - For ChatGPT: 评估该报告结构是否满足“视频内容 + 观点 + 独立判断 + 行动建议”
-  - For Codex: 下一条抖音链接优先尝试浏览器/截图/OCR；若找到二手转写稿，必须标注证据等级和来源边界
-  - For User: 若想升级为 `high` 置信度，补充视频文件、字幕或关键截图
+  - For ChatGPT: 基于最新报告讨论观点价值；注意它是原始页面 + 章节级分析，不是逐字转录分析
+  - For Codex: 下一条视频继续优先尝试原始页、下载/字幕、截图/OCR、ASR；若 `yt-dlp` 需要 fresh cookies，直接记录边界
+  - For User: 继续只发链接即可；若要求逐字级高置信度，需要允许获取视频文件或完整字幕/转录
 
 ### 2026-05-15 / single-file-router-verified
 
