@@ -27,18 +27,18 @@ status: active
 
 - Active project: `video-link-analysis`
 - Current goal: 用户只投视频链接（抖音/B站/YouTube 等），Codex 自动取证并尽量产出 high 置信度中文分析报告
-- Latest artifact: `10_raw/links/2026-05-13_douyin_guo-yu_ai_life_changes.md`
+- Latest artifact: `10_raw/videos/2026-05-15_bilibili_BV1Kk9kBAEJv/analysis.md`
 - Memory entry: `90_system/shared_memory/memory.md`
 - Next action for ChatGPT: 用户发视频链接时，默认先尝试获取原视频/字幕/页面/截图/OCR；仅标题或二手材料不能标 high
-- Blockers: 当前本机有 `ffmpeg`/`tesseract`/`yt-dlp`；未检测到 `whisper`/`faster-whisper`
+- Blockers: 当前本机有 `ffmpeg`/`tesseract`/`yt-dlp`/`whisper-cpp`；未检测到 `whisper`/`faster-whisper`
 
 ## Recent Changes
 
+- 2026-05-15: 分析 B 站 Codex App 教程 `BV1Kk9kBAEJv`；已获取 metadata、原始音频、本地 ASR 转录，报告为 `high` evidence / `medium_high` confidence
 - 2026-05-15: 重新用 link-driven 方式分析郭宇抖音链接；原始页面可访问，拿到视频 ID、标题、发布时间、时长、章节要点和可见字幕片段，报告覆盖为 `high` evidence / `medium_high` confidence
 - 2026-05-15: 将视频分析目标升级为“用户只给链接，Codex 自行取证”；skill 改为 `视频链接分析员.skill`，覆盖抖音/B站/YouTube/TikTok/小红书
 - 2026-05-15: 新增 `抖音视频分析员.skill` 与 `video_analysis` 模板，要求先拿证据再分析，避免只凭短链/标题生成报告
 - 2026-05-15: 验证 ChatGPT 可通过 cachebust 读取最新版 shared memory，并成功使用 Single-file Fallback Router 识别 5 个 lens 与 persona mode 规则
-- 2026-05-14: 增加 shared memory 单文件降级规则：若 ChatGPT 能读 memory 但读不了 index/router raw，直接使用 memory 内置的最小 router 和 persona mode 规则
 
 ## Artifact Index
 
@@ -72,6 +72,8 @@ status: active
 
 - douyin:
   - 2026-05-13: `10_raw/links/2026-05-13_douyin_guo-yu_ai_life_changes.md`
+- bilibili:
+  - 2026-05-15: `10_raw/videos/2026-05-15_bilibili_BV1Kk9kBAEJv/analysis.md`
 
 ## Thinking Lens System
 
@@ -141,7 +143,7 @@ Routing rules:
   - 后续视频链接必须先判定证据等级：`high` / `medium` / `low`
   - high 置信度至少需要原视频文件、完整字幕/转录、可访问原视频页面、关键截图 + 页面可见字幕中的一个强证据源
   - 只有短链/标题/二手搜索结果时，只能登记为 `raw` 或 `medium/low confidence`，不能伪装成 high
-  - 当前可用工具：`ffmpeg`、`tesseract`、`yt-dlp`；缺口：`whisper`、`faster-whisper`
+  - 当前可用工具：`ffmpeg`、`tesseract`、`yt-dlp`、`whisper-cpp`；缺口：`whisper`、`faster-whisper`
 - Artifacts:
   - `90_system/skills/douyin-video-analysis/SKILL.md`
   - `90_templates/video_analysis.md`
@@ -150,6 +152,31 @@ Routing rules:
   - For ChatGPT: 若用户贴视频链接，先尝试读取/获取证据；若只能看到标题或二手材料，必须降级说明
   - For Codex: 后续触发该 skill 时，先查重，再尝试页面展开、下载/字幕、截图/OCR、音频转录链路，最后入库并更新 shared memory
   - For User: 只需继续投链接；若平台限制导致无法取证，Codex 应说明缺口并请求安装工具/授权浏览器访问
+
+### 2026-05-15 / bilibili-codex-app-guide
+
+- Project: `video-link-analysis`
+- Status: `done`
+- Priority: `high`
+- Updated: `2026-05-15`
+- Context: 用户投喂 B 站 Codex App 教程，希望按新的视频链接分析流程处理。
+- Result:
+  - 通过 `yt-dlp --cookies-from-browser chrome` 获取 B 站 metadata
+  - 下载原始音频并用 `whisper-cpp` 本地转录完整 ASR
+  - 生成分析报告，证据等级 `high`，置信度 `medium_high`
+  - 大文件/版权材料通过目录 `.gitignore` 保持本地，不提交音频和完整转录
+- Artifacts:
+  - `10_raw/videos/2026-05-15_bilibili_BV1Kk9kBAEJv/analysis.md`
+  - `10_raw/videos/2026-05-15_bilibili_BV1Kk9kBAEJv/.gitignore`
+- Decisions:
+  - B 站后续默认走 `yt-dlp metadata -> audio -> whisper-cpp ASR -> report`
+  - 不把完整音频/完整转录推到 GitHub，只提交分析报告和必要索引
+- Risks:
+  - `ggml-base` ASR 对中文技术词有误听；逐字级复刻需更高精度模型或人工复核
+- Next:
+  - For ChatGPT: 基于 `analysis.md` 讨论 Codex App 工作流价值，不要把视频内产品口径当官方事实
+  - For Codex: 后续 B 站链接继续复用该链路，并考虑沉淀 `codex-app-workflow-checklist`
+  - For User: 继续只发链接即可；如果要逐字级教程复刻，需要允许更高精度 ASR 或关键截图抽取
 
 ### 2026-05-15 / douyin-guoyu-analysis-dogfood
 

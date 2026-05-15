@@ -50,8 +50,9 @@
 当前状态：
 
 - `tesseract` 已安装，可做 OCR
-- `whisper` 未安装，暂不能本地语音转录
-- `yt-dlp` 未安装，暂不能走通用视频下载链路
+- `whisper-cpp` 已安装，可用本地模型做 ASR
+- `whisper` / `faster-whisper` 未安装
+- 当前已下载过 `ggml-base` 模型到本机临时目录；若丢失需重新下载模型
 
 ## D. 下载/字幕获取
 
@@ -62,8 +63,9 @@
 
 当前状态：
 
-- `yt-dlp` 未安装
-- 若用户要求只给链接也要 high 置信度，后续需要安装/启用 `yt-dlp` 或同类下载能力
+- `yt-dlp` 已安装
+- B站已验证可通过 `yt-dlp --cookies-from-browser chrome` 获取 metadata 并下载音频
+- 抖音已验证短链可展开，Web 页面可通过 Chrome 打开；但 `yt-dlp` 仍可能提示 fresh cookies，需记录边界
 - 平台登录态优先用本机浏览器，不要求用户提供账号密码
 
 ## 推荐第一版方案

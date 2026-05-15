@@ -94,6 +94,7 @@ description: Trigger this skill when the user sends a Douyin, Bilibili, YouTube,
 
 ## Current Tool Reality
 
-- 已知本机可用：`ffmpeg`、`tesseract`。
-- 当前未检测到：`yt-dlp`、`whisper`、`faster-whisper`。
-- 若任务需要下载视频或本地转录，应优先请求安装/启用对应工具；在工具缺失时，不要声称已完成 high 置信度分析。
+- 已知本机可用：`ffmpeg`、`tesseract`、`yt-dlp`、`whisper-cpp`。
+- 当前未检测到：`whisper`、`faster-whisper`。
+- B站/YouTube 优先尝试：`yt-dlp metadata -> audio/subtitles -> whisper-cpp ASR -> report`。
+- 抖音/小红书优先尝试：浏览器原始页、可见字幕、页面章节、截图/OCR；若 `yt-dlp` 要求 fresh cookies，记录边界。
