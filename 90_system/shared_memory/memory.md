@@ -25,15 +25,16 @@ status: active
 
 ## Current Focus
 
-- Active project: `douyin-video-analysis`
-- Current goal: 将用户投喂的抖音视频链接升级为可产出完整中文分析报告的工作流
-- Latest artifact: `10_raw/links/2026-05-13_douyin_guo-yu_ai_life_changes.md`
+- Active project: `video-link-analysis`
+- Current goal: 用户只投视频链接（抖音/B站/YouTube 等），Codex 自动取证并尽量产出 high 置信度中文分析报告
+- Latest artifact: `90_system/skills/douyin-video-analysis/SKILL.md`, `90_system/tools/video_link_ingestion.md`
 - Memory entry: `90_system/shared_memory/memory.md`
-- Next action for ChatGPT: 用户发抖音链接时，优先确认是否有视频正文/字幕/转录；证据不足时只登记 raw，不输出完整报告
-- Blockers: 暂无
+- Next action for ChatGPT: 用户发视频链接时，默认先尝试获取原视频/字幕/页面/截图/OCR；仅标题或二手材料不能标 high
+- Blockers: 当前本机有 `ffmpeg`/`tesseract`，未检测到 `yt-dlp`/`whisper`/`faster-whisper`
 
 ## Recent Changes
 
+- 2026-05-15: 将视频分析目标升级为“用户只给链接，Codex 自行取证”；skill 改为 `视频链接分析员.skill`，覆盖抖音/B站/YouTube/TikTok/小红书
 - 2026-05-15: 新增 `抖音视频分析员.skill` 与 `video_analysis` 模板，要求先拿证据再分析，避免只凭短链/标题生成报告
 - 2026-05-15: Dogfood 测试抖音视频分析流程，覆盖郭宇视频线索为 `video_analysis` 报告；证据等级 `medium`，来源为抖音分享文本 + 疑似同源转写稿
 - 2026-05-15: 验证 ChatGPT 可通过 cachebust 读取最新版 shared memory，并成功使用 Single-file Fallback Router 识别 5 个 lens 与 persona mode 规则
@@ -63,7 +64,7 @@ status: active
 ### Skills
 
 - ai-news: `90_system/skills/ai-news/SKILL.md`
-- douyin-video-analysis: `90_system/skills/douyin-video-analysis/SKILL.md`
+- video-link-analysis: `90_system/skills/douyin-video-analysis/SKILL.md`
 - thinking lens index: `90_system/skills/index.md`
 - thinking lens router: `90_system/skills/skill_router.md`
 - people/andrej-karpathy: `90_system/skills/people/andrej-karpathy.md`
@@ -143,25 +144,26 @@ Routing rules:
 
 ### 2026-05-15 / douyin-video-analysis-workflow
 
-- Project: `douyin-video-analysis`
+- Project: `video-link-analysis`
 - Status: `active`
 - Priority: `high`
 - Updated: `2026-05-15`
-- Context: 用户会经常投喂抖音分享视频链接，并明确要求不满足于标题级摘要，需要视频内容、观点和 Codex 思考后的完整文字分析报告。
+- Context: 用户会经常投喂抖音、B站、YouTube 等视频链接，并明确要求由 Codex 自行准备视频文件/字幕/关键截图等证据，产出 high 置信度分析报告。
 - Decision:
-  - 新增独立 skill：`90_system/skills/douyin-video-analysis/SKILL.md`
+  - 新增并升级独立 skill：`90_system/skills/douyin-video-analysis/SKILL.md`（角色名：`视频链接分析员.skill`）
   - 新增报告模板：`90_templates/video_analysis.md`
-  - 后续抖音链接必须先判定证据等级：`high` / `medium` / `low`
-  - 只有拿到转录、字幕、视频文件、关键截图/OCR 或足够页面内容时，才输出完整分析报告
-  - 只有短链/标题时，只能登记为 `raw` / `low confidence`，列出待补材料，不伪装成完整分析
+  - 后续视频链接必须先判定证据等级：`high` / `medium` / `low`
+  - high 置信度至少需要原视频文件、完整字幕/转录、可访问原视频页面、关键截图 + 页面可见字幕中的一个强证据源
+  - 只有短链/标题/二手搜索结果时，只能登记为 `raw` 或 `medium/low confidence`，不能伪装成 high
+  - 当前可用工具：`ffmpeg`、`tesseract`；缺口：`yt-dlp`、`whisper`、`faster-whisper`
 - Artifacts:
   - `90_system/skills/douyin-video-analysis/SKILL.md`
   - `90_templates/video_analysis.md`
   - `90_system/tools/video_link_ingestion.md`
 - Next:
-  - For ChatGPT: 若用户贴抖音链接，先要求或尝试获取转录/截图/视频正文，再按 `video_analysis` 模板分析
-  - For Codex: 后续触发该 skill 时，先查重，再尝试浏览器/页面/截图/OCR/转录链路，最后入库并更新 shared memory
-  - For User: 若希望得到完整报告，优先提供视频文件、字幕、转录或关键截图；只给短链时可能只能登记待补
+  - For ChatGPT: 若用户贴视频链接，先尝试读取/获取证据；若只能看到标题或二手材料，必须降级说明
+  - For Codex: 后续触发该 skill 时，先查重，再尝试页面展开、下载/字幕、截图/OCR、音频转录链路，最后入库并更新 shared memory
+  - For User: 只需继续投链接；若平台限制导致无法取证，Codex 应说明缺口并请求安装工具/授权浏览器访问
 
 ### 2026-05-15 / douyin-guoyu-analysis-dogfood
 

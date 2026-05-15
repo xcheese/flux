@@ -1,25 +1,49 @@
 ---
-name: 抖音视频分析员.skill
-description: Trigger this skill when the user sends a Douyin/TikTok-style short video link or asks to analyze a Douyin video. Capture the source, try to obtain video/page/transcript evidence, and produce a structured Chinese analysis report only when enough content is available.
+name: 视频链接分析员.skill
+description: Trigger this skill when the user sends a Douyin, Bilibili, YouTube, TikTok, Xiaohongshu, or other video link and expects a high-confidence Chinese analysis report. The agent must acquire evidence from the link (video file, transcript/subtitles, accessible page, screenshots/OCR) before analysis.
 ---
 
-# 抖音视频分析员.skill
+# 视频链接分析员.skill
 
-当用户发送抖音短链、抖音分享文本、`douyin.com/video/...` 链接，或要求“分析这个抖音视频”时，执行本 skill。
+当用户发送抖音、B站、YouTube、TikTok、小红书或其它视频链接，并希望“分析视频内容/观点/价值”时，执行本 skill。
 
 ## Mission
 
-目标不是保存链接，而是尽量产出一份可复用的中文视频分析报告：内容结构、核心观点、论据质量、噪音过滤、对用户个人成长/AI 方向的启发，以及可行动作。
+用户只负责丢链接；素材准备、取证、转录、截图/OCR、分析和入库应由 Codex 尽量完成。
+
+目标不是保存链接，而是产出一份可复用的中文视频分析报告：内容结构、核心观点、论据质量、噪音过滤、对用户个人成长/AI 方向的启发，以及可行动作。
 
 ## Evidence First
 
 不要基于标题编造完整分析。每次先判断证据等级：
 
-- `high`: 有完整转录、字幕、视频文件或足够长的页面正文。
-- `medium`: 有章节、关键截图/OCR、可见字幕片段、作者/评论/简介等足够上下文。
+- `high`: 至少拿到一个强证据源：原视频文件、完整字幕/转录、可访问原视频页面、关键截图 + 页面可见字幕；最好同时有音频转录和关键帧/OCR。
+- `medium`: 有疑似同源转写稿、章节、关键截图/OCR、可见字幕片段、作者/评论/简介等足够上下文，但不是完整原视频证据。
 - `low`: 只有短链、标题片段、作者或少量分享文本。
 
 只有 `high` 或较强 `medium` 才输出完整报告；`low` 只能入库为待补材料。
+
+## Link-Driven Acquisition
+
+用户不会提前准备视频文件、字幕或截图。收到链接后按顺序尝试：
+
+1. **网页/平台取证**
+   - 展开短链，记录 canonical URL、标题、作者、发布时间、时长、简介、合集/章节、可见字幕、评论高频问题。
+   - 若平台需要登录态，优先使用用户本机浏览器/Computer Use，不要求用户提供账号密码。
+
+2. **下载/字幕取证**
+   - 若 `yt-dlp` 或平台可用下载工具存在，尝试下载视频、音频、字幕、metadata。
+   - YouTube/B站优先尝试字幕/自动字幕；抖音/小红书优先尝试网页字幕、截图 OCR、浏览器可见内容。
+   - 若工具缺失或网络受限，明确记录缺口，并按需要请求安装/授权。
+
+3. **本地媒体处理**
+   - 用 `ffmpeg` 提取音频、采样关键帧、生成缩略图。
+   - 用 OCR 读取关键帧文字、PPT、代码、图表、字幕。
+   - 若本地 ASR/Whisper 可用，则转录口播；不可用时记录为缺口。
+
+4. **证据打包**
+   - 将视频文件、音频、字幕、转录、关键截图、OCR 结果保存到同一素材目录。
+   - 报告必须引用这些证据的路径或说明证据来源。
 
 ## Acquisition Workflow
 
@@ -28,10 +52,8 @@ description: Trigger this skill when the user sends a Douyin/TikTok-style short 
    - 已存在则更新原笔记，不重复创建。
 
 2. **尝试获取内容**
-   - 优先打开原链接，记录展开后的 `douyin.com/video/...` 链接、标题、作者、发布时间、时长、简介、章节、字幕、评论区高频问题。
-   - 如果需要登录态，优先使用用户本机 Chrome/Computer Use，不要求用户提供账号密码。
-   - 如果用户提供视频文件、音频、截图或转录，优先使用这些材料。
-   - 若可用工具支持，提取关键帧/OCR；若本地有 ASR/Whisper 再做口播转录。
+   - 优先从链接本身拿到原视频页面、字幕/转录、视频文件、关键截图和 OCR。
+   - 只有在自动取证失败时，才向用户说明需要补充的最小材料。
 
 3. **决定产物**
    - 内容不足：写入 `10_raw/links/YYYY-MM-DD_douyin_<slug>.md`，`status: raw`，`confidence: low`，列出待补材料。
@@ -70,3 +92,8 @@ description: Trigger this skill when the user sends a Douyin/TikTok-style short 
 - 链接模板：`90_templates/link_note.md`
 - 视频分析模板：`90_templates/video_analysis.md`
 
+## Current Tool Reality
+
+- 已知本机可用：`ffmpeg`、`tesseract`。
+- 当前未检测到：`yt-dlp`、`whisper`、`faster-whisper`。
+- 若任务需要下载视频或本地转录，应优先请求安装/启用对应工具；在工具缺失时，不要声称已完成 high 置信度分析。
