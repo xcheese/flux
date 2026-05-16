@@ -26,15 +26,15 @@ status: active
 ## Current Focus
 
 - Active project: `ai-growth-knowledge-base`
-- Current goal: 将“AI 高价值使用地图”沉淀为长期知识库文档，并等待用户补充地图图片源文件
+- Current goal: 将“AI 高价值使用地图”沉淀为长期知识库文档，并嵌入可版本管理的 3:4 地图图片
 - Latest artifact: `20_wiki/ai/ai_high_value_usage_map.md`
 - Memory entry: `90_system/shared_memory/memory.md`
 - Next action for ChatGPT: 讨论 token ROI / 高价值 AI 使用时，优先读取 `20_wiki/ai/ai_high_value_usage_map.md`
-- Blockers: 缺少地图图片源文件，预期补充到 `99_assets/images/ai_high_value_usage_map_3x4.png`
+- Blockers: 暂无
 
 ## Recent Changes
 
-- 2026-05-16: 新增 `AI 高价值使用地图：哪些场景最值得消耗 token`，沉淀“复杂信息 × 多维推理 × 可复用闭环”判断框架；图片源文件缺失，暂未嵌入图片
+- 2026-05-16: 新增 `AI 高价值使用地图：哪些场景最值得消耗 token`，沉淀“复杂信息 × 多维推理 × 可复用闭环”判断框架；已生成 3:4 地图 PNG 并嵌入文档末尾
 - 2026-05-15: 修复知识库展示索引：`10_raw/videos/<slug>/` 只展示 `analysis.md`，隐藏 transcript/audio/metadata；分类标签改为文档类型 + 主题标签
 - 2026-05-15: 分析 B 站 Codex App 教程 `BV1Kk9kBAEJv`；已获取 metadata、原始音频、本地 ASR 转录，报告为 `high` evidence / `medium_high` confidence
 - 2026-05-15: 重新用 link-driven 方式分析郭宇抖音链接；原始页面可访问，拿到视频 ID、标题、发布时间、时长、章节要点和可见字幕片段，报告覆盖为 `high` evidence / `medium_high` confidence
@@ -70,7 +70,8 @@ status: active
 - AI learning map: `20_wiki/ai/AI_learning_map.md`
 - AI high-value usage map: `20_wiki/ai/ai_high_value_usage_map.md`
 - AI usage capability map: `20_wiki/concepts/AI 使用能力地图.md`
-- Expected image asset: `99_assets/images/ai_high_value_usage_map_3x4.png`（missing source file）
+- AI high-value usage map image: `99_assets/images/ai_high_value_usage_map_3x4.png`
+- AI high-value usage map source SVG: `99_assets/images/ai_high_value_usage_map_3x4.svg`
 
 ### Templates
 
@@ -148,15 +149,16 @@ Routing rules:
 - Result:
   - 已创建知识库文档：`20_wiki/ai/ai_high_value_usage_map.md`
   - 已更新 AI 入口索引：`20_wiki/ai/AI_learning_map.md`
-  - 已记录预期图片路径：`99_assets/images/ai_high_value_usage_map_3x4.png`
-  - 当前仓库、Downloads、临时目录未找到匹配图片源文件；本轮消息也没有可保存图片附件，因此文档末尾未嵌入实际图片
+  - 已生成地图图片：`99_assets/images/ai_high_value_usage_map_3x4.png`
+  - 已保留可编辑源文件：`99_assets/images/ai_high_value_usage_map_3x4.svg`
+  - 已在文档末尾使用相对路径嵌入地图图片
 - Summary:
   - 核心公式：`高价值使用 = 复杂信息 × 多维推理 × 可复用闭环`
   - 四大场景：生活、工作、世界、创造
   - 低价值区：无目标闲聊、纯搬运摘要、不可复用重复提问、不验证的结论依赖
 - Next:
-  - For User: 上传或指定“AI 高价值使用地图”图片源文件
-  - For Codex: 收到图片后保存到 `99_assets/images/ai_high_value_usage_map_3x4.png`，并把文档末尾替换为相对路径图片引用
+  - For User: 可继续提出视觉风格要求或内容取舍
+  - For Codex: 若用户提供更好的图片版本，替换 PNG；若继续迭代，优先修改 SVG 源文件再渲染 PNG
 
 ### 2026-05-15 / douyin-video-analysis-workflow
 

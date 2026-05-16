@@ -11,7 +11,7 @@ tags:
   - 工作流
   - 知识库
 status: active
-image_status: missing_source
+image_status: generated
 image_path: ../../99_assets/images/ai_high_value_usage_map_3x4.png
 ---
 
@@ -467,14 +467,4 @@ AI 输出不是事实本身。涉及医学、法律、金融、政策、价格�
 
 ## 地图总览
 
-图片源文件缺失，当前未嵌入地图图片。
-
-预期图片路径：
-
-`../../99_assets/images/ai_high_value_usage_map_3x4.png`
-
-补充图片源文件后，可在本节替换为：
-
-```markdown
 ![AI 高价值使用地图](../../99_assets/images/ai_high_value_usage_map_3x4.png)
-```

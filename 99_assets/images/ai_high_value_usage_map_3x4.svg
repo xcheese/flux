@@ -1,0 +1,225 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  <defs>
+    <style>
+      .bg { fill: #fbfcff; }
+      .title { font: 800 62px "Hiragino Sans GB", "PingFang SC", "Noto Sans CJK SC", sans-serif; fill: #0b1b3f; }
+      .subtitle { font: 500 25px "Hiragino Sans GB", "PingFang SC", sans-serif; fill: #47607d; }
+      .formula { font: 700 23px "Hiragino Sans GB", "PingFang SC", sans-serif; fill: #24558f; }
+      .axisTitle { font: 800 22px "Hiragino Sans GB", "PingFang SC", sans-serif; fill: #18345d; }
+      .axisText { font: 600 17px "Hiragino Sans GB", "PingFang SC", sans-serif; fill: #47607d; }
+      .legend { font: 500 16px "Hiragino Sans GB", "PingFang SC", sans-serif; fill: #5d718b; }
+      .bubbleNum { font: 800 25px "Hiragino Sans GB", "PingFang SC", sans-serif; fill: #ffffff; }
+      .bubbleText { font: 700 18px "Hiragino Sans GB", "PingFang SC", sans-serif; fill: #ffffff; }
+      .cardTitle { font: 800 24px "Hiragino Sans GB", "PingFang SC", sans-serif; fill: #15365a; }
+      .cardItem { font: 800 17px "Hiragino Sans GB", "PingFang SC", sans-serif; fill: #15365a; }
+      .cardText { font: 500 13px "Hiragino Sans GB", "PingFang SC", sans-serif; fill: #47607d; }
+      .cardOut { font: 700 13px "Hiragino Sans GB", "PingFang SC", sans-serif; fill: #087f6f; }
+      .warnTitle { font: 800 26px "Hiragino Sans GB", "PingFang SC", sans-serif; fill: #e05b24; }
+      .checkTitle { font: 800 26px "Hiragino Sans GB", "PingFang SC", sans-serif; fill: #167b9a; }
+      .foot { font: 500 17px "Hiragino Sans GB", "PingFang SC", sans-serif; fill: #5d718b; }
+      .grid { stroke: #b7c6dc; stroke-width: 1.5; stroke-dasharray: 8 8; }
+      .axis { stroke: #204a7a; stroke-width: 3; marker-end: url(#arrow); }
+      .card { fill: #ffffff; stroke-width: 1.8; rx: 18; }
+      .mini { fill: #ffffff; stroke-width: 1.2; rx: 12; }
+    </style>
+    <filter id="shadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#17324d" flood-opacity="0.18"/>
+    </filter>
+    <radialGradient id="green" cx="35%" cy="28%" r="75%">
+      <stop offset="0%" stop-color="#8fd9b5"/>
+      <stop offset="100%" stop-color="#2aa56f"/>
+    </radialGradient>
+    <radialGradient id="blue" cx="35%" cy="28%" r="75%">
+      <stop offset="0%" stop-color="#8ac7ff"/>
+      <stop offset="100%" stop-color="#267edc"/>
+    </radialGradient>
+    <radialGradient id="purple" cx="35%" cy="28%" r="75%">
+      <stop offset="0%" stop-color="#c6a9ff"/>
+      <stop offset="100%" stop-color="#7657d8"/>
+    </radialGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#204a7a"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="1600"/>
+
+  <text x="188" y="86" fill="#1f68ff" font-size="28">✦</text>
+  <text class="title" x="260" y="82">AI 高价值使用地图</text>
+  <text x="996" y="86" fill="#1f68ff" font-size="28">✦</text>
+  <text class="subtitle" x="276" y="122">从工作、生活到世界探索：哪些场景最值得消耗 token</text>
+
+  <rect x="326" y="146" width="548" height="50" rx="25" fill="#eef5ff" stroke="#4d8df7" stroke-width="2"/>
+  <text class="formula" x="366" y="178">高价值使用 = 复杂信息 × 多维推理 × 可复用闭环</text>
+
+  <!-- Chart area -->
+  <g transform="translate(94,226)">
+    <line class="axis" x1="120" y1="500" x2="1038" y2="500"/>
+    <line class="axis" x1="120" y1="500" x2="120" y2="22"/>
+    <line class="grid" x1="350" y1="40" x2="350" y2="500"/>
+    <line class="grid" x1="580" y1="40" x2="580" y2="500"/>
+    <line class="grid" x1="810" y1="40" x2="810" y2="500"/>
+    <line class="grid" x1="120" y1="178" x2="1030" y2="178"/>
+    <line class="grid" x1="120" y1="305" x2="1030" y2="305"/>
+    <line class="grid" x1="120" y1="410" x2="1030" y2="410"/>
+
+    <text class="axisTitle" transform="translate(-6,318) rotate(-90)">闭环价值密度</text>
+    <text class="axisText" x="20" y="82">复利资产</text>
+    <text class="axisText" x="20" y="108">可沉淀为长期资产</text>
+    <text class="axisText" x="20" y="132">可复用、可放大</text>
+    <text class="axisText" x="20" y="236">长期复用</text>
+    <text class="axisText" x="20" y="262">持续迭代、反馈使用</text>
+    <text class="axisText" x="20" y="286">形成方法论/模块</text>
+    <text class="axisText" x="20" y="358">辅助提升</text>
+    <text class="axisText" x="20" y="384">显著提升效率/质量</text>
+    <text class="axisText" x="20" y="408">但复用性有限</text>
+    <text class="axisText" x="20" y="468">一次性使用</text>
+    <text class="axisText" x="20" y="494">即时满足单次需求</text>
+    <text class="axisText" x="20" y="518">不可复用</text>
+
+    <text class="axisTitle" x="518" y="558">探索范围</text>
+    <text class="axisText" x="190" y="538">⌂ 生活</text>
+    <text class="axisText" x="425" y="538">▣ 工作</text>
+    <text class="axisText" x="660" y="538">◎ 世界</text>
+    <text class="axisText" x="895" y="538">♢ 创造</text>
+
+    <text class="legend" x="520" y="586">○ 圆越大 = token 投入越多</text>
+    <circle cx="708" cy="580" r="10" fill="url(#blue)"/>
+    <text class="legend" x="726" y="586">已被广泛验证</text>
+    <circle cx="872" cy="580" r="10" fill="url(#purple)"/>
+    <text class="legend" x="890" y="586">前沿探索</text>
+    <circle cx="1010" cy="580" r="10" fill="url(#green)"/>
+    <text class="legend" x="1028" y="586">高 ROI</text>
+
+    <!-- Bubbles -->
+    <g filter="url(#shadow)">
+      <circle cx="240" cy="108" r="78" fill="url(#green)"/>
+      <circle cx="330" cy="230" r="70" fill="url(#green)"/>
+      <circle cx="256" cy="355" r="72" fill="url(#green)"/>
+      <circle cx="230" cy="470" r="55" fill="url(#green)"/>
+
+      <circle cx="520" cy="105" r="68" fill="url(#blue)"/>
+      <circle cx="520" cy="245" r="57" fill="url(#blue)"/>
+      <circle cx="518" cy="365" r="56" fill="url(#blue)"/>
+      <circle cx="610" cy="472" r="62" fill="url(#blue)"/>
+
+      <circle cx="724" cy="160" r="62" fill="url(#purple)"/>
+      <circle cx="765" cy="338" r="63" fill="url(#purple)"/>
+
+      <circle cx="940" cy="130" r="78" fill="url(#green)"/>
+      <circle cx="940" cy="330" r="62" fill="url(#green)"/>
+    </g>
+
+    <g text-anchor="middle">
+      <text class="bubbleNum" x="240" y="92">1</text><text class="bubbleText" x="240" y="124">个人决策 OS</text>
+      <text class="bubbleNum" x="330" y="215">2</text><text class="bubbleText" x="330" y="247">家庭/育儿 COO</text>
+      <text class="bubbleNum" x="256" y="340">3</text><text class="bubbleText" x="256" y="372">健康与习惯教练</text>
+      <text class="bubbleNum" x="230" y="455">4</text><text class="bubbleText" x="230" y="487">财务规划雷达</text>
+
+      <text class="bubbleNum" x="520" y="89">5</text><text class="bubbleText" x="520" y="121">架构压测</text>
+      <text class="bubbleNum" x="520" y="232">6</text><text class="bubbleText" x="520" y="260">代码审查</text><text class="bubbleText" x="520" y="282">与重构</text>
+      <text class="bubbleNum" x="518" y="352">7</text><text class="bubbleText" x="518" y="380">日志/质量</text><text class="bubbleText" x="518" y="402">分析</text>
+      <text class="bubbleNum" x="610" y="456">8</text><text class="bubbleText" x="610" y="486">多 Agent</text><text class="bubbleText" x="610" y="508">工作流</text>
+
+      <text class="bubbleNum" x="724" y="143">9</text><text class="bubbleText" x="724" y="174">趋势情报雷达</text>
+      <text class="bubbleNum" x="765" y="320">10</text><text class="bubbleText" x="765" y="350">跨学科学习</text><text class="bubbleText" x="765" y="372">引擎</text>
+
+      <text class="bubbleNum" x="940" y="113">11</text><text class="bubbleText" x="940" y="145">个人产品</text><text class="bubbleText" x="940" y="167">原型实验室</text>
+      <text class="bubbleNum" x="940" y="313">12</text><text class="bubbleText" x="940" y="345">创作与表达</text><text class="bubbleText" x="940" y="367">增强</text>
+    </g>
+  </g>
+
+  <!-- Detail cards -->
+  <g transform="translate(16,860)">
+    <rect class="card" x="0" y="0" width="276" height="430" stroke="#59b894"/>
+    <text class="cardTitle" x="46" y="44">⌂ A 生活</text>
+    <text class="cardItem" x="38" y="92">1 个人决策 OS</text>
+    <text class="cardText" x="56" y="120">为什么值得：沉淀长期决策系统。</text>
+    <text class="cardOut" x="56" y="146">输出：月/季度复盘、行动清单、原则库。</text>
+    <line x1="20" y1="168" x2="256" y2="168" stroke="#d6e7df"/>
+    <text class="cardItem" x="38" y="212">2 家庭/育儿 COO</text>
+    <text class="cardText" x="56" y="240">为什么值得：统一合同、日程、物资。</text>
+    <text class="cardOut" x="56" y="266">输出：采购计划、提醒、风险提示。</text>
+    <line x1="20" y1="288" x2="256" y2="288" stroke="#d6e7df"/>
+    <text class="cardItem" x="38" y="332">3 财务规划雷达</text>
+    <text class="cardText" x="56" y="360">为什么值得：重在情景模拟和比较。</text>
+    <text class="cardOut" x="56" y="386">输出：资产配置比较、风险假设表。</text>
+  </g>
+
+  <g transform="translate(310,860)">
+    <rect class="card" x="0" y="0" width="276" height="430" stroke="#6ea8ff"/>
+    <text class="cardTitle" x="46" y="44">▣ B 工作</text>
+    <text class="cardItem" x="38" y="92">5 架构压测</text>
+    <text class="cardText" x="56" y="120">为什么值得：提前暴露假设与技术债。</text>
+    <text class="cardOut" x="56" y="146">输出：风险矩阵、最小可行方案。</text>
+    <line x1="20" y1="168" x2="256" y2="168" stroke="#dbe8ff"/>
+    <text class="cardItem" x="38" y="212">7 日志/质量分析</text>
+    <text class="cardText" x="56" y="240">为什么值得：打通业务、工程、异常。</text>
+    <text class="cardOut" x="56" y="266">输出：复盘报告、异常归因。</text>
+    <line x1="20" y1="288" x2="256" y2="288" stroke="#dbe8ff"/>
+    <text class="cardItem" x="38" y="332">8 多 Agent 工作流</text>
+    <text class="cardText" x="56" y="360">为什么值得：重复认知劳动产品化。</text>
+    <text class="cardOut" x="56" y="386">输出：自动化任务链、shared memory 回写。</text>
+  </g>
+
+  <g transform="translate(604,860)">
+    <rect class="card" x="0" y="0" width="276" height="430" stroke="#b990ff"/>
+    <text class="cardTitle" x="46" y="44">◎ C 世界</text>
+    <text class="cardItem" x="38" y="92">9 趋势情报雷达</text>
+    <text class="cardText" x="56" y="120">为什么值得：过滤噪声，发现变化。</text>
+    <text class="cardOut" x="56" y="146">输出：周报、机会清单。</text>
+    <line x1="20" y1="168" x2="256" y2="168" stroke="#eadfff"/>
+    <text class="cardItem" x="38" y="212">10 跨学科学习引擎</text>
+    <text class="cardText" x="56" y="240">为什么值得：连接异构知识。</text>
+    <text class="cardOut" x="56" y="266">输出：知识图谱、洞察卡片。</text>
+    <line x1="20" y1="288" x2="256" y2="288" stroke="#eadfff"/>
+    <text class="cardItem" x="38" y="332">宏观问题模拟</text>
+    <text class="cardText" x="56" y="360">为什么值得：低成本测试系统假设。</text>
+    <text class="cardOut" x="56" y="386">输出：情景分析、推演摘要。</text>
+  </g>
+
+  <g transform="translate(898,860)">
+    <rect class="card" x="0" y="0" width="286" height="430" stroke="#77c7aa"/>
+    <text class="cardTitle" x="46" y="44">♢ D 创造</text>
+    <text class="cardItem" x="38" y="92">11 个人产品原型实验室</text>
+    <text class="cardText" x="56" y="120">为什么值得：先验证，再投入。</text>
+    <text class="cardOut" x="56" y="146">输出：PRD、原型、实验报告。</text>
+    <line x1="20" y1="168" x2="266" y2="168" stroke="#d6e7df"/>
+    <text class="cardItem" x="38" y="212">12 创作与表达增强</text>
+    <text class="cardText" x="56" y="240">为什么值得：把想法压缩成作品。</text>
+    <text class="cardOut" x="56" y="266">输出：文章、演讲稿、视觉草图。</text>
+    <line x1="20" y1="288" x2="266" y2="288" stroke="#d6e7df"/>
+    <text class="cardItem" x="38" y="332">复杂系统模拟</text>
+    <text class="cardText" x="56" y="360">为什么值得：探索规则和边界。</text>
+    <text class="cardOut" x="56" y="386">输出：规则设计、模拟结果。</text>
+  </g>
+
+  <!-- Bottom boxes -->
+  <g transform="translate(16,1320)">
+    <rect class="card" x="0" y="0" width="620" height="168" stroke="#f2a16f"/>
+    <text class="warnTitle" x="200" y="45">⚠ 低价值 / 慎用区</text>
+    <rect class="mini" x="24" y="72" width="132" height="72" stroke="#f2a16f" stroke-dasharray="5 4"/>
+    <text class="cardItem" x="54" y="105" fill="#e05b24">无目标闲聊</text>
+    <rect class="mini" x="166" y="72" width="132" height="72" stroke="#f2a16f" stroke-dasharray="5 4"/>
+    <text class="cardItem" x="194" y="105" fill="#e05b24">纯搬运摘要</text>
+    <rect class="mini" x="308" y="72" width="132" height="72" stroke="#f2a16f" stroke-dasharray="5 4"/>
+    <text class="cardItem" x="336" y="97" fill="#e05b24">不可复用的</text>
+    <text class="cardItem" x="352" y="122" fill="#e05b24">重复提问</text>
+    <rect class="mini" x="450" y="72" width="146" height="72" stroke="#f2a16f" stroke-dasharray="5 4"/>
+    <text class="cardItem" x="474" y="97" fill="#e05b24">不做验证的</text>
+    <text class="cardItem" x="490" y="122" fill="#e05b24">结论依赖</text>
+  </g>
+
+  <g transform="translate(656,1320)">
+    <rect class="card" x="0" y="0" width="528" height="168" stroke="#6fc6d8"/>
+    <text class="checkTitle" x="58" y="45">☑ 判断值不值得消耗 token</text>
+    <text class="cardText" x="58" y="82">1 是否解决高复杂度问题？</text>
+    <text class="cardText" x="58" y="108">2 是否需要多轮推理？</text>
+    <text class="cardText" x="58" y="134">3 是否能沉淀为资产？</text>
+    <text class="cardText" x="310" y="82">4 是否能驱动下一步行动？</text>
+    <text class="cardText" x="310" y="108">5 是否值得长期复用？</text>
+  </g>
+
+  <rect x="190" y="1515" width="820" height="40" rx="20" fill="#f0f7ff" stroke="#d8e7fa"/>
+  <text class="foot" x="246" y="1541">使用心法：先判断价值，再投入 token；每次都形成闭环（产出 → 行动 → 复盘 → 迭代）</text>
+</svg>
