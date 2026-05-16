@@ -241,7 +241,7 @@ function renderReader(note) {
         ${relationBox("指向", note.outlinks)}
         ${relationBox("被引用", note.backlinks)}
       </div>
-      <div class="markdown">${renderMarkdown(note.body, note.outlinks)}</div>
+      <div class="markdown">${renderMarkdown(note.body, note.outlinks, note.path)}</div>
     </div>
   `;
 }
@@ -258,7 +258,7 @@ function relationBox(title, links) {
   return `<section class="relation-box"><h3>${title}</h3>${content}</section>`;
 }
 
-function renderMarkdown(raw, outlinks) {
+function renderMarkdown(raw, outlinks, notePath) {
   const linkLookup = new Map(outlinks.filter((link) => link.id).map((link) => [link.title, link.id]));
   const withoutFrontmatter = raw.replace(/^---\n[\s\S]*?\n---\n?/, "");
   const blocks = withoutFrontmatter.split(/(```[\s\S]*?```)/g);
@@ -268,12 +268,12 @@ function renderMarkdown(raw, outlinks) {
         const code = block.replace(/^```[a-zA-Z0-9_-]*\n?/, "").replace(/```$/, "");
         return `<pre><code>${escapeHtml(code)}</code></pre>`;
       }
-      return renderMarkdownText(block, linkLookup);
+      return renderMarkdownText(block, linkLookup, notePath);
     })
     .join("");
 }
 
-function renderMarkdownText(text, linkLookup) {
+function renderMarkdownText(text, linkLookup, notePath) {
   const lines = text.split(/\r?\n/);
   const html = [];
   let list = null;
@@ -291,11 +291,18 @@ function renderMarkdownText(text, linkLookup) {
       continue;
     }
 
+    const imageOnly = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (imageOnly) {
+      closeList();
+      html.push(renderMarkdownImage(imageOnly[1], imageOnly[2], notePath));
+      continue;
+    }
+
     const heading = line.match(/^(#{1,3})\s+(.+)$/);
     if (heading) {
       closeList();
       const level = heading[1].length;
-      html.push(`<h${level}>${inlineMarkdown(heading[2], linkLookup)}</h${level}>`);
+      html.push(`<h${level}>${inlineMarkdown(heading[2], linkLookup, notePath)}</h${level}>`);
       continue;
     }
 
@@ -306,7 +313,7 @@ function renderMarkdownText(text, linkLookup) {
         list = "ol";
         html.push("<ol>");
       }
-      html.push(`<li>${inlineMarkdown(ordered[1], linkLookup)}</li>`);
+      html.push(`<li>${inlineMarkdown(ordered[1], linkLookup, notePath)}</li>`);
       continue;
     }
 
@@ -317,22 +324,23 @@ function renderMarkdownText(text, linkLookup) {
         list = "ul";
         html.push("<ul>");
       }
-      html.push(`<li>${inlineMarkdown(unordered[1], linkLookup)}</li>`);
+      html.push(`<li>${inlineMarkdown(unordered[1], linkLookup, notePath)}</li>`);
       continue;
     }
 
     closeList();
-    html.push(`<p>${inlineMarkdown(line, linkLookup)}</p>`);
+    html.push(`<p>${inlineMarkdown(line, linkLookup, notePath)}</p>`);
   }
 
   closeList();
   return html.join("");
 }
 
-function inlineMarkdown(text, linkLookup) {
+function inlineMarkdown(text, linkLookup, notePath) {
   let value = escapeHtml(text);
   value = value.replace(/`([^`]+)`/g, "<code>$1</code>");
   value = value.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  value = value.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) => renderMarkdownImage(alt, src, notePath));
   value = value.replace(/\[([^\]]+)\]\(([^)]+)\)/g, `<a href="$2" target="_blank" rel="noreferrer">$1</a>`);
   value = value.replace(/\[\[([^\]]+)\]\]/g, (_, rawTarget) => {
     const [target, label] = rawTarget.split("|").map((item) => item.trim());
@@ -342,6 +350,36 @@ function inlineMarkdown(text, linkLookup) {
     return `<button class="relation-link wiki-link" type="button" data-open-note="${escapeHtml(id)}">${escapeHtml(text)}</button>`;
   });
   return value;
+}
+
+function renderMarkdownImage(alt, src, notePath) {
+  const imageSrc = resolveImageSrc(src, notePath);
+  const caption = alt ? `<figcaption>${escapeHtml(alt)}</figcaption>` : "";
+  return `
+    <figure class="markdown-image">
+      <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(alt)}" decoding="async" />
+      ${caption}
+    </figure>
+  `;
+}
+
+function resolveImageSrc(src, notePath) {
+  const trimmed = String(src || "").trim();
+  if (/^(https?:|data:|\/)/i.test(trimmed)) {
+    return trimmed;
+  }
+
+  const parts = String(notePath || "").split("/").slice(0, -1);
+  for (const part of trimmed.split("/")) {
+    if (!part || part === ".") continue;
+    if (part === "..") {
+      parts.pop();
+    } else {
+      parts.push(part);
+    }
+  }
+
+  return `/asset?path=${encodeURIComponent(parts.join("/"))}`;
 }
 
 function escapeHtml(value) {

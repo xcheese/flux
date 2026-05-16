@@ -705,6 +705,29 @@ body.reader-open {
   color: inherit;
 }
 
+.markdown-image {
+  margin: 22px 0;
+}
+
+.markdown-image img {
+  display: block;
+  max-width: 100%;
+  max-height: 76vh;
+  object-fit: contain;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 16px 38px rgba(21, 38, 30, 0.1);
+}
+
+.markdown-image figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
 @media (max-width: 1240px) {
   .filters {
     grid-template-columns: 1fr;

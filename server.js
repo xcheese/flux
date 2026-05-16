@@ -12,6 +12,7 @@ const PORT = Number(process.env.PORT || 4321);
 const IGNORED_DIRS = new Set([".git", "node_modules", "public"]);
 const IGNORED_FILES = new Set(["AGENTS.md"]);
 const TEXT_EXTENSIONS = new Set([".md", ".markdown", ".txt"]);
+const IMAGE_EXTENSIONS = new Set([".apng", ".avif", ".gif", ".jpg", ".jpeg", ".png", ".svg", ".webp"]);
 const CONTENT_EXCLUDED_PREFIXES = ["90_templates/"];
 const VIDEO_DISPLAY_FILES = new Set(["analysis.md"]);
 
@@ -493,9 +494,62 @@ async function sendStatic(request, response, pathname) {
   }
 }
 
+async function sendAsset(response, requestedPath) {
+  const relativePath = toPosix(requestedPath || "").replace(/^\/+/, "");
+  const filePath = path.resolve(ROOT, relativePath);
+  const rootWithSeparator = ROOT.endsWith(path.sep) ? ROOT : `${ROOT}${path.sep}`;
+
+  if (filePath !== ROOT && !filePath.startsWith(rootWithSeparator)) {
+    response.writeHead(403);
+    response.end("Forbidden");
+    return;
+  }
+
+  const ext = path.extname(filePath).toLowerCase();
+  if (!IMAGE_EXTENSIONS.has(ext)) {
+    response.writeHead(415);
+    response.end("Unsupported asset type");
+    return;
+  }
+
+  try {
+    await stat(filePath);
+    const type = {
+      ".apng": "image/apng",
+      ".avif": "image/avif",
+      ".gif": "image/gif",
+      ".jpg": "image/jpeg",
+      ".jpeg": "image/jpeg",
+      ".png": "image/png",
+      ".svg": "image/svg+xml",
+      ".webp": "image/webp"
+    }[ext] || "application/octet-stream";
+    response.writeHead(200, {
+      "Content-Type": type,
+      "Cache-Control": "no-store"
+    });
+    createReadStream(filePath).pipe(response);
+  } catch {
+    response.writeHead(404);
+    response.end("Not found");
+  }
+}
+
 const server = createServer(async (request, response) => {
   try {
     const url = new URL(request.url, `http://${request.headers.host}`);
+
+    if (url.pathname === "/asset") {
+      const requestedPath = safeDecode(url.searchParams.get("path") || "");
+      await sendAsset(response, requestedPath);
+      return;
+    }
+
+    if (!url.pathname.startsWith("/api/")) {
+      await sendStatic(request, response, url.pathname);
+      return;
+    }
+
     const index = await buildIndex();
 
     if (url.pathname === "/api/notes") {
