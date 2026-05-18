@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.flux.knowledge-web</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>/Users/momo/Library/Application Support/FluxKnowledgeWeb/start-knowledge-web.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/momo</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PORT</key>
+    <string>4321</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/Users/momo/Library/Logs/FluxKnowledgeWeb/knowledge-web.out.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/momo/Library/Logs/FluxKnowledgeWeb/knowledge-web.err.log</string>
+</dict>
+</plist>
