@@ -285,9 +285,24 @@ function renderMarkdownText(text, linkLookup, notePath) {
     }
   };
 
-  for (const line of lines) {
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
     if (!line.trim()) {
       closeList();
+      continue;
+    }
+
+    if (isMarkdownTableRow(line) && isMarkdownTableDivider(lines[index + 1] || "")) {
+      const bodyLines = [];
+      let nextIndex = index + 2;
+      while (nextIndex < lines.length && isMarkdownTableRow(lines[nextIndex])) {
+        bodyLines.push(lines[nextIndex]);
+        nextIndex += 1;
+      }
+
+      closeList();
+      html.push(renderMarkdownTable(line, lines[index + 1], bodyLines, linkLookup, notePath));
+      index = nextIndex - 1;
       continue;
     }
 
@@ -334,6 +349,86 @@ function renderMarkdownText(text, linkLookup, notePath) {
 
   closeList();
   return html.join("");
+}
+
+function isMarkdownTableRow(line) {
+  return splitMarkdownTableRow(line).length >= 2;
+}
+
+function isMarkdownTableDivider(line) {
+  const cells = splitMarkdownTableRow(line);
+  return cells.length >= 2 && cells.every((cell) => /^:?-{3,}:?$/.test(cell.trim()));
+}
+
+function splitMarkdownTableRow(line) {
+  const trimmed = String(line || "").trim();
+  if (!trimmed.includes("|")) return [];
+
+  let content = trimmed;
+  if (content.startsWith("|")) content = content.slice(1);
+  if (content.endsWith("|")) content = content.slice(0, -1);
+
+  const cells = [];
+  let current = "";
+  for (let index = 0; index < content.length; index += 1) {
+    const char = content[index];
+    const next = content[index + 1];
+    if (char === "\\" && next === "|") {
+      current += "|";
+      index += 1;
+      continue;
+    }
+    if (char === "|") {
+      cells.push(current.trim());
+      current = "";
+      continue;
+    }
+    current += char;
+  }
+  cells.push(current.trim());
+
+  return cells;
+}
+
+function renderMarkdownTable(headerLine, dividerLine, bodyLines, linkLookup, notePath) {
+  const headers = splitMarkdownTableRow(headerLine);
+  const alignments = splitMarkdownTableRow(dividerLine).map(tableAlignment);
+  const rows = bodyLines.map(splitMarkdownTableRow);
+  const columnCount = Math.max(headers.length, alignments.length, ...rows.map((row) => row.length));
+  const normalizedHeaders = normalizeTableRow(headers, columnCount);
+  const normalizedRows = rows.map((row) => normalizeTableRow(row, columnCount));
+
+  const head = normalizedHeaders
+    .map((cell, index) => `<th${tableAlignAttribute(alignments[index])}>${inlineMarkdown(cell, linkLookup, notePath)}</th>`)
+    .join("");
+  const body = normalizedRows
+    .map((row) => `<tr>${row.map((cell, index) => `<td${tableAlignAttribute(alignments[index])}>${inlineMarkdown(cell, linkLookup, notePath)}</td>`).join("")}</tr>`)
+    .join("");
+
+  return `
+    <div class="markdown-table-wrap">
+      <table class="markdown-table">
+        <thead><tr>${head}</tr></thead>
+        <tbody>${body}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+function normalizeTableRow(row, columnCount) {
+  return Array.from({ length: columnCount }, (_, index) => row[index] || "");
+}
+
+function tableAlignment(cell) {
+  const trimmed = String(cell || "").trim();
+  if (trimmed.startsWith(":") && trimmed.endsWith(":")) return "center";
+  if (trimmed.endsWith(":")) return "right";
+  if (trimmed.startsWith(":")) return "left";
+  return "";
+}
+
+function tableAlignAttribute(alignment) {
+  return alignment ? ` class="align-${alignment}"` : "";
 }
 
 function inlineMarkdown(text, linkLookup, notePath) {
