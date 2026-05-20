@@ -40,7 +40,16 @@
   - 优先保存 `source note + short excerpt + summary + page/chapter pointer`
   - 引用短摘录必须克制；分析时以转述和结构化笔记为主
 
-## 4. Person Lens Upgrade Requirements
+## 4. Source Bias Policy
+
+- 国外媒体、国内媒体、官方媒体、社交平台、垂直自媒体都可能有政治、商业、文化或受众立场。
+- 不把任何单一媒体的叙事框架直接当事实；事实确认优先使用一手来源、官方文件、完整访谈、原始视频、通讯社和多源交叉验证。
+- `reliable_report` 可用于确认公开动作、时间、地点、名单和直接引语；对动机、意图、价值判断和政治解释必须降级为观点或推断。
+- `social_atmosphere` 只用于感知现场趣闻、传播情绪和网络梗；不能单独支撑事实结论。
+- 对中美、地缘政治、监管、战争、选举、族群、平台治理等高偏见主题，默认同时寻找不同立场来源，并显式区分事实、媒体解释和 lens 推断。
+- 如果一个来源明显带有立场或讽刺/党派风格，只能作为气氛或观点样本；不得作为核心事实源。
+
+## 5. Person Lens Upgrade Requirements
 
 每个 people lens 至少包含：
 
@@ -50,7 +59,7 @@
 - `freshness_policy`: 活跃人物如何查最新；已故人物如何处理去世后事件
 - `interaction_contract`: 分析模式与沉浸式模式的边界
 
-## 5. Rendering Rules
+## 6. Rendering Rules
 
 - 进入高仿真 persona 前，优先读取该人物本地 RAG：
   - `90_system/rag/people/expert_team_simulation_guide.md`
@@ -68,7 +77,7 @@
   - 他们愿意冒的风险和不愿意冒的风险
   - 他们最新公开关注点
 
-## 6. Maintenance Loop
+## 7. Maintenance Loop
 
 1. 用户反馈“不像”：把反馈转成该人物的 `anti-rendering pattern` 或 `persona_fidelity` 规则。
 2. 用户给出书/链接/视频：登记到 source registry；必要时生成摘要或主题卡片。

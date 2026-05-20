@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-20: 补充专家团 Source Bias Policy：国外/国内/官方/社交媒体都可能有立场；媒体叙事不直接等于事实，需按来源层级和用途使用
 - 2026-05-20: 补充 ChatGPT 侧专家团启动方式：Codex 推送不会自动进入 GPT 当前上下文；建议在“顾问”项目新开聊天并要求读取带 cachebust 的 shared memory
 - 2026-05-20: 系统性升级专家团高仿真能力：新增 expert team simulation guide、persona eval prompts，并为马斯克/卡帕西/Naval 增加 live signals
 - 2026-05-20: 明确 Persona Fidelity 免费资源策略：人物传记/访谈/书籍材料缺口默认由 Codex/ChatGPT 自行搜索免费且合法可访问资源，并记录采用/拒绝原因
@@ -169,6 +170,11 @@ status: active
   - `domain_signal`: 长期跟踪该领域的研究者、工程师、投资人、行业媒体、权威自媒体；用于提取行业语境、争议点和解释框架
   - `social_atmosphere`: X、微博、小红书、YouTube、播客、社区讨论和二创传播；用于感知现场趣闻、情绪和传播效果，不单独作为事实依据
   - `rumor`: 爆料、未具名消息、剪辑片段、标题党内容；只能作为待验证线索
+- Source bias:
+  - 专家团材料包含国外媒体，也包含国内官方/媒体、公司官网、本人原帖、完整访谈、垂直媒体和社交平台
+  - 所有媒体默认都有政治、商业、文化或受众立场；不把媒体叙事直接当事实
+  - 通讯社/主流媒体主要用于确认时间、地点、名单、公开动作；动机、意图、价值判断必须标为媒体解释或 lens 推断
+  - 涉及中美、监管、战争、选举、平台治理等高偏见主题时，必须多源交叉验证
 
 ### Single-file Fallback Router
 
@@ -198,6 +204,21 @@ Routing rules:
 - 史蒂夫·乔布斯（Steve Jobs）、查理·芒格（Charlie Munger）属于已故人物；不能声称其对去世后事件有真实观点，只能标为 `lens 推断`
 
 ## Active Records
+
+### 2026-05-20 / source-bias-policy
+
+- Project: `thinking-lens-system`
+- Status: `active`
+- Priority: `high`
+- Updated: `2026-05-20`
+- Context: 用户询问专家团材料是否包含国外媒体，以及这些材料是否会有政治倾向。
+- Decision:
+  - 会包含国外媒体资源，也会包含国内官方/媒体、公司官网、本人原帖、完整访谈、垂直媒体和社交平台。
+  - 所有媒体都默认存在立场和选择性；专家团不得把任何单一媒体的叙事框架直接当事实。
+  - 来源按用途分层：一手材料确认本人/机构表态，可靠报道确认公开事实，社交/自媒体只做氛围和线索，政治解释需多源交叉。
+  - 涉及中美、监管、战争、选举、平台治理等高偏见主题时，必须显式区分事实、媒体解释、社交氛围和 lens 推断。
+- Next:
+  - For ChatGPT/Codex: 回答专家团问题时，如果引用媒体来源，应在后台先判断来源层级和偏见风险；用户要求审计时展示该判断。
 
 ### 2026-05-20 / chatgpt-expert-team-startup
 
