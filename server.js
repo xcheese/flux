@@ -387,7 +387,14 @@ async function buildIndex() {
 function isExcludedFromContent(id) {
   if (CONTENT_EXCLUDED_PREFIXES.some((prefix) => id.startsWith(prefix))) return true;
   if (isVideoEvidenceArtifact(id)) return true;
+  if (isSystemToolImplementationArtifact(id)) return true;
   return false;
+}
+
+function isSystemToolImplementationArtifact(id) {
+  if (!id.startsWith("90_system/tools/")) return false;
+  const ext = path.extname(id).toLowerCase();
+  return ext !== ".md" && ext !== ".markdown";
 }
 
 function isVideoEvidenceArtifact(id) {
