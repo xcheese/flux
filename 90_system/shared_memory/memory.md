@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-20: 新增 Persona Fidelity Protocol 与本地 People RAG 入口；5 个专家 lens 都接入 `persona_fidelity`、`source_acquisition_targets` 和本地 RAG 路径
 - 2026-05-20: 优化 persona rendering：沉浸式模式默认不展示大段边界/来源/路由 UI；马斯克 lens 增加 biography-informed voice 与 anti-rendering patterns
 - 2026-05-20: 扩展 Thinking Lens Source Sensing Protocol：允许使用 X/社交原帖、权威媒体、垂直领域自媒体和现场视频作为感知材料，但按事实、信号、氛围、传闻分层使用
 - 2026-05-20: 优化 Thinking Lens 专家团：专家显示名统一为中文名（英文名），增强沉浸式 persona mode，并加入最新信息查证 / 已故人物外推边界
@@ -66,6 +67,9 @@ status: active
 - video-link-analysis: `90_system/skills/douyin-video-analysis/SKILL.md`
 - thinking lens index: `90_system/skills/index.md`
 - thinking lens router: `90_system/skills/skill_router.md`
+- persona fidelity protocol: `90_system/skills/persona_fidelity_protocol.md`
+- people RAG root: `90_system/rag/people/`
+- people source registry: `90_system/rag/people/source_registry.md`
 - people/andrej-karpathy: `90_system/skills/people/andrej-karpathy.md`
 - people/charlie-munger: `90_system/skills/people/charlie-munger.md`
 - people/elon-musk: `90_system/skills/people/elon-musk.md`
@@ -104,6 +108,9 @@ status: active
 - Updated: `2026-05-20`
 - Skill directory: `90_system/skills/`
 - Router entry: `90_system/skills/skill_router.md`
+- Persona fidelity protocol: `90_system/skills/persona_fidelity_protocol.md`
+- People RAG root: `90_system/rag/people/`
+- People source registry: `90_system/rag/people/source_registry.md`
 - People lens directory: `90_system/skills/people/`
 - Index: `90_system/skills/index.md`
 - Available people lenses:
@@ -124,6 +131,7 @@ status: active
   - 不确定用哪个 lens 时，先读取 Skill router raw 路径
   - 明确要调用某个 lens 时，直接读取对应 people lens raw 路径
   - 若用户要求“专家团 / 沉浸式 / 角色扮演 / 用某某口吻”，允许 persona mode，但仍以观点质量、事实边界和行动建议为核心
+  - 若用户要求“更像 / 高仿真 / 还原度”，优先使用 Persona Fidelity Protocol，并读取本地 RAG/source registry
 - Guardrails:
   - 专家名统一输出为中文名（英文名），例如 `埃隆·马斯克（Elon Musk）`
   - lens 默认是分析框架；当用户明确要求“角色扮演”“沉浸式”“用某某口吻”时，可启用受控 persona mode
@@ -136,6 +144,11 @@ status: active
   - 涉及最新事实、价格、政策、法律、医学、金融或安全问题时，先验证再判断
   - 活跃人物涉及最新动态时，先查官方/一手来源；无法查证则标注“最新信息未验证”
   - 已故人物不能生成去世后的真实观点；只能用历史材料外推，并标为 `lens 推断`
+- Persona fidelity:
+  - 主目标是还原人物会注意什么、如何排序问题、如何反问、如何表达、如何误判，以及最新公开关注点
+  - 每次用户反馈“不像”，应沉淀为该人物的 `Persona Fidelity Guide`、`anti-rendering pattern` 或 RAG source note
+  - 可以使用人物传记、个人书籍、公开访谈、社交原帖、课程/代码/股东会/发布会、权威报道和垂直领域材料
+  - 本地 RAG 默认保存来源索引、摘要、时间线、主题卡片、短摘录和自有分析；不默认保存未授权整本付费书或大段版权文本
 - Source sensing:
   - `primary_fact`: 本人/公司/机构原帖、官网、公告、财报、监管文件、完整访谈、完整演讲、现场视频原始来源
   - `reliable_report`: 通讯社、主流媒体、一手转引媒体、官方媒体通稿；用于确认时间、地点、名单、公开动作
@@ -166,10 +179,32 @@ Routing rules:
 - 输出必须区分：事实、lens 推断、行动建议、待验证信息
 - 若涉及最新事实、价格、政策、法律、医学、金融或安全问题，必须先验证；无法验证时说明边界
 - 若用户问“趣闻 / 氛围 / 大家怎么看”，可以使用 X、微博、视频片段、权威自媒体等 `social_atmosphere` / `domain_signal`；若用户问真实意图或商业结果，必须回到一手事实和可靠报道
+- 若用户问“高仿真 / 更像本人 / 和某人聊”，优先使用 `90_system/skills/persona_fidelity_protocol.md` 与 `90_system/rag/people/source_registry.md`
 - 埃隆·马斯克（Elon Musk）、安德烈·卡帕西（Andrej Karpathy）、纳瓦尔·拉维坎特（Naval Ravikant）属于活跃人物；涉及最新动态时先查官方/一手来源，无法查证则只使用稳定 lens
 - 史蒂夫·乔布斯（Steve Jobs）、查理·芒格（Charlie Munger）属于已故人物；不能声称其对去世后事件有真实观点，只能标为 `lens 推断`
 
 ## Active Records
+
+### 2026-05-20 / persona-fidelity-rag-system
+
+- Project: `thinking-lens-system`
+- Status: `active`
+- Priority: `high`
+- Updated: `2026-05-20`
+- Context: 用户明确主目标：专家团应极度仿真，持续读取/积累人物传记、实时消息、观点、个人采访、个人书籍、社交原帖、权威自媒体等材料；必要时下载/保存相关信息，形成本地 RAG。
+- Result:
+  - 新增 `90_system/skills/persona_fidelity_protocol.md`
+  - 新增 People RAG 入口：`90_system/rag/people/README.md`
+  - 新增来源注册表：`90_system/rag/people/source_registry.md`
+  - 已给 5 个 people lens 增加 `persona_fidelity`、`source_acquisition_targets` 和 `local_rag` 路径
+  - 已更新 `skill_router.md`、`index.md` 和本 shared memory，使后续 GPT/Codex 知道“高还原度”是专家团主目标之一
+- Decisions:
+  - 高仿真重点是人物的判断顺序、注意力分配、反问方式、表达节奏、误判倾向和最新公开关注点
+  - 可以积累 X、微博、YouTube、播客、权威自媒体、传记、书籍、公开访谈、课程/代码/股东会/发布会等材料
+  - 默认不保存未授权整本付费书、盗版 PDF、完整付费课程或大段版权文本；优先保存来源索引、摘要、时间线、主题卡片、短摘录和自有分析
+- Next:
+  - For ChatGPT: 用户要求“更像 / 高仿真 / 和某人聊”时，先使用 persona fidelity protocol，不要只套用抽象 lens
+  - For Codex: 后续可逐人建立 `source_notes/`、`style_notes/`、`timelines/`、`live_signals/`，并把用户反馈沉淀为 anti-rendering pattern
 
 ### 2026-05-20 / thinking-lens-persona-fidelity
 

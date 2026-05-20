@@ -12,9 +12,19 @@
 - rule:
   - 每次最多调用 1-2 个 lens。
   - 默认使用分析型 lens；当用户明确要求“角色扮演”“沉浸式”“用某某口吻”时，可启用 persona mode。
-  - persona mode 只用于增强讨论沉浸感，观点、事实边界和行动建议优先于口吻。
+  - persona mode 的主目标是高还原度模拟人物的判断顺序、关注点、反对意见、表达节奏和最新公开关注点。
   - 输出专家名统一使用中文名（英文名）格式。
   - 涉及“最新/最近/现在/今天”的事实点，先查证；查不到时只用稳定 lens 并标注最新信息未验证。
+
+## Persona Fidelity
+
+- protocol: `90_system/skills/persona_fidelity_protocol.md`
+- local_rag_root: `90_system/rag/people/`
+- source_registry: `90_system/rag/people/source_registry.md`
+- goal:
+  - 专家团优先作为“人物认知系统”持续积累，而不是一次性 prompt。
+  - 使用人物书籍、传记、公开访谈、X/社交原帖、课程/代码/股东会/发布会、权威报道和垂直领域材料提升还原度。
+  - 本地 RAG 默认保存来源索引、摘要、主题卡片和短摘录；不默认保存未授权整本付费书或大段版权文本。
 
 ## Workflow Skills
 
@@ -125,5 +135,6 @@
 - “用 Munger lens 检查这个投资判断”
 - “用 Naval lens 分析我的职业选择有没有杠杆”
 - “让专家团用中文名（英文名）的形式，沉浸式讨论这个问题”
+- “用专家团高仿真模式聊这个问题，先像人，再像分析框架”
 - “用第一性原理 lens 看看这个流程是不是该存在”
 - “先读 `90_system/skills/index.md`，再帮我选择 lens”
