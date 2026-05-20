@@ -25,15 +25,16 @@ status: active
 
 ## Current Focus
 
-- Active project: `ai-news`
-- Current goal: 持续采集高价值 AI 情报，帮助用户跟上全球 AI 发展并转化为个人成长/工作流行动
-- Latest artifact: `40_outputs/daily_ai/2026-05-20_andrej-karpathy-skills.md`
+- Active project: `global-codex-guardrails`
+- Current goal: 将“求真”协作原则与 coding guardrails 固化为全局 Codex 配置，避免只在单一项目生效
+- Latest artifact: `90_system/global_codex/skills/coding-guardrails/SKILL.md`
 - Memory entry: `90_system/shared_memory/memory.md`
-- Next action for ChatGPT: 读取 Andrej Karpathy skills 专题，讨论是否把 4 条 agent coding guardrails 转成 Codex 任务验收表
+- Next action for ChatGPT: 如需讨论 Codex 全局规则，优先读取 `90_system/global_codex/AGENTS.md` 与 `90_system/global_codex/skills/coding-guardrails/SKILL.md`
 - Blockers: 暂无
 
 ## Recent Changes
 
+- 2026-05-20: 新增全局 Codex 配置源 `90_system/global_codex/`，并同步到 `/Users/momo/.codex/AGENTS.md` 与 `/Users/momo/.codex/skills/coding-guardrails/SKILL.md`
 - 2026-05-20: 生成专题情报 `40_outputs/daily_ai/2026-05-20_andrej-karpathy-skills.md`，判断该仓库代表的 agent 行为策略层价值与复用边界
 - 2026-05-20: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-05-20.md` 与精华图 `40_outputs/daily_ai/2026-05-20_visual.svg`
 - 2026-05-16: 新增 `AI 高价值使用地图：哪些场景最值得消耗 token`，沉淀“复杂信息 × 多维推理 × 可复用闭环”判断框架；已生成 3:4 地图 PNG 并嵌入文档末尾
@@ -47,6 +48,14 @@ status: active
 
 - memory: `90_system/shared_memory/memory.md`
 - sync script: `90_system/shared_memory/sync.sh`
+
+### Global Codex
+
+- source AGENTS: `90_system/global_codex/AGENTS.md`
+- source coding guardrails skill: `90_system/global_codex/skills/coding-guardrails/SKILL.md`
+- sync script: `90_system/global_codex/sync.sh`
+- installed AGENTS: `/Users/momo/.codex/AGENTS.md`
+- installed coding guardrails skill: `/Users/momo/.codex/skills/coding-guardrails/SKILL.md`
 
 ### Skills
 
@@ -140,6 +149,26 @@ Routing rules:
 - 若涉及最新事实、价格、政策、法律、医学、金融或安全问题，必须先验证；无法验证时说明边界
 
 ## Active Records
+
+### 2026-05-20 / global-codex-coding-guardrails
+
+- Project: `global-codex-guardrails`
+- Status: `done`
+- Priority: `high`
+- Updated: `2026-05-20`
+- Context: 用户希望把“求真”和从 Andrej Karpathy skills 讨论中提炼出的 coding guardrails 做成全局性机制，而不是单一项目规则。
+- Result:
+  - 已创建版本化源文件：`90_system/global_codex/AGENTS.md`
+  - 已创建全局 Codex skill 源文件：`90_system/global_codex/skills/coding-guardrails/SKILL.md`
+  - 已创建同步脚本：`90_system/global_codex/sync.sh`
+  - 已同步到全局 Codex 配置：`/Users/momo/.codex/AGENTS.md`
+  - 已同步到全局 Codex skill：`/Users/momo/.codex/skills/coding-guardrails/SKILL.md`
+- Decisions:
+  - 不直接照搬 Claude `CLAUDE.md` 或 skill；采用 Codex 原生机制：全局 `AGENTS.md` 承载常驻原则，`~/.codex/skills/coding-guardrails/SKILL.md` 承载按任务触发的工程约束
+  - 全局规则保持精简，避免把大量项目级细节塞进 always-on prompt
+- Next:
+  - For Codex: 后续代码、调试、重构、审查类任务应触发 `coding-guardrails` skill，按“目标/假设/范围/验证/diff 检查”闭环执行
+  - For User: 若要继续吸收 Claude/社区 skill，先做去重和 Codex 化改写，再通过 `90_system/global_codex/sync.sh` 同步
 
 ### 2026-05-20 / ai-news-andrej-karpathy-skills
 
