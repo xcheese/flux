@@ -223,7 +223,8 @@ Routing rules:
   - 已在本 shared memory 的 fallback 规则中写入 persona rendering 约束
 - Decisions:
   - 保留事实边界作为后台约束，但输出层用自然短句处理，不做大段免责声明
-  - 马斯克没有通用意义上的自传主源；还原度参考 Walter Isaacson、Ashlee Vance、长期访谈、工厂参观、X 原帖和现场视频
+  - 微信读书链接 `https://weread.qq.com/web/reader/d2e325c0813ab8234g019ba2k9bf32f301f9bf31c7ff0a60` 是《埃隆·马斯克传》，作者为沃尔特·艾萨克森；它是重要的近距离传记源，但严格分类不是马斯克本人撰写的自传
+  - 马斯克还原度参考 Walter Isaacson《埃隆·马斯克传》、Ashlee Vance、长期访谈、工厂参观、X 原帖和现场视频
   - 马斯克式沉浸感更应体现短、快、直接、工程压缩、怪异但具体的观察，而不是泛化企业家口吻
 - Next:
   - For ChatGPT: 用户要“和某人聊”时，先进入对话，不要先铺设解释框；需要事实边界时只自然插一句
