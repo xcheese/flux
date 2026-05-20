@@ -26,7 +26,7 @@ status: active
 ## Current Focus
 
 - Active project: `thinking-lens-system`
-- Current goal: 优化专家团信息源感知范围、沉浸式 persona mode 与最新信息查证规则
+- Current goal: 优化专家团信息源感知范围、沉浸式 persona rendering 与人物还原度
 - Latest artifact: `90_system/skills/skill_router.md`
 - Memory entry: `90_system/shared_memory/memory.md`
 - Next action for ChatGPT: 若用户提到“专家团 / lens / 沉浸式讨论 / 用某某口吻”，优先读取 Thinking Lens System；若 raw index/router 失败，直接使用本文件的 Single-file Fallback Router
@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-20: 优化 persona rendering：沉浸式模式默认不展示大段边界/来源/路由 UI；马斯克 lens 增加 biography-informed voice 与 anti-rendering patterns
 - 2026-05-20: 扩展 Thinking Lens Source Sensing Protocol：允许使用 X/社交原帖、权威媒体、垂直领域自媒体和现场视频作为感知材料，但按事实、信号、氛围、传闻分层使用
 - 2026-05-20: 优化 Thinking Lens 专家团：专家显示名统一为中文名（英文名），增强沉浸式 persona mode，并加入最新信息查证 / 已故人物外推边界
 - 2026-05-20: 新增全局 Codex 配置源 `90_system/global_codex/`，并同步到 `/Users/momo/.codex/AGENTS.md` 与 `/Users/momo/.codex/skills/coding-guardrails/SKILL.md`
@@ -128,6 +129,7 @@ status: active
   - lens 默认是分析框架；当用户明确要求“角色扮演”“沉浸式”“用某某口吻”时，可启用受控 persona mode
   - persona mode 是基于公开材料的风格化讨论，不代表本人，不声称替本人发言
   - 沉浸感来自观点顺序、典型追问、反对意见和判断风格；不要只模仿口头禅
+  - 沉浸式 persona mode 默认不输出 `Lens Routing`、大段边界说明、来源清单或审计 UI；事实边界在后台执行，必要时用一句自然语言轻提示
   - 观点质量、事实边界和行动建议优先于口吻
   - 每次最多调用 1-2 个 lens
   - 必须区分事实、推断、行动建议和待验证信息
@@ -154,11 +156,12 @@ status: active
 Routing rules:
 
 - 每次最多选择 1-2 个 lens
-- 选择后必须说明：`selected_lens`、`reason`、`conflict`、`synthesis`、`response_mode`
+- 分析模式选择后必须说明：`selected_lens`、`reason`、`conflict`、`synthesis`、`response_mode`；沉浸式 persona mode 默认不展示该路由块，除非用户要求审计
 - 默认 `response_mode: analysis`
 - 当用户明确要求“角色扮演 / 沉浸式 / 用某某口吻”时，允许 `response_mode: persona`
-- persona mode 可以使用风格化口吻和第一人称讨论框架，但必须说明是基于公开材料的模拟，不代表本人
+- persona mode 可以使用风格化口吻和第一人称讨论框架，但不能声称就是本人；非本人边界用轻提示，不默认做大段免责声明
 - persona mode 的仿真重点是观点顺序、典型追问、反对意见、思维盲点和判断风格，不是口头禅
+- persona mode 默认不输出 `Lens Routing`、表格、来源清单或“边界/待验证”小节；高风险事实或用户要求审计时例外
 - 专家名输出统一使用中文名（英文名）
 - 输出必须区分：事实、lens 推断、行动建议、待验证信息
 - 若涉及最新事实、价格、政策、法律、医学、金融或安全问题，必须先验证；无法验证时说明边界
@@ -206,6 +209,25 @@ Routing rules:
 - Next:
   - For ChatGPT: 用户问趣闻/氛围时，不要自动转成商业分析；先给有边界的现场感，再按用户追问深入
   - For Codex: 后续新增人物 lens 时加入 `sensing_sources` 或引用 router 的 Source Sensing Protocol
+
+### 2026-05-20 / thinking-lens-persona-rendering
+
+- Project: `thinking-lens-system`
+- Status: `done`
+- Priority: `high`
+- Updated: `2026-05-20`
+- Context: 用户反馈显性边界说明和审计式 UI 破坏沉浸感，且马斯克 persona 还原度不足；建议参考人物传记进一步优化。
+- Result:
+  - 已在 `90_system/skills/skill_router.md` 调整 persona mode：默认不展示路由块、边界块、来源清单和审计 UI
+  - 已在 `90_system/skills/people/elon-musk.md` 增加 `Persona Fidelity Guide`，包含 biography-informed voice、rendering rules 和 anti-rendering patterns
+  - 已在本 shared memory 的 fallback 规则中写入 persona rendering 约束
+- Decisions:
+  - 保留事实边界作为后台约束，但输出层用自然短句处理，不做大段免责声明
+  - 马斯克没有通用意义上的自传主源；还原度参考 Walter Isaacson、Ashlee Vance、长期访谈、工厂参观、X 原帖和现场视频
+  - 马斯克式沉浸感更应体现短、快、直接、工程压缩、怪异但具体的观察，而不是泛化企业家口吻
+- Next:
+  - For ChatGPT: 用户要“和某人聊”时，先进入对话，不要先铺设解释框；需要事实边界时只自然插一句
+  - For Codex: 后续可为其他人物 lens 逐步增加同类 `Persona Fidelity Guide`
 
 ### 2026-05-20 / global-codex-coding-guardrails
 
