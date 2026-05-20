@@ -25,15 +25,16 @@ status: active
 
 ## Current Focus
 
-- Active project: `global-codex-guardrails`
-- Current goal: 将“求真”协作原则与 coding guardrails 固化为全局 Codex 配置，避免只在单一项目生效
-- Latest artifact: `90_system/global_codex/skills/coding-guardrails/SKILL.md`
+- Active project: `thinking-lens-system`
+- Current goal: 优化专家团中文显示名、沉浸式 persona mode 与最新信息查证规则
+- Latest artifact: `90_system/skills/skill_router.md`
 - Memory entry: `90_system/shared_memory/memory.md`
-- Next action for ChatGPT: 如需讨论 Codex 全局规则，优先读取 `90_system/global_codex/AGENTS.md` 与 `90_system/global_codex/skills/coding-guardrails/SKILL.md`
+- Next action for ChatGPT: 若用户提到“专家团 / lens / 沉浸式讨论 / 用某某口吻”，优先读取 Thinking Lens System；若 raw index/router 失败，直接使用本文件的 Single-file Fallback Router
 - Blockers: 暂无
 
 ## Recent Changes
 
+- 2026-05-20: 优化 Thinking Lens 专家团：专家显示名统一为中文名（英文名），增强沉浸式 persona mode，并加入最新信息查证 / 已故人物外推边界
 - 2026-05-20: 新增全局 Codex 配置源 `90_system/global_codex/`，并同步到 `/Users/momo/.codex/AGENTS.md` 与 `/Users/momo/.codex/skills/coding-guardrails/SKILL.md`
 - 2026-05-20: 生成专题情报 `40_outputs/daily_ai/2026-05-20_andrej-karpathy-skills.md`，判断该仓库代表的 agent 行为策略层价值与复用边界
 - 2026-05-20: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-05-20.md` 与精华图 `40_outputs/daily_ai/2026-05-20_visual.svg`
@@ -98,45 +99,50 @@ status: active
 ## Thinking Lens System
 
 - Status: `active`
-- Updated: `2026-05-14`
+- Updated: `2026-05-20`
 - Skill directory: `90_system/skills/`
 - Router entry: `90_system/skills/skill_router.md`
 - People lens directory: `90_system/skills/people/`
 - Index: `90_system/skills/index.md`
 - Available people lenses:
-  - Andrej Karpathy: `90_system/skills/people/andrej-karpathy.md`
-  - Charlie Munger: `90_system/skills/people/charlie-munger.md`
-  - Elon Musk: `90_system/skills/people/elon-musk.md`
-  - Naval Ravikant: `90_system/skills/people/naval-ravikant.md`
-  - Steve Jobs: `90_system/skills/people/steve-jobs.md`
+  - 安德烈·卡帕西（Andrej Karpathy）: `90_system/skills/people/andrej-karpathy.md`
+  - 查理·芒格（Charlie Munger）: `90_system/skills/people/charlie-munger.md`
+  - 埃隆·马斯克（Elon Musk）: `90_system/skills/people/elon-musk.md`
+  - 纳瓦尔·拉维坎特（Naval Ravikant）: `90_system/skills/people/naval-ravikant.md`
+  - 史蒂夫·乔布斯（Steve Jobs）: `90_system/skills/people/steve-jobs.md`
 - GitHub raw paths:
   - Skills index: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/index.md`
   - Skill router: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/skill_router.md`
-  - Andrej Karpathy lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/andrej-karpathy.md`
-  - Charlie Munger lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/charlie-munger.md`
-  - Elon Musk lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/elon-musk.md`
-  - Naval Ravikant lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/naval-ravikant.md`
-  - Steve Jobs lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/steve-jobs.md`
+  - 安德烈·卡帕西（Andrej Karpathy） lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/andrej-karpathy.md`
+  - 查理·芒格（Charlie Munger） lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/charlie-munger.md`
+  - 埃隆·马斯克（Elon Musk） lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/elon-musk.md`
+  - 纳瓦尔·拉维坎特（Naval Ravikant） lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/naval-ravikant.md`
+  - 史蒂夫·乔布斯（Steve Jobs） lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/steve-jobs.md`
 - Usage:
   - 不确定用哪个 lens 时，先读取 Skill router raw 路径
   - 明确要调用某个 lens 时，直接读取对应 people lens raw 路径
+  - 若用户要求“专家团 / 沉浸式 / 角色扮演 / 用某某口吻”，允许 persona mode，但仍以观点质量、事实边界和行动建议为核心
 - Guardrails:
+  - 专家名统一输出为中文名（英文名），例如 `埃隆·马斯克（Elon Musk）`
   - lens 默认是分析框架；当用户明确要求“角色扮演”“沉浸式”“用某某口吻”时，可启用受控 persona mode
   - persona mode 是基于公开材料的风格化讨论，不代表本人，不声称替本人发言
+  - 沉浸感来自观点顺序、典型追问、反对意见和判断风格；不要只模仿口头禅
   - 观点质量、事实边界和行动建议优先于口吻
   - 每次最多调用 1-2 个 lens
   - 必须区分事实、推断、行动建议和待验证信息
   - 涉及最新事实、价格、政策、法律、医学、金融或安全问题时，先验证再判断
+  - 活跃人物涉及最新动态时，先查官方/一手来源；无法查证则标注“最新信息未验证”
+  - 已故人物不能生成去世后的真实观点；只能用历史材料外推，并标为 `lens 推断`
 
 ### Single-file Fallback Router
 
 若 ChatGPT 能读取本 `shared_memory`，但读取 `index.md` 或 `skill_router.md` raw URL 失败，则直接使用以下最小路由，不要要求用户粘贴全文：
 
-- `people.elon-musk`: 工程系统、成本压缩、第一性原理、制造与交付、垂直整合、快速迭代
-- `people.andrej-karpathy`: AI 工程、模型可靠性、AI 教育、开源实现、LLM 产品设计
-- `people.steve-jobs`: 产品、设计、战略聚焦、端到端体验、品牌叙事、技术与人文
-- `people.charlie-munger`: 投资、商业判断、多元思维模型、逆向思考、认知偏误、激励机制
-- `people.naval-ravikant`: 财富、杠杆、职业选择、人生哲学、独立思考、一人公司
+- `people.elon-musk` / 埃隆·马斯克（Elon Musk）: 工程系统、成本压缩、第一性原理、制造与交付、垂直整合、快速迭代
+- `people.andrej-karpathy` / 安德烈·卡帕西（Andrej Karpathy）: AI 工程、模型可靠性、AI 教育、开源实现、LLM 产品设计
+- `people.steve-jobs` / 史蒂夫·乔布斯（Steve Jobs）: 产品、设计、战略聚焦、端到端体验、品牌叙事、技术与人文
+- `people.charlie-munger` / 查理·芒格（Charlie Munger）: 投资、商业判断、多元思维模型、逆向思考、认知偏误、激励机制
+- `people.naval-ravikant` / 纳瓦尔·拉维坎特（Naval Ravikant）: 财富、杠杆、职业选择、人生哲学、独立思考、一人公司
 
 Routing rules:
 
@@ -145,10 +151,34 @@ Routing rules:
 - 默认 `response_mode: analysis`
 - 当用户明确要求“角色扮演 / 沉浸式 / 用某某口吻”时，允许 `response_mode: persona`
 - persona mode 可以使用风格化口吻和第一人称讨论框架，但必须说明是基于公开材料的模拟，不代表本人
+- persona mode 的仿真重点是观点顺序、典型追问、反对意见、思维盲点和判断风格，不是口头禅
+- 专家名输出统一使用中文名（英文名）
 - 输出必须区分：事实、lens 推断、行动建议、待验证信息
 - 若涉及最新事实、价格、政策、法律、医学、金融或安全问题，必须先验证；无法验证时说明边界
+- 埃隆·马斯克（Elon Musk）、安德烈·卡帕西（Andrej Karpathy）、纳瓦尔·拉维坎特（Naval Ravikant）属于活跃人物；涉及最新动态时先查官方/一手来源，无法查证则只使用稳定 lens
+- 史蒂夫·乔布斯（Steve Jobs）、查理·芒格（Charlie Munger）属于已故人物；不能声称其对去世后事件有真实观点，只能标为 `lens 推断`
 
 ## Active Records
+
+### 2026-05-20 / thinking-lens-persona-fidelity
+
+- Project: `thinking-lens-system`
+- Status: `done`
+- Priority: `high`
+- Updated: `2026-05-20`
+- Context: 用户希望专家团从纯分析 lens 进一步支持沉浸式讨论，并将专家名统一为中文名（英文名）；同时希望讨论能结合观点、想法和最新信息点。
+- Result:
+  - 已优化 `90_system/skills/skill_router.md`：加入中文显示名规范、persona mode 边界和 freshness protocol
+  - 已优化 `90_system/skills/index.md`：索引层补充中文名（英文名）和最新事实查证规则
+  - 已优化 5 个 people lens：新增 `display_name`、`freshness_policy`，并强化 persona interaction boundaries
+  - 已在本 shared memory 写入 Single-file Fallback Router，防止 ChatGPT 读取 router raw 失败时要求用户手动粘贴
+- Decisions:
+  - 允许沉浸式 persona mode，但前提是用户明确要求“角色扮演 / 沉浸式 / 用某某口吻”
+  - 更仿真的重点是观点顺序、典型追问、反对意见和判断风格，不是口头禅或冒充本人
+  - 活跃人物涉及最新动态时必须查证；已故人物只能做历史 lens 外推
+- Next:
+  - For ChatGPT: 若用户说“请专家团讨论”，先用 fallback router 选择 1-2 个 lens；如需最新事实，先查证再进入 persona
+  - For Codex: 后续新增人物 lens 时必须包含 `display_name`、`freshness_policy` 和 persona boundaries
 
 ### 2026-05-20 / global-codex-coding-guardrails
 

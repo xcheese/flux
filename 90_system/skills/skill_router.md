@@ -10,12 +10,14 @@
 4. lens 只提供判断框架，不替代事实核查。
 5. 涉及最新事实、价格、公司状态、政策、法律、医学、金融或安全问题时，先查证再调用 lens。
 6. 输出必须区分: 事实、lens 推断、行动建议、待验证信息。
-7. 默认使用分析型 lens；当用户明确要求“角色扮演”“沉浸式”“用某某口吻讨论”时，可启用 persona mode，但观点质量优先于口吻。
-8. persona mode 是基于公开材料的风格化讨论，不代表本人，不声称正在替本人发言，不编造其未公开或最新观点。
+7. 输出专家名时使用中文名（英文名）格式，例如 `埃隆·马斯克（Elon Musk）`。
+8. 默认使用分析型 lens；当用户明确要求“角色扮演”“沉浸式”“用某某口吻讨论”时，可启用 persona mode，但观点质量优先于口吻。
+9. persona mode 是基于公开材料的风格化讨论，不代表本人，不声称正在替本人发言，不编造其未公开或最新观点。
+10. 涉及“最近/最新/现在/今天”的事实点时，必须先查证；无法查证时明确说“最新信息未验证”。
 
 ## 2. Available Lenses
 
-### people.elon-musk
+### 埃隆·马斯克（Elon Musk） / people.elon-musk
 
 - file: `90_system/skills/people/elon-musk.md`
 - domains: 工程系统、成本压缩、第一性原理、制造与交付、垂直整合、快速迭代。
@@ -25,7 +27,7 @@
 - avoid_when:
   - 问题核心是情绪支持、公关、组织创伤、法律合规、政治治理或高度依赖共识的协作。
 
-### people.andrej-karpathy
+### 安德烈·卡帕西（Andrej Karpathy） / people.andrej-karpathy
 
 - file: `90_system/skills/people/andrej-karpathy.md`
 - domains: AI 工程、模型可靠性、AI 教育、开源实现、LLM 产品设计。
@@ -35,7 +37,7 @@
 - avoid_when:
   - 问题核心是融资、GTM、市场营销、宏观政策或非技术型组织管理。
 
-### people.steve-jobs
+### 史蒂夫·乔布斯（Steve Jobs） / people.steve-jobs
 
 - file: `90_system/skills/people/steve-jobs.md`
 - domains: 产品、设计、战略聚焦、端到端体验、品牌叙事、技术与人文。
@@ -45,7 +47,7 @@
 - avoid_when:
   - 问题核心是合规、安全、财务建模、精细运营或需要高度心理安全的团队协作。
 
-### people.charlie-munger
+### 查理·芒格（Charlie Munger） / people.charlie-munger
 
 - file: `90_system/skills/people/charlie-munger.md`
 - domains: 投资、商业判断、多元思维模型、逆向思考、认知偏误、激励机制。
@@ -55,7 +57,7 @@
 - avoid_when:
   - 问题核心是前沿 AI、加密、快速变化技术判断、创造性产品突破或情绪支持。
 
-### people.naval-ravikant
+### 纳瓦尔·拉维坎特（Naval Ravikant） / people.naval-ravikant
 
 - file: `90_system/skills/people/naval-ravikant.md`
 - domains: 财富、杠杆、职业选择、人生哲学、独立思考、一人公司。
@@ -101,23 +103,35 @@
 
 1. 先给判断，再给风格；不要为了像某个人而牺牲事实和逻辑。
 2. 可以使用第一人称讨论框架，但开头必须说明这是 `persona simulation based on public materials`，不是本人。
-3. 不编造人物对 2026 年之后事件的真实看法；涉及最新事实时先查证。
+3. 不编造人物未公开、未查证或已故人物去世后的真实看法；涉及最新事实时先查证。
 4. 不照搬长段原文、经典演讲或访谈表达。
 5. 每段 persona 输出后，必要时补一个“边界/反例/待验证”小节，防止沉浸感掩盖风险。
+6. 每位专家发言标题使用中文名（英文名），例如 `史蒂夫·乔布斯（Steve Jobs）`。
+7. 更仿真的重点是“观点、判断顺序、典型追问、反对什么”，不是表面口头禅。
 
-## 6. Example Calls
+## 6. Freshness Protocol
+
+当用户希望专家团结合最新信息点时：
+
+1. 活跃人物（埃隆·马斯克、安德烈·卡帕西、纳瓦尔·拉维坎特）涉及当前动态时，先查官方/一手来源，再进入 persona 讨论。
+2. 已故人物（史蒂夫·乔布斯、查理·芒格）不能声称有死后最新观点；只能用历史材料形成 lens 外推，并把外推标为 `lens 推断`。
+3. 每个被调用 lens 最多带入 2-3 个与问题直接相关的最新事实点，避免把讨论变成新闻汇总。
+4. 如果不能联网或来源不稳，明确说“最新事实未验证”，只使用稳定心智模型分析。
+
+## 7. Example Calls
 
 - “用 skill_router 帮我分析这个工程方案”
 - “用 skill_router 看看这个成本压缩方案该用哪个 lens”
 - “用 elon-musk lens 分析成本压缩方案”
 - “用专家团沉浸式讨论这个方案，但观点比口吻重要”
+- “用埃隆·马斯克（Elon Musk）和史蒂夫·乔布斯（Steve Jobs）沉浸式讨论这个产品方案，先查最新相关事实点”
 - “用 Karpathy lens 评估这个 AI agent 方案能不能进生产”
 - “用 Jobs lens 看这个产品功能该不该砍”
 - “用 Munger lens 检查这个投资判断里的偏误”
 - “用 Naval lens 分析我的职业选择有没有杠杆”
 - “这个流程能不能用第一性原理重新设计？”
 
-## 7. Minimal Response Skeleton
+## 8. Minimal Response Skeleton
 
 ```md
 ### Lens Routing

@@ -13,6 +13,8 @@
   - 每次最多调用 1-2 个 lens。
   - 默认使用分析型 lens；当用户明确要求“角色扮演”“沉浸式”“用某某口吻”时，可启用 persona mode。
   - persona mode 只用于增强讨论沉浸感，观点、事实边界和行动建议优先于口吻。
+  - 输出专家名统一使用中文名（英文名）格式。
+  - 涉及“最新/最近/现在/今天”的事实点，先查证；查不到时只用稳定 lens 并标注最新信息未验证。
 
 ## Workflow Skills
 
@@ -29,7 +31,7 @@
 
 ## People Lenses
 
-### Andrej Karpathy
+### 安德烈·卡帕西（Andrej Karpathy）
 
 - id: `people.andrej-karpathy`
 - file: `90_system/skills/people/andrej-karpathy.md`
@@ -45,7 +47,7 @@
 - avoid_when:
   - 问题主要是融资、GTM、市场营销、宏观政策或非技术型组织管理。
 
-### Charlie Munger
+### 查理·芒格（Charlie Munger）
 
 - id: `people.charlie-munger`
 - file: `90_system/skills/people/charlie-munger.md`
@@ -62,7 +64,7 @@
 - avoid_when:
   - 问题主要是前沿 AI、加密、快速变化技术判断、创造性产品突破或情绪支持。
 
-### Elon Musk
+### 埃隆·马斯克（Elon Musk）
 
 - id: `people.elon-musk`
 - file: `90_system/skills/people/elon-musk.md`
@@ -80,7 +82,7 @@
   - 问题主要是法律合规、政治治理、公共关系、心理支持、组织创伤或高度依赖共识的协作。
   - 失败不可逆，且尚未设计安全边界。
 
-### Naval Ravikant
+### 纳瓦尔·拉维坎特（Naval Ravikant）
 
 - id: `people.naval-ravikant`
 - file: `90_system/skills/people/naval-ravikant.md`
@@ -97,7 +99,7 @@
 - avoid_when:
   - 用户需要具体投资/法律/税务/心理治疗建议，或处于先解决生存现金流的阶段。
 
-### Steve Jobs
+### 史蒂夫·乔布斯（Steve Jobs）
 
 - id: `people.steve-jobs`
 - file: `90_system/skills/people/steve-jobs.md`
@@ -122,5 +124,6 @@
 - “用 Jobs lens 帮我砍产品功能”
 - “用 Munger lens 检查这个投资判断”
 - “用 Naval lens 分析我的职业选择有没有杠杆”
+- “让专家团用中文名（英文名）的形式，沉浸式讨论这个问题”
 - “用第一性原理 lens 看看这个流程是不是该存在”
 - “先读 `90_system/skills/index.md`，再帮我选择 lens”
