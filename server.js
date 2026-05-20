@@ -13,7 +13,7 @@ const IGNORED_DIRS = new Set([".git", "node_modules", "public"]);
 const IGNORED_FILES = new Set(["AGENTS.md"]);
 const TEXT_EXTENSIONS = new Set([".md", ".markdown", ".txt"]);
 const IMAGE_EXTENSIONS = new Set([".apng", ".avif", ".gif", ".jpg", ".jpeg", ".png", ".svg", ".webp"]);
-const CONTENT_EXCLUDED_PREFIXES = ["90_templates/"];
+const CONTENT_EXCLUDED_PREFIXES = ["90_templates/", "90_system/"];
 const VIDEO_DISPLAY_FILES = new Set(["analysis.md"]);
 
 function toPosix(value) {
@@ -387,14 +387,7 @@ async function buildIndex() {
 function isExcludedFromContent(id) {
   if (CONTENT_EXCLUDED_PREFIXES.some((prefix) => id.startsWith(prefix))) return true;
   if (isVideoEvidenceArtifact(id)) return true;
-  if (isSystemToolImplementationArtifact(id)) return true;
   return false;
-}
-
-function isSystemToolImplementationArtifact(id) {
-  if (!id.startsWith("90_system/tools/")) return false;
-  const ext = path.extname(id).toLowerCase();
-  return ext !== ".md" && ext !== ".markdown";
 }
 
 function isVideoEvidenceArtifact(id) {
