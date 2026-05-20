@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-20: 补充 ChatGPT 侧专家团启动方式：Codex 推送不会自动进入 GPT 当前上下文；建议在“顾问”项目新开聊天并要求读取带 cachebust 的 shared memory
 - 2026-05-20: 系统性升级专家团高仿真能力：新增 expert team simulation guide、persona eval prompts，并为马斯克/卡帕西/Naval 增加 live signals
 - 2026-05-20: 明确 Persona Fidelity 免费资源策略：人物传记/访谈/书籍材料缺口默认由 Codex/ChatGPT 自行搜索免费且合法可访问资源，并记录采用/拒绝原因
 - 2026-05-20: 新增 Persona Fidelity Protocol 与本地 People RAG 入口；5 个专家 lens 都接入 `persona_fidelity`、`source_acquisition_targets` 和本地 RAG 路径
@@ -138,6 +139,9 @@ status: active
   - 明确要调用某个 lens 时，直接读取对应 people lens raw 路径
   - 若用户要求“专家团 / 沉浸式 / 角色扮演 / 用某某口吻”，允许 persona mode，但仍以观点质量、事实边界和行动建议为核心
   - 若用户要求“更像 / 高仿真 / 还原度”，优先使用 Persona Fidelity Protocol，并读取本地 RAG/source registry
+  - ChatGPT 侧不会因为 Codex 已 push 就自动获得最新上下文；必须由当前 GPT 聊天读取 raw shared memory / router / lens，或使用本文件 fallback
+  - 为避免旧上下文和 raw 缓存，测试专家团时建议在 ChatGPT 项目“顾问”中新开聊天，并要求读取带 cachebust 的 shared memory
+  - 已存在的 GPT 聊天也可继续使用，但需要明确要求“重新读取最新 shared memory，不要沿用旧记忆”
 - Guardrails:
   - 专家名统一输出为中文名（英文名），例如 `埃隆·马斯克（Elon Musk）`
   - lens 默认是分析框架；当用户明确要求“角色扮演”“沉浸式”“用某某口吻”时，可启用受控 persona mode
@@ -194,6 +198,24 @@ Routing rules:
 - 史蒂夫·乔布斯（Steve Jobs）、查理·芒格（Charlie Munger）属于已故人物；不能声称其对去世后事件有真实观点，只能标为 `lens 推断`
 
 ## Active Records
+
+### 2026-05-20 / chatgpt-expert-team-startup
+
+- Project: `thinking-lens-system`
+- Status: `active`
+- Priority: `high`
+- Updated: `2026-05-20`
+- Context: 用户询问在 ChatGPT 侧和专家团沟通时，是否需要新开聊天，以及 GPT 是否会自动知道 Codex 已推送的记忆和 skill。
+- Decision:
+  - Codex 提交并 push 到 GitHub 后，ChatGPT 当前聊天不会自动“感知”这些改动；它必须读取 GitHub raw shared memory / router / lens，或依赖项目指令触发读取。
+  - 最稳的测试方式是在 ChatGPT 项目“顾问”中新开一个聊天窗口，避免旧聊天上下文、旧缓存或旧项目文件影响。
+  - 不必须新开项目；只建议新开同一项目内的新聊天。
+  - 若继续旧聊天，用户应明确要求它“重新读取带 cachebust 的 shared memory，不要沿用旧记忆”。
+- Recommended bootstrap prompt:
+  - `请先读取这个最新 shared memory（带 cachebust，不要沿用旧缓存）：https://raw.githubusercontent.com/xcheese/flux/main/90_system/shared_memory/memory.md?cachebust=20260520-bda2a0b。读取后告诉我 updated_at、Recent Changes 第一条、Thinking Lens System 的 expert_team_guide / persona_eval_prompts / people lenses。然后进入专家团高仿真沉浸式模式，默认不要输出路由和审计 UI。`
+- Fallback:
+  - 如果 GPT 读取 raw 失败，但能读取 shared memory，则直接使用 Single-file Fallback Router，不要要求用户粘贴所有 skill。
+  - 如果连 shared memory raw 都读取失败，用户需要提供 raw 内容或可访问链接；这属于 GPT 侧工具/网络限制，不是 Codex 文件未推送。
 
 ### 2026-05-20 / expert-team-high-fidelity-build
 
