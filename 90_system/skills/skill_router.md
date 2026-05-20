@@ -22,9 +22,16 @@
 - protocol: `90_system/skills/persona_fidelity_protocol.md`
 - local_rag_root: `90_system/rag/people/`
 - source_registry: `90_system/rag/people/source_registry.md`
+- expert_team_guide: `90_system/rag/people/expert_team_simulation_guide.md`
+- eval_prompts: `90_system/rag/people/persona_eval_prompts.md`
 - primary_goal:
   - 还原人物会注意什么、如何排序问题、如何反问、如何表达、如何误判，以及最新公开关注点。
   - 不只调用静态 lens；必要时先读取该人物 RAG notes、source registry 或最新公开来源。
+- persona_read_order:
+  - 先读 `90_system/rag/people/expert_team_simulation_guide.md`
+  - 再读 `90_system/rag/people/<person-id>/style_notes/persona_model_v1.md`
+  - 再读 `90_system/rag/people/<person-id>/source_notes/free_legal_resources_v1.md`
+  - 若涉及最新动态，再查 `live_signals/` 或自行搜索免费合法来源。
 - source_scope:
   - 人物本人书籍/文章/原帖/访谈/课程/股东会/发布会。
   - 近距离传记、个人书籍、长期跟访报道、公司/产品/代码/投资信等 operating artifacts。

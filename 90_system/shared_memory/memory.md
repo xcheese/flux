@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-20: 系统性升级专家团高仿真能力：新增 expert team simulation guide、persona eval prompts，并为马斯克/卡帕西/Naval 增加 live signals
 - 2026-05-20: 明确 Persona Fidelity 免费资源策略：人物传记/访谈/书籍材料缺口默认由 Codex/ChatGPT 自行搜索免费且合法可访问资源，并记录采用/拒绝原因
 - 2026-05-20: 新增 Persona Fidelity Protocol 与本地 People RAG 入口；5 个专家 lens 都接入 `persona_fidelity`、`source_acquisition_targets` 和本地 RAG 路径
 - 2026-05-20: 优化 persona rendering：沉浸式模式默认不展示大段边界/来源/路由 UI；马斯克 lens 增加 biography-informed voice 与 anti-rendering patterns
@@ -71,6 +72,8 @@ status: active
 - persona fidelity protocol: `90_system/skills/persona_fidelity_protocol.md`
 - people RAG root: `90_system/rag/people/`
 - people source registry: `90_system/rag/people/source_registry.md`
+- people expert team guide: `90_system/rag/people/expert_team_simulation_guide.md`
+- people persona eval prompts: `90_system/rag/people/persona_eval_prompts.md`
 - people/andrej-karpathy: `90_system/skills/people/andrej-karpathy.md`
 - people/charlie-munger: `90_system/skills/people/charlie-munger.md`
 - people/elon-musk: `90_system/skills/people/elon-musk.md`
@@ -112,6 +115,8 @@ status: active
 - Persona fidelity protocol: `90_system/skills/persona_fidelity_protocol.md`
 - People RAG root: `90_system/rag/people/`
 - People source registry: `90_system/rag/people/source_registry.md`
+- People expert team guide: `90_system/rag/people/expert_team_simulation_guide.md`
+- People persona eval prompts: `90_system/rag/people/persona_eval_prompts.md`
 - People lens directory: `90_system/skills/people/`
 - Index: `90_system/skills/index.md`
 - Available people lenses:
@@ -147,6 +152,8 @@ status: active
   - 已故人物不能生成去世后的真实观点；只能用历史材料外推，并标为 `lens 推断`
 - Persona fidelity:
   - 主目标是还原人物会注意什么、如何排序问题、如何反问、如何表达、如何误判，以及最新公开关注点
+  - 高仿真 persona 调用前优先读取 `90_system/rag/people/expert_team_simulation_guide.md`、`90_system/rag/people/<person-id>/style_notes/persona_model_v1.md` 和 `source_notes/free_legal_resources_v1.md`
+  - 自测和用户验收使用 `90_system/rag/people/persona_eval_prompts.md`
   - 每次用户反馈“不像”，应沉淀为该人物的 `Persona Fidelity Guide`、`anti-rendering pattern` 或 RAG source note
   - 可以使用人物传记、个人书籍、公开访谈、社交原帖、课程/代码/股东会/发布会、权威报道和垂直领域材料
   - 遇到人物材料缺口时，Codex/ChatGPT 默认自行搜索免费且合法可访问资源；优先官方档案、公开访谈、公开视频/播客、X/社交原帖、图书目录/合法试读、作者/出版社页面和可信垂直媒体
@@ -188,6 +195,29 @@ Routing rules:
 
 ## Active Records
 
+### 2026-05-20 / expert-team-high-fidelity-build
+
+- Project: `thinking-lens-system`
+- Status: `done`
+- Priority: `high`
+- Updated: `2026-05-20`
+- Context: 用户要求“集体优化专家团”，目标是晚些时候可直接和专家团沉浸式聊天，并检验是否足够像各位专家。
+- Result:
+  - 新增专家团运行手册：`90_system/rag/people/expert_team_simulation_guide.md`
+  - 新增仿真测试题与评分表：`90_system/rag/people/persona_eval_prompts.md`
+  - 新增活跃人物 live signals：
+    - 埃隆·马斯克（Elon Musk）: `90_system/rag/people/elon-musk/live_signals/2026-05-20.md`
+    - 安德烈·卡帕西（Andrej Karpathy）: `90_system/rag/people/andrej-karpathy/live_signals/2026-05-20.md`
+    - 纳瓦尔·拉维坎特（Naval Ravikant）: `90_system/rag/people/naval-ravikant/live_signals/2026-05-20.md`
+  - 加厚 5 位专家的 `style_notes/persona_model_v1.md`：补充节奏、反对方式、avoid patterns、可用上下文。
+- Decisions:
+  - 当前版本标记为 `high_fidelity_testable`，可用于用户晚些时候直接测试；但仍不声称就是本人，也不声称掌握私人想法。
+  - 沉浸式闲聊优先“具体现场细节 + 人物独有判断顺序”；严肃判断再恢复事实/推断/建议结构。
+  - 活跃人物 live signals 超过 30 天或用户问“最近/现在/刚刚”时，需重新查证。
+- Next:
+  - For ChatGPT: 用户说“我想和某某聊”时，先使用 expert team guide + 对应 style notes；不要输出路由/审计 UI，除非用户要求。
+  - For Codex: 用户反馈“不像”时，自动更新对应 style notes 或 live_signals，并提交/推送。
+
 ### 2026-05-20 / persona-fidelity-rag-system
 
 - Project: `thinking-lens-system`
@@ -227,6 +257,28 @@ Routing rules:
 - Next:
   - For Codex: 后续补强某位专家时，先执行 free/legal source search，再沉淀到该人物 RAG 目录
   - For ChatGPT: 若无法直接访问某资源，应使用 shared memory 中的 source registry 和 fallback rules，不要要求用户重复提供 GitHub 链接
+
+### 2026-05-20 / persona-rag-v1-notes
+
+- Project: `thinking-lens-system`
+- Status: `done`
+- Priority: `high`
+- Updated: `2026-05-20`
+- Context: 用户要求系统性建设专家团，直到可以用于晚些时候的极度仿真测试。
+- Result:
+  - 已为 5 位专家分别创建 `source_notes/free_legal_resources_v1.md`
+  - 已为 5 位专家分别创建 `style_notes/persona_model_v1.md`
+  - 已创建 readiness 报告：`90_system/rag/people/persona_readiness_report.md`
+  - 已更新 router/protocol：高仿真 persona 调用前优先读取本地 style/source notes
+- Readiness:
+  - 埃隆·马斯克（Elon Musk）: `high_for_engineering_and_informal_chat`
+  - 安德烈·卡帕西（Andrej Karpathy）: `high_for_ai_engineering`
+  - 史蒂夫·乔布斯（Steve Jobs）: `high_for_product_and_design`
+  - 查理·芒格（Charlie Munger）: `high_for_inversion_and_incentives`
+  - 纳瓦尔·拉维坎特（Naval Ravikant）: `high_for_wealth_leverage_and_life_strategy`
+- Next:
+  - For User: 晚点直接用自然语言和专家团聊天，重点测试是否“像人、像该人、观点有密度”
+  - For Codex: 按用户反馈继续追加 anti-rendering pattern 和来源卡片
 
 ### 2026-05-20 / thinking-lens-persona-fidelity
 

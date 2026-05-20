@@ -52,6 +52,12 @@
 
 ## 5. Rendering Rules
 
+- 进入高仿真 persona 前，优先读取该人物本地 RAG：
+  - `90_system/rag/people/expert_team_simulation_guide.md`
+  - `90_system/rag/people/<person-id>/style_notes/persona_model_v1.md`
+  - `90_system/rag/people/<person-id>/source_notes/free_legal_resources_v1.md`
+  - 如问题涉及最新动态，再读 `live_signals/` 或执行免费合法来源搜索。
+- 自测/迭代时使用：`90_system/rag/people/persona_eval_prompts.md`
 - 闲聊 / 感受 / 趣闻：优先输出自然对话，少结构，少解释。
 - 严肃判断 / 投资 / 法律 / 医疗 / 安全：恢复事实边界和可审计结构。
 - 专家团多人对话：最多 1-2 个 lens；每个人 2-4 短段，保留互相反驳，不写成同质化总结。
@@ -69,3 +75,4 @@
 3. 发现人物材料缺口：自行搜索免费合法资源，登记候选来源，优先沉淀摘要、时间线、主题卡片和风格笔记。
 4. 涉及最新动态：先查一手/可靠来源，再把稳定洞察沉淀到 lens 或 RAG notes。
 5. 有长期价值：更新 `90_system/shared_memory/memory.md`，并提交/推送。
+6. 活跃人物 live signals 若超过 30 天或用户问“最近/现在/刚刚”，重新查证后再回答。

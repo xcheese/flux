@@ -21,10 +21,13 @@
 - protocol: `90_system/skills/persona_fidelity_protocol.md`
 - local_rag_root: `90_system/rag/people/`
 - source_registry: `90_system/rag/people/source_registry.md`
+- expert_team_guide: `90_system/rag/people/expert_team_simulation_guide.md`
+- eval_prompts: `90_system/rag/people/persona_eval_prompts.md`
 - goal:
   - 专家团优先作为“人物认知系统”持续积累，而不是一次性 prompt。
   - 使用人物书籍、传记、公开访谈、X/社交原帖、课程/代码/股东会/发布会、权威报道和垂直领域材料提升还原度。
   - 本地 RAG 默认保存来源索引、摘要、主题卡片和短摘录；不默认保存未授权整本付费书或大段版权文本。
+  - 沉浸式测试时优先读取 expert team guide 和对应人物 style notes；用户反馈“不像”后回写到 RAG notes。
 
 ## Workflow Skills
 

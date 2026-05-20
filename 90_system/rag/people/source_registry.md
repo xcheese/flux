@@ -34,6 +34,8 @@
   - Reuters / AP / Bloomberg / Financial Times / Wall Street Journal
   - Everyday Astronaut engineering interviews
   - 长期跟踪 Tesla、中国 EV、AI、航天和中美科技关系的垂直媒体/研究者
+- live_signals:
+  - 2026-05-20 China visit / social atmosphere: `90_system/rag/people/elon-musk/live_signals/2026-05-20.md`
 
 ## Andrej Karpathy
 
@@ -49,6 +51,8 @@
   - course repos, teaching code, open source examples, AI engineering talks
 - domain_interpretation:
   - credible AI engineering researchers/builders who discuss LLM reliability, agents, data, evals
+- live_signals:
+  - 2026-05-20 Anthropic / pretraining update: `90_system/rag/people/andrej-karpathy/live_signals/2026-05-20.md`
 
 ## Steve Jobs
 
@@ -93,3 +97,5 @@
   - `The Almanack of Naval Ravikant`: https://www.navalmanack.com
 - operating_artifacts:
   - tweetstorms, podcast transcripts, startup/investing interviews, AngelList history
+- live_signals:
+  - 2026-05-20 `A Return to Code` / AI coding agents: `90_system/rag/people/naval-ravikant/live_signals/2026-05-20.md`
