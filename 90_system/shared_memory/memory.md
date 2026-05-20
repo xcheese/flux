@@ -2,7 +2,7 @@
 type: shared_memory
 owner: momo
 scope: cross-agent
-updated_at: 2026-05-16
+updated_at: 2026-05-20
 status: active
 ---
 
@@ -12,7 +12,7 @@ status: active
 
 - Type: `shared_memory`
 - Scope: `cross-agent`
-- Updated: `2026-05-16`
+- Updated: `2026-05-20`
 - Status: `active`
 
 ## Purpose
@@ -25,21 +25,21 @@ status: active
 
 ## Current Focus
 
-- Active project: `ai-growth-knowledge-base`
-- Current goal: 将“AI 高价值使用地图”沉淀为长期知识库文档，并嵌入可版本管理的 3:4 地图图片
-- Latest artifact: `20_wiki/ai/ai_high_value_usage_map.md`
+- Active project: `ai-news`
+- Current goal: 持续采集高价值 AI 情报，帮助用户跟上全球 AI 发展并转化为个人成长/工作流行动
+- Latest artifact: `40_outputs/daily_ai/2026-05-20.md`
 - Memory entry: `90_system/shared_memory/memory.md`
-- Next action for ChatGPT: 讨论 token ROI / 高价值 AI 使用时，优先读取 `20_wiki/ai/ai_high_value_usage_map.md`
+- Next action for ChatGPT: 读取今日 AI 情报，重点讨论 agent runtime、AI 安全 harness、agent 成本/质量控制层的后续行动
 - Blockers: 暂无
 
 ## Recent Changes
 
+- 2026-05-20: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-05-20.md` 与精华图 `40_outputs/daily_ai/2026-05-20_visual.svg`
 - 2026-05-16: 新增 `AI 高价值使用地图：哪些场景最值得消耗 token`，沉淀“复杂信息 × 多维推理 × 可复用闭环”判断框架；已生成 3:4 地图 PNG 并嵌入文档末尾
 - 2026-05-15: 修复知识库展示索引：`10_raw/videos/<slug>/` 只展示 `analysis.md`，隐藏 transcript/audio/metadata；分类标签改为文档类型 + 主题标签
 - 2026-05-15: 分析 B 站 Codex App 教程 `BV1Kk9kBAEJv`；已获取 metadata、原始音频、本地 ASR 转录，报告为 `high` evidence / `medium_high` confidence
 - 2026-05-15: 重新用 link-driven 方式分析郭宇抖音链接；原始页面可访问，拿到视频 ID、标题、发布时间、时长、章节要点和可见字幕片段，报告覆盖为 `high` evidence / `medium_high` confidence
 - 2026-05-15: 将视频分析目标升级为“用户只给链接，Codex 自行取证”；skill 改为 `视频链接分析员.skill`，覆盖抖音/B站/YouTube/TikTok/小红书
-- 2026-05-15: 新增 `抖音视频分析员.skill` 与 `video_analysis` 模板，要求先拿证据再分析，避免只凭短链/标题生成报告
 
 ## Artifact Index
 
@@ -63,6 +63,7 @@ status: active
 ### Outputs
 
 - daily_ai:
+  - 2026-05-20: `40_outputs/daily_ai/2026-05-20.md`
   - 2026-05-13: `40_outputs/daily_ai/2026-05-13.md`
 
 ### Wiki / Knowledge
@@ -138,6 +139,25 @@ Routing rules:
 - 若涉及最新事实、价格、政策、法律、医学、金融或安全问题，必须先验证；无法验证时说明边界
 
 ## Active Records
+
+### 2026-05-20 / ai-news
+
+- Project: `ai-news`
+- Status: `done`
+- Priority: `medium`
+- Updated: `2026-05-20`
+- Context: 用户触发 `AI news`，要求采集当天 3 条高价值 AI 信息，避免历史重复，优先一手/可信技术来源。
+- Result:
+  - 已生成今日 AI 情报：`40_outputs/daily_ai/2026-05-20.md`
+  - 已生成顶部精华图：`40_outputs/daily_ai/2026-05-20_visual.svg`
+- Decisions:
+  - 今日入选主题：Google Gemini 3.5 + Antigravity/Managed Agents、Cloudflare Project Glasswing / Mythos 复盘、GitHub 早期 agent 成本/质量控制信号
+- Risks:
+  - Google 官方 benchmark 与 GitHub 新仓热度仍需后续第三方实测验证
+- Next:
+  - For ChatGPT: 读取 `40_outputs/daily_ai/2026-05-20.md`，围绕 agent runtime、验证 harness、成本/质量控制层讨论后续行动
+  - For Codex: 后续运行 `ai news` 时继续查重，避免重复 2026-05-20 已入选主题
+  - For User: 在知识库后台打开今日日报；若要深入，可指定 `ai news agent runtime` 或 `ai news AI security harness`
 
 ### 2026-05-16 / ai-high-value-usage-map
 

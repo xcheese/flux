@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-labelledby="title desc">
+  <title id="title">2026-05-20 AI 情报精华图</title>
+  <desc id="desc">三条高价值 AI 信号：Google agentic Gemini，Cloudflare Mythos 安全经验，GitHub agent 成本与质量控制早期信号。</desc>
+  <rect width="1400" height="820" fill="#f8fafc"/>
+  <text x="78" y="92" fill="#0f172a" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="42" font-weight="800">今天的主线：Agent 从演示走向可运行、可治理、可控成本</text>
+  <text x="80" y="142" fill="#475569" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24">不要只看模型榜单；重点看执行环境、验证链路、成本路由和质量闸门。</text>
+  <g transform="translate(80 210)">
+    <rect width="380" height="340" rx="28" fill="#ffffff" stroke="#dbeafe" stroke-width="2"/>
+    <circle cx="58" cy="62" r="24" fill="#2563eb"/>
+    <text x="48" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="800">1</text>
+    <text x="96" y="72" fill="#0f172a" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="28" font-weight="800">Google I/O</text>
+    <text x="34" y="132" fill="#334155" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24">Gemini 3.5 Flash</text>
+    <text x="34" y="174" fill="#334155" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24">Antigravity 2.0</text>
+    <text x="34" y="216" fill="#334155" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24">Managed Agents API</text>
+    <text x="34" y="284" fill="#64748b" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="21">模型发布要连同执行平台一起看</text>
+  </g>
+  <g transform="translate(510 210)">
+    <rect width="380" height="340" rx="28" fill="#ffffff" stroke="#fecaca" stroke-width="2"/>
+    <circle cx="58" cy="62" r="24" fill="#dc2626"/>
+    <text x="48" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="800">2</text>
+    <text x="96" y="72" fill="#0f172a" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="28" font-weight="800">Mythos 安全</text>
+    <text x="34" y="132" fill="#334155" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24">低危漏洞可被串成攻击链</text>
+    <text x="34" y="174" fill="#334155" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24">PoC 比描述更值钱</text>
+    <text x="34" y="216" fill="#334155" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24">并行窄任务优于单大 agent</text>
+    <text x="34" y="284" fill="#64748b" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="21">安全 agent 的关键是 harness</text>
+  </g>
+  <g transform="translate(940 210)">
+    <rect width="380" height="340" rx="28" fill="#ffffff" stroke="#bbf7d0" stroke-width="2"/>
+    <circle cx="58" cy="62" r="24" fill="#16a34a"/>
+    <text x="48" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="800">3</text>
+    <text x="96" y="72" fill="#0f172a" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="28" font-weight="800">GitHub 早期信号</text>
+    <text x="34" y="132" fill="#334155" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24">小模型 agent</text>
+    <text x="34" y="174" fill="#334155" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24">token 路由</text>
+    <text x="34" y="216" fill="#334155" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24">确定性质量检查</text>
+    <text x="34" y="284" fill="#64748b" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="21">下一轮效率来自控制面</text>
+  </g>
+  <rect x="80" y="620" width="1240" height="120" rx="24" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="122" y="674" fill="#312e81" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="28" font-weight="800">行动建议</text>
+  <text x="122" y="716" fill="#4338ca" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24">把自己的工作流升级为：候选池 → 窄任务 → 验证 agent → 结构化输出 → 成本/质量日志。</text>
+</svg>
