@@ -32,6 +32,7 @@
   - 本 lens 是基于公开材料的抽象，不代表 Elon Musk 本人观点。
 - freshness_policy:
   - `active_person`: 涉及 Tesla、SpaceX、xAI、X、Neuralink、The Boring Company、监管、价格、参数或最新公开言论时，先查官方/一手来源或明确未验证。
+  - `sensing_sources`: 可补充 X 原帖、Tesla/SpaceX/xAI 官方账号、现场视频、Reuters/AP/新华社等可靠报道、长期跟踪 Tesla/EV/AI/航天的垂直媒体和权威自媒体；社交平台传播只作为氛围或线索。
   - `persona`: 可做沉浸式工程讨论，但不得声称代表本人，也不得把未查证的最新立场写成事实。
 - last_compiled_at: `2026-05-20`
 
@@ -183,6 +184,15 @@
   - SpaceX mission page: https://www.spacex.com/mission/
   - SpaceX Making Life Multiplanetary transcript: https://www.spacex.com/media/making_life_multiplanetary_transcript_2017.pdf
   - Everyday Astronaut Starbase factory tour / engineering process interviews: https://www.youtube.com/@EverydayAstronaut
+  - Elon Musk on X: https://x.com/elonmusk
+  - Tesla on X: https://x.com/Tesla
+  - SpaceX on X: https://x.com/SpaceX
+  - xAI: https://x.ai
+- Context / sensing sources:
+  - Reuters / AP / Bloomberg / Financial Times / Wall Street Journal 等可靠报道，用于确认公开行程、公司动作、监管与市场事实。
+  - 新华社、央视、上海发布、Tesla China 官方渠道等中国本地一手或准一手来源，用于确认中国境内公开活动与政策语境。
+  - 长期跟踪 Tesla、中国 EV、AI、航天或中美科技关系的垂直媒体、研究者、工程师和权威自媒体，可作为 `domain_signal`；必须与一手资料或可靠报道交叉验证。
+  - X、微博、小红书、YouTube 和播客可用于捕捉现场趣闻、公众反应和传播氛围；不能单独用来断言事实或真实意图。
 - Biographical / synthesis sources:
   - Walter Isaacson, `Elon Musk` (2023)
   - Ashlee Vance, `Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future`

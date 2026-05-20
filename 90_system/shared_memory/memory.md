@@ -26,7 +26,7 @@ status: active
 ## Current Focus
 
 - Active project: `thinking-lens-system`
-- Current goal: 优化专家团中文显示名、沉浸式 persona mode 与最新信息查证规则
+- Current goal: 优化专家团信息源感知范围、沉浸式 persona mode 与最新信息查证规则
 - Latest artifact: `90_system/skills/skill_router.md`
 - Memory entry: `90_system/shared_memory/memory.md`
 - Next action for ChatGPT: 若用户提到“专家团 / lens / 沉浸式讨论 / 用某某口吻”，优先读取 Thinking Lens System；若 raw index/router 失败，直接使用本文件的 Single-file Fallback Router
@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-20: 扩展 Thinking Lens Source Sensing Protocol：允许使用 X/社交原帖、权威媒体、垂直领域自媒体和现场视频作为感知材料，但按事实、信号、氛围、传闻分层使用
 - 2026-05-20: 优化 Thinking Lens 专家团：专家显示名统一为中文名（英文名），增强沉浸式 persona mode，并加入最新信息查证 / 已故人物外推边界
 - 2026-05-20: 新增全局 Codex 配置源 `90_system/global_codex/`，并同步到 `/Users/momo/.codex/AGENTS.md` 与 `/Users/momo/.codex/skills/coding-guardrails/SKILL.md`
 - 2026-05-20: 生成专题情报 `40_outputs/daily_ai/2026-05-20_andrej-karpathy-skills.md`，判断该仓库代表的 agent 行为策略层价值与复用边界
@@ -133,6 +134,12 @@ status: active
   - 涉及最新事实、价格、政策、法律、医学、金融或安全问题时，先验证再判断
   - 活跃人物涉及最新动态时，先查官方/一手来源；无法查证则标注“最新信息未验证”
   - 已故人物不能生成去世后的真实观点；只能用历史材料外推，并标为 `lens 推断`
+- Source sensing:
+  - `primary_fact`: 本人/公司/机构原帖、官网、公告、财报、监管文件、完整访谈、完整演讲、现场视频原始来源
+  - `reliable_report`: 通讯社、主流媒体、一手转引媒体、官方媒体通稿；用于确认时间、地点、名单、公开动作
+  - `domain_signal`: 长期跟踪该领域的研究者、工程师、投资人、行业媒体、权威自媒体；用于提取行业语境、争议点和解释框架
+  - `social_atmosphere`: X、微博、小红书、YouTube、播客、社区讨论和二创传播；用于感知现场趣闻、情绪和传播效果，不单独作为事实依据
+  - `rumor`: 爆料、未具名消息、剪辑片段、标题党内容；只能作为待验证线索
 
 ### Single-file Fallback Router
 
@@ -155,6 +162,7 @@ Routing rules:
 - 专家名输出统一使用中文名（英文名）
 - 输出必须区分：事实、lens 推断、行动建议、待验证信息
 - 若涉及最新事实、价格、政策、法律、医学、金融或安全问题，必须先验证；无法验证时说明边界
+- 若用户问“趣闻 / 氛围 / 大家怎么看”，可以使用 X、微博、视频片段、权威自媒体等 `social_atmosphere` / `domain_signal`；若用户问真实意图或商业结果，必须回到一手事实和可靠报道
 - 埃隆·马斯克（Elon Musk）、安德烈·卡帕西（Andrej Karpathy）、纳瓦尔·拉维坎特（Naval Ravikant）属于活跃人物；涉及最新动态时先查官方/一手来源，无法查证则只使用稳定 lens
 - 史蒂夫·乔布斯（Steve Jobs）、查理·芒格（Charlie Munger）属于已故人物；不能声称其对去世后事件有真实观点，只能标为 `lens 推断`
 
@@ -179,6 +187,25 @@ Routing rules:
 - Next:
   - For ChatGPT: 若用户说“请专家团讨论”，先用 fallback router 选择 1-2 个 lens；如需最新事实，先查证再进入 persona
   - For Codex: 后续新增人物 lens 时必须包含 `display_name`、`freshness_policy` 和 persona boundaries
+
+### 2026-05-20 / thinking-lens-source-sensing
+
+- Project: `thinking-lens-system`
+- Status: `done`
+- Priority: `high`
+- Updated: `2026-05-20`
+- Context: 用户指出专家团需要扩大相关信息源作为感知材料，例如 X 和权威自媒体；同时希望沉浸式对话能根据问题语境选择趣闻/现场感，而不是总是转向商业和功利分析。
+- Result:
+  - 已在 `90_system/skills/skill_router.md` 增加 `Source Sensing Protocol`
+  - 已在 `90_system/skills/people/elon-musk.md` 补充 X、官方账号、可靠报道、中国本地来源、垂直媒体/权威自媒体和社交氛围来源分层
+  - 已在本 shared memory 的 Thinking Lens System 中增加 source sensing fallback 规则
+- Decisions:
+  - X、微博、YouTube、播客和权威自媒体可用于现场感、趣闻、情绪和早期信号
+  - 事实判断仍优先官方/一手来源、可靠报道和多源交叉验证
+  - 自媒体不因名气自动可信；必须看领域深耕、证据链和可交叉验证性
+- Next:
+  - For ChatGPT: 用户问趣闻/氛围时，不要自动转成商业分析；先给有边界的现场感，再按用户追问深入
+  - For Codex: 后续新增人物 lens 时加入 `sensing_sources` 或引用 router 的 Source Sensing Protocol
 
 ### 2026-05-20 / global-codex-coding-guardrails
 
