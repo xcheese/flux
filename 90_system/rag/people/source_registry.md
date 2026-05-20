@@ -2,6 +2,21 @@
 
 本文件记录 expert / people lens 的优先材料来源。它不是完整 bibliography，而是后续本地 RAG 积累的入口。
 
+## Global Acquisition Defaults
+
+- 若人物还原度需要更多传记、访谈、书籍或实时材料，Codex/ChatGPT 默认自行搜索免费且合法可访问资源。
+- 优先级：
+  - 官方档案、本人/公司/机构官网、作者/出版社页面
+  - 公开访谈、公开视频、播客、课程、演讲、股东会、发布会
+  - X/社交原帖和稳定公开网页
+  - 图书目录、合法试读、书摘、图书馆/平台合法预览
+  - 权威媒体、垂直领域研究者、长期可信自媒体
+- 不采用：
+  - 盗版 PDF、网盘搬运、未授权整本付费书、完整付费课程、无来源大段转录
+- 记录方式：
+  - 采用来源：保存 URL、来源层级、抓取/阅读日期、摘要和适用的人物特征。
+  - 拒绝来源：必要时记录拒绝原因，例如 suspected piracy、no provenance、paywalled full text。
+
 ## Elon Musk
 
 - id: `people.elon-musk`

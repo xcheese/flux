@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-20: 明确 Persona Fidelity 免费资源策略：人物传记/访谈/书籍材料缺口默认由 Codex/ChatGPT 自行搜索免费且合法可访问资源，并记录采用/拒绝原因
 - 2026-05-20: 新增 Persona Fidelity Protocol 与本地 People RAG 入口；5 个专家 lens 都接入 `persona_fidelity`、`source_acquisition_targets` 和本地 RAG 路径
 - 2026-05-20: 优化 persona rendering：沉浸式模式默认不展示大段边界/来源/路由 UI；马斯克 lens 增加 biography-informed voice 与 anti-rendering patterns
 - 2026-05-20: 扩展 Thinking Lens Source Sensing Protocol：允许使用 X/社交原帖、权威媒体、垂直领域自媒体和现场视频作为感知材料，但按事实、信号、氛围、传闻分层使用
@@ -148,7 +149,9 @@ status: active
   - 主目标是还原人物会注意什么、如何排序问题、如何反问、如何表达、如何误判，以及最新公开关注点
   - 每次用户反馈“不像”，应沉淀为该人物的 `Persona Fidelity Guide`、`anti-rendering pattern` 或 RAG source note
   - 可以使用人物传记、个人书籍、公开访谈、社交原帖、课程/代码/股东会/发布会、权威报道和垂直领域材料
+  - 遇到人物材料缺口时，Codex/ChatGPT 默认自行搜索免费且合法可访问资源；优先官方档案、公开访谈、公开视频/播客、X/社交原帖、图书目录/合法试读、作者/出版社页面和可信垂直媒体
   - 本地 RAG 默认保存来源索引、摘要、时间线、主题卡片、短摘录和自有分析；不默认保存未授权整本付费书或大段版权文本
+  - 不保存盗版 PDF、网盘搬运、未授权整本付费书、完整付费课程或大段版权文本；必要时记录拒绝原因
 - Source sensing:
   - `primary_fact`: 本人/公司/机构原帖、官网、公告、财报、监管文件、完整访谈、完整演讲、现场视频原始来源
   - `reliable_report`: 通讯社、主流媒体、一手转引媒体、官方媒体通稿；用于确认时间、地点、名单、公开动作
@@ -205,6 +208,25 @@ Routing rules:
 - Next:
   - For ChatGPT: 用户要求“更像 / 高仿真 / 和某人聊”时，先使用 persona fidelity protocol，不要只套用抽象 lens
   - For Codex: 后续可逐人建立 `source_notes/`、`style_notes/`、`timelines/`、`live_signals/`，并把用户反馈沉淀为 anti-rendering pattern
+
+### 2026-05-20 / persona-free-resource-search
+
+- Project: `thinking-lens-system`
+- Status: `active`
+- Priority: `high`
+- Updated: `2026-05-20`
+- Context: 用户明确：如果有相关人物传记或材料，Codex 应自行搜索必要的免费资源，而不是等待用户每次提供链接。
+- Result:
+  - 已更新 `90_system/skills/persona_fidelity_protocol.md`
+  - 已更新 `90_system/rag/people/source_registry.md`
+  - 已更新 `90_system/skills/skill_router.md` 和本 shared memory 的 fallback 规则
+- Decisions:
+  - 默认自行搜索免费且合法可访问资源：官方档案、公开访谈、公开视频/播客、X/社交原帖、图书目录/合法试读、作者/出版社页面、可信垂直媒体
+  - 不采用盗版 PDF、网盘搬运、未授权整本付费书、完整付费课程或无来源大段转录
+  - 对采用/拒绝来源做简短记录，优先保存摘要、时间线、主题卡片和风格笔记
+- Next:
+  - For Codex: 后续补强某位专家时，先执行 free/legal source search，再沉淀到该人物 RAG 目录
+  - For ChatGPT: 若无法直接访问某资源，应使用 shared memory 中的 source registry 和 fallback rules，不要要求用户重复提供 GitHub 链接
 
 ### 2026-05-20 / thinking-lens-persona-fidelity
 
