@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-20: 新增专家 lens：马克·扎克伯格（Mark Zuckerberg）；已接入 people lens、router/index、People RAG、source/style/live signals 和 fallback router
 - 2026-05-20: 补充专家团 Source Bias Policy：国外/国内/官方/社交媒体都可能有立场；媒体叙事不直接等于事实，需按来源层级和用途使用
 - 2026-05-20: 补充 ChatGPT 侧专家团启动方式：Codex 推送不会自动进入 GPT 当前上下文；建议在“顾问”项目新开聊天并要求读取带 cachebust 的 shared memory
 - 2026-05-20: 系统性升级专家团高仿真能力：新增 expert team simulation guide、persona eval prompts，并为马斯克/卡帕西/Naval 增加 live signals
@@ -79,6 +80,7 @@ status: active
 - people/andrej-karpathy: `90_system/skills/people/andrej-karpathy.md`
 - people/charlie-munger: `90_system/skills/people/charlie-munger.md`
 - people/elon-musk: `90_system/skills/people/elon-musk.md`
+- people/mark-zuckerberg: `90_system/skills/people/mark-zuckerberg.md`
 - people/naval-ravikant: `90_system/skills/people/naval-ravikant.md`
 - people/steve-jobs: `90_system/skills/people/steve-jobs.md`
 
@@ -125,6 +127,7 @@ status: active
   - 安德烈·卡帕西（Andrej Karpathy）: `90_system/skills/people/andrej-karpathy.md`
   - 查理·芒格（Charlie Munger）: `90_system/skills/people/charlie-munger.md`
   - 埃隆·马斯克（Elon Musk）: `90_system/skills/people/elon-musk.md`
+  - 马克·扎克伯格（Mark Zuckerberg）: `90_system/skills/people/mark-zuckerberg.md`
   - 纳瓦尔·拉维坎特（Naval Ravikant）: `90_system/skills/people/naval-ravikant.md`
   - 史蒂夫·乔布斯（Steve Jobs）: `90_system/skills/people/steve-jobs.md`
 - GitHub raw paths:
@@ -133,6 +136,7 @@ status: active
   - 安德烈·卡帕西（Andrej Karpathy） lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/andrej-karpathy.md`
   - 查理·芒格（Charlie Munger） lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/charlie-munger.md`
   - 埃隆·马斯克（Elon Musk） lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/elon-musk.md`
+  - 马克·扎克伯格（Mark Zuckerberg） lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/mark-zuckerberg.md`
   - 纳瓦尔·拉维坎特（Naval Ravikant） lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/naval-ravikant.md`
   - 史蒂夫·乔布斯（Steve Jobs） lens: `https://raw.githubusercontent.com/xcheese/flux/main/90_system/skills/people/steve-jobs.md`
 - Usage:
@@ -185,6 +189,7 @@ status: active
 - `people.steve-jobs` / 史蒂夫·乔布斯（Steve Jobs）: 产品、设计、战略聚焦、端到端体验、品牌叙事、技术与人文
 - `people.charlie-munger` / 查理·芒格（Charlie Munger）: 投资、商业判断、多元思维模型、逆向思考、认知偏误、激励机制
 - `people.naval-ravikant` / 纳瓦尔·拉维坎特（Naval Ravikant）: 财富、杠杆、职业选择、人生哲学、独立思考、一人公司
+- `people.mark-zuckerberg` / 马克·扎克伯格（Mark Zuckerberg）: 社交网络、平台战略、AI 产品分发、增长与网络效应、创作者生态、组织效率、AR / AI glasses
 
 Routing rules:
 
@@ -200,10 +205,32 @@ Routing rules:
 - 若涉及最新事实、价格、政策、法律、医学、金融或安全问题，必须先验证；无法验证时说明边界
 - 若用户问“趣闻 / 氛围 / 大家怎么看”，可以使用 X、微博、视频片段、权威自媒体等 `social_atmosphere` / `domain_signal`；若用户问真实意图或商业结果，必须回到一手事实和可靠报道
 - 若用户问“高仿真 / 更像本人 / 和某人聊”，优先使用 `90_system/skills/persona_fidelity_protocol.md` 与 `90_system/rag/people/source_registry.md`
-- 埃隆·马斯克（Elon Musk）、安德烈·卡帕西（Andrej Karpathy）、纳瓦尔·拉维坎特（Naval Ravikant）属于活跃人物；涉及最新动态时先查官方/一手来源，无法查证则只使用稳定 lens
+- 埃隆·马斯克（Elon Musk）、安德烈·卡帕西（Andrej Karpathy）、马克·扎克伯格（Mark Zuckerberg）、纳瓦尔·拉维坎特（Naval Ravikant）属于活跃人物；涉及最新动态时先查官方/一手来源，无法查证则只使用稳定 lens
 - 史蒂夫·乔布斯（Steve Jobs）、查理·芒格（Charlie Munger）属于已故人物；不能声称其对去世后事件有真实观点，只能标为 `lens 推断`
 
 ## Active Records
+
+### 2026-05-20 / add-mark-zuckerberg-lens
+
+- Project: `thinking-lens-system`
+- Status: `done`
+- Priority: `high`
+- Updated: `2026-05-20`
+- Context: 用户要求新增 Facebook 创始人马克·扎克伯格（Mark Zuckerberg）进入专家团。
+- Result:
+  - 新增 people lens：`90_system/skills/people/mark-zuckerberg.md`
+  - 新增 People RAG 目录：`90_system/rag/people/mark-zuckerberg/`
+  - 新增 source notes：`90_system/rag/people/mark-zuckerberg/source_notes/free_legal_resources_v1.md`
+  - 新增 style notes：`90_system/rag/people/mark-zuckerberg/style_notes/persona_model_v1.md`
+  - 新增 live signals：`90_system/rag/people/mark-zuckerberg/live_signals/2026-05-20.md`
+  - 已更新 `skill_router.md`、`index.md`、`source_registry.md`、`expert_team_simulation_guide.md`、`persona_eval_prompts.md`、`persona_readiness_report.md`
+- Domains:
+  - 社交网络、平台战略、AI 产品分发、增长与网络效应、创作者生态、组织效率、AR / AI glasses、personal superintelligence。
+- Decisions:
+  - Zuckerberg lens 重点不是早期 Facebook 增长故事，而是当前 Meta AI、personal superintelligence、AI glasses、分发和下一代计算入口。
+  - 涉及隐私、儿童安全、内容治理、政治广告、垄断或监管时，不能只用增长/平台 lens，必须加入社会风险和合规边界。
+- Next:
+  - For ChatGPT/Codex: 用户提到“扎克伯格 / Facebook 创始人 / Meta / AI glasses / 社交平台分发”时，可调用 `people.mark-zuckerberg`。
 
 ### 2026-05-20 / source-bias-policy
 
@@ -233,7 +260,7 @@ Routing rules:
   - 不必须新开项目；只建议新开同一项目内的新聊天。
   - 若继续旧聊天，用户应明确要求它“重新读取带 cachebust 的 shared memory，不要沿用旧记忆”。
 - Recommended bootstrap prompt:
-  - `请先读取这个最新 shared memory（带 cachebust，不要沿用旧缓存）：https://raw.githubusercontent.com/xcheese/flux/main/90_system/shared_memory/memory.md?cachebust=20260520-bda2a0b。读取后告诉我 updated_at、Recent Changes 第一条、Thinking Lens System 的 expert_team_guide / persona_eval_prompts / people lenses。然后进入专家团高仿真沉浸式模式，默认不要输出路由和审计 UI。`
+  - `请先读取这个最新 shared memory（带 cachebust，不要沿用旧缓存）：https://raw.githubusercontent.com/xcheese/flux/main/90_system/shared_memory/memory.md?cachebust=20260520-mark-zuckerberg。读取后告诉我 updated_at、Recent Changes 第一条、Thinking Lens System 的 expert_team_guide / persona_eval_prompts / people lenses。然后进入专家团高仿真沉浸式模式，默认不要输出路由和审计 UI。`
 - Fallback:
   - 如果 GPT 读取 raw 失败，但能读取 shared memory，则直接使用 Single-file Fallback Router，不要要求用户粘贴所有 skill。
   - 如果连 shared memory raw 都读取失败，用户需要提供 raw 内容或可访问链接；这属于 GPT 侧工具/网络限制，不是 Codex 文件未推送。

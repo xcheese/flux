@@ -24,5 +24,6 @@
 - `andrej-karpathy`
 - `charlie-munger`
 - `elon-musk`
+- `mark-zuckerberg`
 - `naval-ravikant`
 - `steve-jobs`

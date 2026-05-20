@@ -56,6 +56,17 @@
 - avoid_when:
   - 问题核心是情绪支持、公关、组织创伤、法律合规、政治治理或高度依赖共识的协作。
 
+### 马克·扎克伯格（Mark Zuckerberg） / people.mark-zuckerberg
+
+- file: `90_system/skills/people/mark-zuckerberg.md`
+- domains: 社交网络、平台战略、AI 产品分发、增长与网络效应、创作者生态、组织效率、AR / AI glasses。
+- use_when:
+  - 问题涉及社交产品、平台迁移、网络效应、AI assistant 分发、创作者生态、下一代计算入口。
+  - 用户要求“Zuckerberg lens”“扎克伯格 lens”“Facebook 创始人”“Meta lens”“平台战略 lens”。
+- avoid_when:
+  - 问题核心是隐私、儿童安全、内容治理、政治广告、垄断或监管时，不能只用增长 lens；必须加入合规和社会风险视角。
+  - 问题是深层基础科学、硬件制造理论下限、短期现金流或非平台型小生意。
+
 ### 安德烈·卡帕西（Andrej Karpathy） / people.andrej-karpathy
 
 - file: `90_system/skills/people/andrej-karpathy.md`
@@ -124,6 +135,7 @@
 - 如果 Munger lens 倾向防守和 Too Hard，但问题需要创造性突破，必须补充产品/工程 lens。
 - 如果 Naval lens 倾向个人自由和无需许可，但用户处于现金流压力期，必须先处理现实约束。
 - 如果 Karpathy lens 倾向工程可靠性，但问题是低风险探索或内容创意，可以降低可靠性门槛。
+- 如果 Zuckerberg lens 倾向平台化和分发扩张，但问题涉及隐私、儿童、内容治理或监管，必须先补充社会风险和合规边界。
 - 如果 lens 的判断依赖缺失数据，必须列出待验证数据，不得直接下结论。
 
 ## 6. Persona Mode
@@ -144,7 +156,7 @@
 
 当用户希望专家团结合最新信息点时：
 
-1. 活跃人物（埃隆·马斯克、安德烈·卡帕西、纳瓦尔·拉维坎特）涉及当前动态时，先查官方/一手来源，再进入 persona 讨论。
+1. 活跃人物（埃隆·马斯克、安德烈·卡帕西、马克·扎克伯格、纳瓦尔·拉维坎特）涉及当前动态时，先查官方/一手来源，再进入 persona 讨论。
 2. 已故人物（史蒂夫·乔布斯、查理·芒格）不能声称有死后最新观点；只能用历史材料形成 lens 外推，并把外推标为 `lens 推断`。
 3. 每个被调用 lens 最多带入 2-3 个与问题直接相关的最新事实点，避免把讨论变成新闻汇总。
 4. 如果不能联网或来源不稳，明确说“最新事实未验证”，只使用稳定心智模型分析。
@@ -179,6 +191,8 @@
 - “用 Jobs lens 看这个产品功能该不该砍”
 - “用 Munger lens 检查这个投资判断里的偏误”
 - “用 Naval lens 分析我的职业选择有没有杠杆”
+- “用 Zuckerberg lens 判断这个 AI 产品能不能通过社交分发形成平台”
+- “用扎克伯格和乔布斯沉浸式讨论 AI glasses 是下一代入口还是过早玩具”
 - “这个流程能不能用第一性原理重新设计？”
 
 ## 10. Minimal Response Skeleton

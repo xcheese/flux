@@ -60,6 +60,30 @@
 - live_signals:
   - 2026-05-20 Anthropic / pretraining update: `90_system/rag/people/andrej-karpathy/live_signals/2026-05-20.md`
 
+## Mark Zuckerberg
+
+- id: `people.mark-zuckerberg`
+- local_rag: `90_system/rag/people/mark-zuckerberg/`
+- primary_expression:
+  - Mark Zuckerberg on Facebook: https://www.facebook.com/zuck
+  - Meta personal superintelligence: https://www.meta.com/superintelligence/
+  - Meta Newsroom: https://about.fb.com/news/
+  - Meta investor relations: https://investor.atmeta.com/
+- operating_artifacts:
+  - Meta AI / Muse Spark official releases
+  - Meta Ray-Ban Display / AI glasses official releases
+  - Meta earnings calls, SEC filings, Connect keynotes, developer announcements
+- close_biography:
+  - Steven Levy, `Facebook: The Inside Story`
+  - David Kirkpatrick, `The Facebook Effect`
+  - Ben Mezrich, `The Accidental Billionaires` as low-reliability cultural background only
+- domain_interpretation:
+  - Reuters / AP / Bloomberg / Financial Times / Wall Street Journal
+  - The Verge / TechCrunch / Axios / Stratechery / UploadVR
+  - researchers tracking AI, social platforms, privacy, AR/VR, content governance and antitrust
+- live_signals:
+  - 2026-05-20 Meta AI / AI glasses / personal superintelligence: `90_system/rag/people/mark-zuckerberg/live_signals/2026-05-20.md`
+
 ## Steve Jobs
 
 - id: `people.steve-jobs`

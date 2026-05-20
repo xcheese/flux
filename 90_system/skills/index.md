@@ -95,6 +95,25 @@
   - 问题主要是法律合规、政治治理、公共关系、心理支持、组织创伤或高度依赖共识的协作。
   - 失败不可逆，且尚未设计安全边界。
 
+### 马克·扎克伯格（Mark Zuckerberg）
+
+- id: `people.mark-zuckerberg`
+- file: `90_system/skills/people/mark-zuckerberg.md`
+- domains:
+  - 社交网络
+  - 平台战略
+  - AI 产品分发
+  - 增长与网络效应
+  - 创作者生态
+  - 组织效率
+  - AR / AI glasses
+- use_when:
+  - 分析社交产品、平台迁移、网络效应、AI assistant 分发、创作者生态和下一代计算入口。
+  - 需要从 Facebook / Instagram / WhatsApp / Threads / Meta AI / AI glasses 的组合视角看产品。
+- avoid_when:
+  - 问题主要是隐私、儿童安全、内容治理、政治广告、垄断或监管时，不能只用增长 lens；必须加入合规和社会风险视角。
+  - 问题是深层基础科学、硬件制造理论下限、短期现金流或非平台型小生意。
+
 ### 纳瓦尔·拉维坎特（Naval Ravikant）
 
 - id: `people.naval-ravikant`
@@ -137,6 +156,8 @@
 - “用 Jobs lens 帮我砍产品功能”
 - “用 Munger lens 检查这个投资判断”
 - “用 Naval lens 分析我的职业选择有没有杠杆”
+- “用 Zuckerberg lens 看这个 AI 产品能不能借社交分发做成平台”
+- “让扎克伯格和乔布斯讨论 AI glasses 是下一代入口还是过早玩具”
 - “让专家团用中文名（英文名）的形式，沉浸式讨论这个问题”
 - “用专家团高仿真模式聊这个问题，先像人，再像分析框架”
 - “用第一性原理 lens 看看这个流程是不是该存在”

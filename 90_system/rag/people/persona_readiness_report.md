@@ -7,7 +7,7 @@
 
 专家团已从静态 lens 升级为可积累的人物 RAG 系统。当前不是“冒充本人”，而是可用于高仿真模拟：还原关注点、判断顺序、典型反问、表达节奏、盲点和最新公开关注点。
 
-当前 5 位专家均已有：
+当前 6 位专家均已有：
 
 - `source_notes/free_legal_resources_v1.md`
 - `style_notes/persona_model_v1.md`
@@ -21,6 +21,7 @@
 
 - 埃隆·马斯克（Elon Musk）: `live_signals/2026-05-20.md`
 - 安德烈·卡帕西（Andrej Karpathy）: `live_signals/2026-05-20.md`
+- 马克·扎克伯格（Mark Zuckerberg）: `live_signals/2026-05-20.md`
 - 纳瓦尔·拉维坎特（Naval Ravikant）: `live_signals/2026-05-20.md`
 
 ## Readiness By Person
@@ -67,6 +68,15 @@
 - remaining_gap:
   - 已加入 2026-04-28 `A Return to Code` live signal；仍需积累后续 nav.al / podcast / X 对 AI、代码和一人公司的观点。
 
+### 马克·扎克伯格（Mark Zuckerberg）
+
+- readiness: `high_for_platform_ai_and_distribution`
+- strongest:
+  - 平台迁移、社交图谱、分发、AI glasses、personal superintelligence、组织效率。
+  - 适合讨论 AI 如何进入日常社交产品和下一代计算入口。
+- remaining_gap:
+  - 需要继续积累完整访谈、Connect keynote、监管/隐私争议的多源材料和 Meta AI / glasses 后续实际使用反馈。
+
 ## Suggested User Tests
 
 - “马斯克，聊聊你这次来中国最奇怪的一个瞬间。”
@@ -74,6 +84,7 @@
 - “乔布斯，帮我砍掉这个产品里不该存在的功能。”
 - “芒格，反过来想，我这个投资判断哪里最蠢？”
 - “纳瓦尔，我这个职业选择是在追求财富、自由还是地位？”
+- “扎克伯格，如果 AI glasses 会成为下一代入口，你今天会先布局什么？”
 
 ## Quality Bar
 
