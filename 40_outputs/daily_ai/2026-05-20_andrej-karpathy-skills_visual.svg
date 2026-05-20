@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-labelledby="title desc">
+  <title id="title">andrej-karpathy-skills 专题情报精华图</title>
+  <desc id="desc">展示 andrej-karpathy-skills 的核心判断：Agent 质量控制正在变成跨工具、可移植的行为策略层。</desc>
+  <rect width="1400" height="820" fill="#f8fafc"/>
+  <text x="76" y="92" fill="#0f172a" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="44" font-weight="800">核心判断：AI Coding 的护城河开始变成“行为策略层”</text>
+  <text x="78" y="144" fill="#475569" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24">这个仓库不是新模型，而是把 agent 常犯错压缩成可携带、可复用、可合并的规则资产。</text>
+  <g transform="translate(80 220)">
+    <rect width="380" height="320" rx="28" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="34" y="62" fill="#2563eb" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24" font-weight="800">信号 1</text>
+    <text x="34" y="118" fill="#0f172a" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="30" font-weight="800">4 条规则爆红</text>
+    <text x="34" y="174" fill="#334155" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="23">先澄清、少抽象、</text>
+    <text x="34" y="212" fill="#334155" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="23">只改必要行、用验证闭环</text>
+    <text x="34" y="270" fill="#64748b" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="20">解决的是 agent 行为失控</text>
+  </g>
+  <g transform="translate(510 220)">
+    <rect width="380" height="320" rx="28" fill="#ffffff" stroke="#c7d2fe" stroke-width="2"/>
+    <text x="34" y="62" fill="#4f46e5" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24" font-weight="800">信号 2</text>
+    <text x="34" y="118" fill="#0f172a" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="30" font-weight="800">跨工具分发</text>
+    <text x="34" y="174" fill="#334155" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="23">CLAUDE.md、Plugin、</text>
+    <text x="34" y="212" fill="#334155" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="23">Cursor Rule、Skill</text>
+    <text x="34" y="270" fill="#64748b" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="20">规则正在成为工作流资产</text>
+  </g>
+  <g transform="translate(940 220)">
+    <rect width="380" height="320" rx="28" fill="#ffffff" stroke="#bbf7d0" stroke-width="2"/>
+    <text x="34" y="62" fill="#16a34a" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24" font-weight="800">信号 3</text>
+    <text x="34" y="118" fill="#0f172a" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="30" font-weight="800">别盲装</text>
+    <text x="34" y="174" fill="#334155" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="23">先和 AGENTS.md 合并，</text>
+    <text x="34" y="212" fill="#334155" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="23">再做任务级 A/B 验证</text>
+    <text x="34" y="270" fill="#64748b" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="20">热度不等于有效性</text>
+  </g>
+  <rect x="80" y="620" width="1240" height="120" rx="24" fill="#ecfeff" stroke="#a5f3fc"/>
+  <text x="122" y="674" fill="#155e75" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="28" font-weight="800">下一步</text>
+  <text x="122" y="716" fill="#0e7490" font-family="Arial, 'Noto Sans SC', sans-serif" font-size="24">把 4 条原则转成你的 Codex 任务验收表，而不是再堆一个重复 prompt。</text>
+</svg>

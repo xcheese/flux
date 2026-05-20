@@ -27,19 +27,19 @@ status: active
 
 - Active project: `ai-news`
 - Current goal: 持续采集高价值 AI 情报，帮助用户跟上全球 AI 发展并转化为个人成长/工作流行动
-- Latest artifact: `40_outputs/daily_ai/2026-05-20.md`
+- Latest artifact: `40_outputs/daily_ai/2026-05-20_andrej-karpathy-skills.md`
 - Memory entry: `90_system/shared_memory/memory.md`
-- Next action for ChatGPT: 读取今日 AI 情报，重点讨论 agent runtime、AI 安全 harness、agent 成本/质量控制层的后续行动
+- Next action for ChatGPT: 读取 Andrej Karpathy skills 专题，讨论是否把 4 条 agent coding guardrails 转成 Codex 任务验收表
 - Blockers: 暂无
 
 ## Recent Changes
 
+- 2026-05-20: 生成专题情报 `40_outputs/daily_ai/2026-05-20_andrej-karpathy-skills.md`，判断该仓库代表的 agent 行为策略层价值与复用边界
 - 2026-05-20: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-05-20.md` 与精华图 `40_outputs/daily_ai/2026-05-20_visual.svg`
 - 2026-05-16: 新增 `AI 高价值使用地图：哪些场景最值得消耗 token`，沉淀“复杂信息 × 多维推理 × 可复用闭环”判断框架；已生成 3:4 地图 PNG 并嵌入文档末尾
 - 2026-05-15: 修复知识库展示索引：`10_raw/videos/<slug>/` 只展示 `analysis.md`，隐藏 transcript/audio/metadata；分类标签改为文档类型 + 主题标签
 - 2026-05-15: 分析 B 站 Codex App 教程 `BV1Kk9kBAEJv`；已获取 metadata、原始音频、本地 ASR 转录，报告为 `high` evidence / `medium_high` confidence
 - 2026-05-15: 重新用 link-driven 方式分析郭宇抖音链接；原始页面可访问，拿到视频 ID、标题、发布时间、时长、章节要点和可见字幕片段，报告覆盖为 `high` evidence / `medium_high` confidence
-- 2026-05-15: 将视频分析目标升级为“用户只给链接，Codex 自行取证”；skill 改为 `视频链接分析员.skill`，覆盖抖音/B站/YouTube/TikTok/小红书
 
 ## Artifact Index
 
@@ -63,6 +63,7 @@ status: active
 ### Outputs
 
 - daily_ai:
+  - 2026-05-20 / andrej-karpathy-skills: `40_outputs/daily_ai/2026-05-20_andrej-karpathy-skills.md`
   - 2026-05-20: `40_outputs/daily_ai/2026-05-20.md`
   - 2026-05-13: `40_outputs/daily_ai/2026-05-13.md`
 
@@ -139,6 +140,26 @@ Routing rules:
 - 若涉及最新事实、价格、政策、法律、医学、金融或安全问题，必须先验证；无法验证时说明边界
 
 ## Active Records
+
+### 2026-05-20 / ai-news-andrej-karpathy-skills
+
+- Project: `ai-news`
+- Status: `done`
+- Priority: `medium`
+- Updated: `2026-05-20`
+- Context: 用户指定 GitHub 仓库 `multica-ai/andrej-karpathy-skills`，要求按 AI news 专题模式分析其价值与复用边界。
+- Result:
+  - 已生成专题情报：`40_outputs/daily_ai/2026-05-20_andrej-karpathy-skills.md`
+  - 已生成顶部精华图：`40_outputs/daily_ai/2026-05-20_andrej-karpathy-skills_visual.svg`
+- Decisions:
+  - 该仓库不应被简单当作“要安装的 prompt”，更适合转化为 Codex 任务验收表：假设、改动范围、简洁性、验证闭环
+  - GitHub stars/forks 只能说明注意力，不证明规则有效性；复用前应与现有 `AGENTS.md` 去重并做小范围 A/B
+- Risks:
+  - 仓库无正式 release，近 30 天核心规则没有新增；当前价值主要是工作流策略与传播信号
+- Next:
+  - For ChatGPT: 读取专题情报，帮助判断是否把 4 条规则沉淀为 `agent_coding_guardrails`
+  - For Codex: 若用户要求落地，先合并现有 `AGENTS.md`，避免重复规则堆叠，再用一次中等 coding 任务验证
+  - For User: 后续可说“按 Karpathy guardrails 验收”，让 Codex 把它转成任务检查流程
 
 ### 2026-05-20 / ai-news
 
