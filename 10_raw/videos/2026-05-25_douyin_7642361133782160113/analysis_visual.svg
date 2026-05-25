@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="520" viewBox="0 0 1280 520" role="img" aria-labelledby="title desc">
+  <title id="title">Codex Skills 抖音视频分析精华图</title>
+  <desc id="desc">这条视频的价值不是收藏一个 skill，而是提醒只把高频、可验证、安全的能力沉淀成 Codex skill。</desc>
+  <rect width="1280" height="520" fill="#f7faf8"/>
+  <rect x="44" y="36" width="1192" height="448" rx="24" fill="#ffffff" stroke="#d8e3dc" stroke-width="2"/>
+
+  <text x="80" y="92" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#52645a">抖音视频分析 | Codex Skills / AnySearch</text>
+  <text x="80" y="150" font-family="Arial, 'PingFang SC', sans-serif" font-size="42" font-weight="700" fill="#14251c">别收集 skill，只保留高频闭环</text>
+  <text x="80" y="198" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#46534d">对你有价值的是“能力资产化”：让 AI news、视频分析、检索核验可复用。</text>
+
+  <g transform="translate(80 246)">
+    <rect width="258" height="118" rx="16" fill="#eaf5ef" stroke="#bed8c9"/>
+    <text x="24" y="42" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="700" fill="#123b25">高频才安装</text>
+    <text x="24" y="78" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#355242">能反复省时间，</text>
+    <text x="24" y="104" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#355242">才值得进系统。</text>
+  </g>
+
+  <g transform="translate(365 246)">
+    <rect width="258" height="118" rx="16" fill="#eef3fb" stroke="#c7d5eb"/>
+    <text x="24" y="42" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="700" fill="#18365c">AnySearch 候选</text>
+    <text x="24" y="78" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#364d6c">可增强检索，</text>
+    <text x="24" y="104" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#364d6c">但先验来源质量。</text>
+  </g>
+
+  <g transform="translate(650 246)">
+    <rect width="258" height="118" rx="16" fill="#fff5e6" stroke="#ead4ab"/>
+    <text x="24" y="42" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="700" fill="#634415">密钥风险</text>
+    <text x="24" y="78" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#665032">API key 不进图文，</text>
+    <text x="24" y="104" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#665032">只走 env / gitignore。</text>
+  </g>
+
+  <g transform="translate(935 246)">
+    <rect width="258" height="118" rx="16" fill="#f4effa" stroke="#d8c8e9"/>
+    <text x="24" y="42" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="700" fill="#4d2d68">市场信号</text>
+    <text x="24" y="78" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#57445f">评论都在问</text>
+    <text x="24" y="104" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#57445f">Codex vs Claude。</text>
+  </g>
+
+  <rect x="80" y="398" width="718" height="50" rx="16" fill="#163b2a"/>
+  <text x="112" y="431" font-family="Arial, 'PingFang SC', sans-serif" font-size="23" font-weight="700" fill="#ffffff">下一步：把 AnySearch 进“试用清单”，不直接安装到生产流</text>
+
+  <rect x="830" y="398" width="363" height="50" rx="16" fill="#fff2f0" stroke="#efc6bf"/>
+  <text x="858" y="431" font-family="Arial, 'PingFang SC', sans-serif" font-size="21" font-weight="700" fill="#8a3228">证据等级：medium，缺完整转录</text>
+</svg>

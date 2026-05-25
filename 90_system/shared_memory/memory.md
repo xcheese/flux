@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-25: 分析萌萌本萌抖音视频《codex超好用skills》，报告为 `medium` evidence / `medium` confidence；结论是 AnySearch 值得进入试用清单，但不应直接进入生产知识库采集流，后续需先做 API key 安全、脚本审计和最小验证
 - 2026-05-25: 分析产品君抖音视频《盘点一周AI大事(5月24日)》，报告为 `medium` evidence / `medium` confidence；结论是“高密度 AI 情报候选池，不是事实源”，后续应优先核验 AI 同传、世界模型和 Codex 真实可用性线索
 - 2026-05-20: 新增专家 lens：马克·扎克伯格（Mark Zuckerberg）；已接入 people lens、router/index、People RAG、source/style/live signals 和 fallback router
 - 2026-05-20: 补充专家团 Source Bias Policy：国外/国内/官方/社交媒体都可能有立场；媒体叙事不直接等于事实，需按来源层级和用途使用
@@ -107,6 +108,7 @@ status: active
 ### Raw Inputs
 
 - douyin:
+  - 2026-05-25 / 萌萌本萌 Codex Skills: `10_raw/videos/2026-05-25_douyin_7642361133782160113/analysis.md`
   - 2026-05-25 / 产品君 AI 周报: `10_raw/videos/2026-05-25_douyin_7643493803533323570/analysis.md`
   - 2026-05-13: `10_raw/links/2026-05-13_douyin_guo-yu_ai_life_changes.md`
 - bilibili:
