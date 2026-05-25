@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="520" viewBox="0 0 1280 520" role="img" aria-labelledby="title desc">
+  <title id="title">产品君 AI 周报视频分析精华图</title>
+  <desc id="desc">这条视频更适合作为 AI 情报候选池，而不是事实源。重点关注 Agent/Codex、世界模型、数字人语音、实时同传四类线索。</desc>
+  <rect width="1280" height="520" fill="#f7faf8"/>
+  <rect x="44" y="36" width="1192" height="448" rx="24" fill="#ffffff" stroke="#d9e4dc" stroke-width="2"/>
+
+  <text x="80" y="92" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#4b6357">抖音视频分析 | 第444集 AI 周报</text>
+  <text x="80" y="150" font-family="Arial, 'PingFang SC', sans-serif" font-size="42" font-weight="700" fill="#15251d">高密度线索清单，不是事实源</text>
+  <text x="80" y="198" font-family="Arial, 'PingFang SC', sans-serif" font-size="24" fill="#425249">价值在选题密度；风险在“最强/新模型/猜想突破”等说法未逐项核验。</text>
+
+  <g transform="translate(80 246)">
+    <rect width="258" height="118" rx="16" fill="#eaf5ef" stroke="#bed8c9"/>
+    <text x="24" y="42" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="700" fill="#133923">Agent / Codex</text>
+    <text x="24" y="78" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#355242">开发者关注高，</text>
+    <text x="24" y="104" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#355242">但能力/入口要复核。</text>
+  </g>
+
+  <g transform="translate(365 246)">
+    <rect width="258" height="118" rx="16" fill="#eef3fb" stroke="#c7d5eb"/>
+    <text x="24" y="42" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="700" fill="#18365c">模型竞赛</text>
+    <text x="24" y="78" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#364d6c">OpenAI / Google / Qwen</text>
+    <text x="24" y="104" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#364d6c">先找官方源。</text>
+  </g>
+
+  <g transform="translate(650 246)">
+    <rect width="258" height="118" rx="16" fill="#fff5e6" stroke="#ead4ab"/>
+    <text x="24" y="42" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="700" fill="#634415">世界模型</text>
+    <text x="24" y="78" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#665032">和 Decart 方向相关，</text>
+    <text x="24" y="104" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#665032">值得建观察清单。</text>
+  </g>
+
+  <g transform="translate(935 246)">
+    <rect width="258" height="118" rx="16" fill="#f4effa" stroke="#d8c8e9"/>
+    <text x="24" y="42" font-family="Arial, 'PingFang SC', sans-serif" font-size="22" font-weight="700" fill="#4d2d68">语音 / 同传</text>
+    <text x="24" y="78" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#57445f">若可用性成立，</text>
+    <text x="24" y="104" font-family="Arial, 'PingFang SC', sans-serif" font-size="19" fill="#57445f">可能影响工作流。</text>
+  </g>
+
+  <rect x="80" y="398" width="720" height="50" rx="16" fill="#163b2a"/>
+  <text x="112" y="431" font-family="Arial, 'PingFang SC', sans-serif" font-size="23" font-weight="700" fill="#ffffff">下一步：拆成“已验证 / 值得追 / 先搁置”三栏候选池</text>
+
+  <rect x="830" y="398" width="363" height="50" rx="16" fill="#fff2f0" stroke="#efc6bf"/>
+  <text x="858" y="431" font-family="Arial, 'PingFang SC', sans-serif" font-size="21" font-weight="700" fill="#8a3228">证据等级：medium，需补转录</text>
+</svg>
