@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Agent Skill Top5 候选清单</title>
+  <desc id="desc">把 AI 市场情报、视频补证、官方核验、工程护栏和长期记忆组成高频闭环，AnySearch 先隔离试用。</desc>
+  <rect width="1400" height="900" fill="#fbfaf7"/>
+  <rect x="54" y="54" width="1292" height="792" rx="8" fill="#ffffff" stroke="#ddd8cf" stroke-width="2"/>
+
+  <text x="90" y="126" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="34" font-weight="700" fill="#172026">Skill 只选高频闭环</text>
+  <text x="90" y="174" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" fill="#52616b">目标：更快获取全球 AI 市场高价值信号，并沉淀成可复用资产</text>
+
+  <rect x="90" y="220" width="1220" height="132" rx="8" fill="#eef7f3" stroke="#9ac8b3"/>
+  <text x="122" y="273" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="30" font-weight="700" fill="#0f5132">当前决策</text>
+  <text x="122" y="318" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="26" fill="#172026">AnySearch 进试用清单，不直接接入生产 AI news</text>
+  <text x="720" y="318" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" fill="#52616b">先审计密钥、脚本、稳定性、来源质量</text>
+
+  <g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <rect x="90" y="396" width="232" height="236" rx="8" fill="#f7fbff" stroke="#b9d4ef"/>
+    <text x="118" y="444" font-size="24" font-weight="700" fill="#18324a">1 AnySearch</text>
+    <text x="118" y="493" font-size="20" fill="#172026">实时检索</text>
+    <text x="118" y="526" font-size="20" fill="#172026">整页抽取</text>
+    <text x="118" y="559" font-size="20" fill="#172026">候选池扩展</text>
+    <text x="118" y="602" font-size="18" fill="#b45309">状态：隔离试用</text>
+
+    <rect x="337" y="396" width="232" height="236" rx="8" fill="#fffaf0" stroke="#e1c777"/>
+    <text x="365" y="444" font-size="24" font-weight="700" fill="#4a3510">2 AI 情报员</text>
+    <text x="365" y="493" font-size="20" fill="#172026">候选池审计</text>
+    <text x="365" y="526" font-size="20" fill="#172026">事实/观点分层</text>
+    <text x="365" y="559" font-size="20" fill="#172026">每日 3 条高价值</text>
+    <text x="365" y="602" font-size="18" fill="#0f766e">状态：核心在用</text>
+
+    <rect x="584" y="396" width="232" height="236" rx="8" fill="#f8f5ff" stroke="#c8b9ef"/>
+    <text x="612" y="444" font-size="24" font-weight="700" fill="#3b2f69">3 视频分析</text>
+    <text x="612" y="493" font-size="20" fill="#172026">链接取证</text>
+    <text x="612" y="526" font-size="20" fill="#172026">证据不足降级</text>
+    <text x="612" y="559" font-size="20" fill="#172026">精华图先收敛</text>
+    <text x="612" y="602" font-size="18" fill="#0f766e">状态：核心在用</text>
+
+    <rect x="831" y="396" width="232" height="236" rx="8" fill="#f7f9f4" stroke="#bfd2a0"/>
+    <text x="859" y="444" font-size="24" font-weight="700" fill="#2f4918">4 OpenAI 核验</text>
+    <text x="859" y="493" font-size="20" fill="#172026">官方文档优先</text>
+    <text x="859" y="526" font-size="20" fill="#172026">模型/API 变化</text>
+    <text x="859" y="559" font-size="20" fill="#172026">避免过期判断</text>
+    <text x="859" y="602" font-size="18" fill="#0f766e">状态：支撑能力</text>
+
+    <rect x="1078" y="396" width="232" height="236" rx="8" fill="#fff6f3" stroke="#e8b8a9"/>
+    <text x="1106" y="444" font-size="24" font-weight="700" fill="#65301f">5 工程护栏</text>
+    <text x="1106" y="493" font-size="20" fill="#172026">先假设后改动</text>
+    <text x="1106" y="526" font-size="20" fill="#172026">最小 diff</text>
+    <text x="1106" y="559" font-size="20" fill="#172026">验证再提交</text>
+    <text x="1106" y="602" font-size="18" fill="#0f766e">状态：系统默认</text>
+  </g>
+
+  <line x1="206" y1="690" x2="1194" y2="690" stroke="#d7d2ca" stroke-width="4"/>
+  <circle cx="206" cy="690" r="15" fill="#2f80ed"/>
+  <circle cx="535" cy="690" r="15" fill="#2f80ed"/>
+  <circle cx="864" cy="690" r="15" fill="#2f80ed"/>
+  <circle cx="1194" cy="690" r="15" fill="#2f80ed"/>
+  <g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" text-anchor="middle">
+    <text x="206" y="736" font-size="22" font-weight="700" fill="#172026">候选清单</text>
+    <text x="535" y="736" font-size="22" font-weight="700" fill="#172026">隔离试用</text>
+    <text x="864" y="736" font-size="22" font-weight="700" fill="#172026">三项验证</text>
+    <text x="1194" y="736" font-size="22" font-weight="700" fill="#172026">通过再接入</text>
+  </g>
+
+  <text x="90" y="806" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="21" fill="#52616b">准入标准：高频、可验证、低维护、密钥安全、能提升 AI news / 视频补证 / 知识库闭环</text>
+</svg>

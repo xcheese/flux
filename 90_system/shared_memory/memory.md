@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-25: 新增 `20_wiki/skills/agent_skill_candidate_list.md` 与顶部精华图；结论是 Top5 skill 资产应围绕 AI 情报、视频补证、官方核验、工程护栏和长期记忆闭环，AnySearch 先进入隔离试用，不直接接入生产 `AI news`
 - 2026-05-25: 分析萌萌本萌抖音视频《codex超好用skills》，报告为 `medium` evidence / `medium` confidence；结论是 AnySearch 值得进入试用清单，但不应直接进入生产知识库采集流，后续需先做 API key 安全、脚本审计和最小验证
 - 2026-05-25: 分析产品君抖音视频《盘点一周AI大事(5月24日)》，报告为 `medium` evidence / `medium` confidence；结论是“高密度 AI 情报候选池，不是事实源”，后续应优先核验 AI 同传、世界模型和 Codex 真实可用性线索
 - 2026-05-20: 新增专家 lens：马克·扎克伯格（Mark Zuckerberg）；已接入 people lens、router/index、People RAG、source/style/live signals 和 fallback router
@@ -95,6 +96,8 @@ status: active
 
 ### Wiki / Knowledge
 
+- Agent Skill candidate list: `20_wiki/skills/agent_skill_candidate_list.md`
+- Agent Skill candidate visual: `20_wiki/skills/agent_skill_candidate_list_visual.svg`
 - AI learning map: `20_wiki/ai/AI_learning_map.md`
 - AI high-value usage map: `20_wiki/ai/ai_high_value_usage_map.md`
 - AI usage capability map: `20_wiki/concepts/AI 使用能力地图.md`
