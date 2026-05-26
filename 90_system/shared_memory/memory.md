@@ -2,17 +2,29 @@
 type: shared_memory
 owner: momo
 scope: cross-agent
-updated_at: 2026-05-25
+updated_at: 2026-05-26
 status: active
 ---
 
 # Shared Memory（跨工作区 / 跨设备 / 跨 agent）
 
+## Compatibility Note
+
+`memory.md` 仍是 ChatGPT / Codex 的共享入口和 fallback index。结构化记忆系统位于 `90_system/shared_memory/`，快速入口包括：
+
+- `90_system/shared_memory/indexes/current.md`
+- `90_system/shared_memory/protocol.md`
+- `90_system/shared_memory/schema.md`
+- `90_system/shared_memory/lifecycle.md`
+- `90_system/shared_memory/templates/`
+
+历史流水仍保留在本文件；新增结构化记忆应优先写入 `entries/`，并更新相关索引。
+
 ## Metadata
 
 - Type: `shared_memory`
 - Scope: `cross-agent`
-- Updated: `2026-05-25`
+- Updated: `2026-05-26`
 - Status: `active`
 
 ## Purpose
@@ -34,6 +46,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-26: 将 Shared Memory 升级为轻量记忆系统 v1；新增协议、schema、生命周期、模板、样例 entries、索引和 Node 校验/索引脚本，同时保留 `memory.md` 作为共享入口
 - 2026-05-26: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-05-26.md` 与精华图 `40_outputs/daily_ai/2026-05-26_visual.svg`；主线是 agent 竞争从模型能力转向路由、执行环境、日志、预算和安全边界
 - 2026-05-25: 新增 `20_wiki/skills/agent_skill_candidate_list.md` 与顶部精华图；结论是 Top5 skill 资产应围绕 AI 情报、视频补证、官方核验、工程护栏和长期记忆闭环，AnySearch 先进入隔离试用，不直接接入生产 `AI news`
 - 2026-05-25: 分析萌萌本萌抖音视频《codex超好用skills》，报告为 `medium` evidence / `medium` confidence；结论是 AnySearch 值得进入试用清单，但不应直接进入生产知识库采集流，后续需先做 API key 安全、脚本审计和最小验证
@@ -60,6 +73,15 @@ status: active
 ### Shared Memory
 
 - memory: `90_system/shared_memory/memory.md`
+- README: `90_system/shared_memory/README.md`
+- protocol: `90_system/shared_memory/protocol.md`
+- schema: `90_system/shared_memory/schema.md`
+- lifecycle: `90_system/shared_memory/lifecycle.md`
+- current index: `90_system/shared_memory/indexes/current.md`
+- entries root: `90_system/shared_memory/entries/`
+- templates root: `90_system/shared_memory/templates/`
+- validation script: `90_system/shared_memory/scripts/validate_memory.mjs`
+- index builder: `90_system/shared_memory/scripts/build_indexes.mjs`
 - sync script: `90_system/shared_memory/sync.sh`
 
 ### Global Codex

@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "memory:validate": "node 90_system/shared_memory/scripts/validate_memory.mjs",
+    "memory:index": "node 90_system/shared_memory/scripts/build_indexes.mjs"
   },
   "engines": {
     "node": ">=18"
