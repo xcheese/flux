@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">2026-05-26 AI 高价值情报精华图</title>
+  <desc id="desc">三条高价值 AI 情报：路由层产品化、Kimi Code 入场、agent 控制面升温。</desc>
+  <rect width="1400" height="900" fill="#fbfaf7"/>
+  <rect x="54" y="54" width="1292" height="792" rx="8" fill="#ffffff" stroke="#ddd8cf" stroke-width="2"/>
+
+  <text x="92" y="128" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="34" font-weight="700" fill="#172026">今天的主线：Agent 从会做事，走向会被调度和审计</text>
+  <text x="92" y="176" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" fill="#52616b">不要只追模型；更该盯路由、执行环境、日志、预算和安全边界</text>
+
+  <g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <rect x="90" y="242" width="380" height="284" rx="8" fill="#f4f9ff" stroke="#a8c8ee"/>
+    <text x="122" y="296" font-size="26" font-weight="700" fill="#18324a">1 路由层产品化</text>
+    <text x="122" y="350" font-size="22" fill="#172026">GitHub Auto 按任务选模型</text>
+    <text x="122" y="389" font-size="22" fill="#172026">看健康度、复杂度、工具需求</text>
+    <text x="122" y="438" font-size="20" fill="#52616b">启发：本地也要有 skill 路由表</text>
+    <text x="122" y="482" font-size="19" fill="#0f766e">价值：少猜模型，多做调度</text>
+
+    <rect x="510" y="242" width="380" height="284" rx="8" fill="#fffaf0" stroke="#e3c66d"/>
+    <text x="542" y="296" font-size="26" font-weight="700" fill="#4a3510">2 Kimi Code 入场</text>
+    <text x="542" y="350" font-size="22" fill="#172026">终端 agent + 视频输入</text>
+    <text x="542" y="389" font-size="22" fill="#172026">MCP、skills、subagents、hooks</text>
+    <text x="542" y="438" font-size="20" fill="#52616b">启发：中文模型开始抢工作流入口</text>
+    <text x="542" y="482" font-size="19" fill="#b45309">边界：早期仓库，需实测</text>
+
+    <rect x="930" y="242" width="380" height="284" rx="8" fill="#f7f5ff" stroke="#c5b6ef"/>
+    <text x="962" y="296" font-size="26" font-weight="700" fill="#3b2f69">3 控制面升温</text>
+    <text x="962" y="350" font-size="22" fill="#172026">ccglass 看 prompt / token</text>
+    <text x="962" y="389" font-size="22" fill="#172026">Nerve 做记忆 / cron / skills</text>
+    <text x="962" y="428" font-size="22" fill="#172026">nilbox 管沙箱 / 密钥</text>
+    <text x="962" y="482" font-size="19" fill="#b45309">结论：先审计，再安装</text>
+  </g>
+
+  <rect x="90" y="590" width="1220" height="150" rx="8" fill="#eef7f3" stroke="#9ac8b3"/>
+  <text x="122" y="642" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="26" font-weight="700" fill="#0f5132">对你的行动</text>
+  <text x="122" y="694" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="24" fill="#172026">把 AI news 升级成：本地路由层 + 外部搜索器 + 证据审计 + 预算/安全日志</text>
+  <text x="122" y="730" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="20" fill="#52616b">AnySearch / Kimi / 新 skill 都先进候选池，不直接进入生产流</text>
+
+  <text x="90" y="805" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="21" fill="#52616b">监控关键词：auto model selection · coding agent · agent observability · self-hosted runtime · VM sandbox · MCP</text>
+</svg>

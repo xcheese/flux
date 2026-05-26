@@ -34,6 +34,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-26: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-05-26.md` 与精华图 `40_outputs/daily_ai/2026-05-26_visual.svg`；主线是 agent 竞争从模型能力转向路由、执行环境、日志、预算和安全边界
 - 2026-05-25: 新增 `20_wiki/skills/agent_skill_candidate_list.md` 与顶部精华图；结论是 Top5 skill 资产应围绕 AI 情报、视频补证、官方核验、工程护栏和长期记忆闭环，AnySearch 先进入隔离试用，不直接接入生产 `AI news`
 - 2026-05-25: 分析萌萌本萌抖音视频《codex超好用skills》，报告为 `medium` evidence / `medium` confidence；结论是 AnySearch 值得进入试用清单，但不应直接进入生产知识库采集流，后续需先做 API key 安全、脚本审计和最小验证
 - 2026-05-25: 分析产品君抖音视频《盘点一周AI大事(5月24日)》，报告为 `medium` evidence / `medium` confidence；结论是“高密度 AI 情报候选池，不是事实源”，后续应优先核验 AI 同传、世界模型和 Codex 真实可用性线索
@@ -90,6 +91,7 @@ status: active
 ### Outputs
 
 - daily_ai:
+  - 2026-05-26: `40_outputs/daily_ai/2026-05-26.md`
   - 2026-05-20 / andrej-karpathy-skills: `40_outputs/daily_ai/2026-05-20_andrej-karpathy-skills.md`
   - 2026-05-20: `40_outputs/daily_ai/2026-05-20.md`
   - 2026-05-13: `40_outputs/daily_ai/2026-05-13.md`
