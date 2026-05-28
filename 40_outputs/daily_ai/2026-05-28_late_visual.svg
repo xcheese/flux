@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 820" width="1400" height="820">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbfdff"/>
+      <stop offset="1" stop-color="#f1f7f2"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <style>
+    text {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      fill: #111827;
+    }
+    .eyebrow { font-size: 24px; font-weight: 750; fill: #047857; }
+    .title { font-size: 46px; font-weight: 850; }
+    .subtitle { font-size: 28px; fill: #475569; }
+    .card-title { font-size: 34px; font-weight: 850; }
+    .card-text { font-size: 25px; fill: #334155; }
+    .badge { font-size: 22px; font-weight: 800; fill: #ffffff; }
+    .action { font-size: 28px; font-weight: 800; fill: #0f172a; }
+    .action-sub { font-size: 24px; fill: #475569; }
+  </style>
+
+  <rect width="1400" height="820" fill="url(#bg)"/>
+  <rect x="54" y="48" width="1292" height="150" rx="28" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="88" y="94" class="eyebrow">AI NEWS LATE 2026-05-28</text>
+  <text x="88" y="145" class="title">Agent 竞争进入“可治理”阶段</text>
+  <text x="88" y="180" class="subtitle">主线：凭证委托 / 治理控制面 / 长周期评测</text>
+
+  <g transform="translate(54 230)">
+    <rect width="402" height="360" rx="24" fill="#ffffff" filter="url(#shadow)"/>
+    <rect x="28" y="28" width="124" height="38" rx="19" fill="#7c3aed"/>
+    <text x="48" y="54" class="badge">凭证委托</text>
+    <text x="28" y="118" class="card-title">Proton Pass</text>
+    <text x="28" y="160" class="card-title">给 agent 发令牌</text>
+    <text x="28" y="220" class="card-text">按 vault 授权</text>
+    <text x="28" y="258" class="card-text">可过期、可撤销</text>
+    <text x="28" y="296" class="card-text">每次访问要留理由</text>
+  </g>
+
+  <g transform="translate(500 230)">
+    <rect width="402" height="360" rx="24" fill="#ffffff" filter="url(#shadow)"/>
+    <rect x="28" y="28" width="124" height="38" rx="19" fill="#2563eb"/>
+    <text x="48" y="54" class="badge">治理控制</text>
+    <text x="28" y="118" class="card-title">Microsoft AGT</text>
+    <text x="28" y="160" class="card-title">把规则放到中间层</text>
+    <text x="28" y="220" class="card-text">Policy / Identity / Audit</text>
+    <text x="28" y="258" class="card-text">不是靠 prompt 守规矩</text>
+    <text x="28" y="296" class="card-text">边界要承认并分层</text>
+  </g>
+
+  <g transform="translate(946 230)">
+    <rect width="400" height="360" rx="24" fill="#ffffff" filter="url(#shadow)"/>
+    <rect x="28" y="28" width="124" height="38" rx="19" fill="#ea580c"/>
+    <text x="48" y="54" class="badge">真实评测</text>
+    <text x="28" y="118" class="card-title">DeepSWE</text>
+    <text x="28" y="160" class="card-title">拉开 coding agent 差距</text>
+    <text x="28" y="220" class="card-text">原创长周期任务</text>
+    <text x="28" y="258" class="card-text">91 个仓库 / 5 种语言</text>
+    <text x="28" y="296" class="card-text">看完成度，不看口号</text>
+  </g>
+
+  <rect x="54" y="638" width="1292" height="118" rx="26" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="88" y="694" class="action">今天最值钱的动作：把 skill 当成可治理资产</text>
+  <text x="88" y="735" class="action-sub">权限 / 审计 / 评测 / 可迁移，不再只是提示词文件</text>
+  <path d="M1180 686h80m0 0-30-30m30 30-30 30" stroke="#047857" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

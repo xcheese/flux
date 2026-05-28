@@ -46,6 +46,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-05-28: 生成同日增量 `AI news` 日报 `40_outputs/daily_ai/2026-05-28_late.md` 与精华图 `40_outputs/daily_ai/2026-05-28_late_visual.svg`；主线是 agent 从可用走向可治理，关注凭证委托、治理控制面和长周期 coding agent 评测
 - 2026-05-28: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-05-28.md` 与精华图 `40_outputs/daily_ai/2026-05-28_visual.svg`；主线是 agent 开始碰交易/支付，同时暴露 BadHost 这类基础设施安全债，并需要本地检索路由
 - 2026-05-26: 将 Shared Memory 升级为轻量记忆系统 v1；新增协议、schema、生命周期、模板、样例 entries、索引和 Node 校验/索引脚本，同时保留 `memory.md` 作为共享入口
 - 2026-05-26: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-05-26.md` 与精华图 `40_outputs/daily_ai/2026-05-26_visual.svg`；主线是 agent 竞争从模型能力转向路由、执行环境、日志、预算和安全边界
@@ -114,6 +115,7 @@ status: active
 ### Outputs
 
 - daily_ai:
+  - 2026-05-28 late: `40_outputs/daily_ai/2026-05-28_late.md`
   - 2026-05-28: `40_outputs/daily_ai/2026-05-28.md`
   - 2026-05-26: `40_outputs/daily_ai/2026-05-26.md`
   - 2026-05-20 / andrej-karpathy-skills: `40_outputs/daily_ai/2026-05-20_andrej-karpathy-skills.md`
