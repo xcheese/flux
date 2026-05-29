@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 820" width="1400" height="820">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbfdff"/>
+      <stop offset="1" stop-color="#f3f7ff"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <style>
+    text {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      fill: #111827;
+    }
+    .eyebrow { font-size: 24px; font-weight: 750; fill: #2563eb; }
+    .title { font-size: 46px; font-weight: 850; }
+    .subtitle { font-size: 28px; fill: #475569; }
+    .card-title { font-size: 34px; font-weight: 850; }
+    .card-text { font-size: 25px; fill: #334155; }
+    .badge { font-size: 22px; font-weight: 800; fill: #ffffff; }
+    .action { font-size: 28px; font-weight: 800; fill: #0f172a; }
+    .action-sub { font-size: 24px; fill: #475569; }
+  </style>
+
+  <rect width="1400" height="820" fill="url(#bg)"/>
+  <rect x="54" y="48" width="1292" height="150" rx="28" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="88" y="94" class="eyebrow">AI NEWS 2026-05-29</text>
+  <text x="88" y="145" class="title">Agent 能力变强，边界也要变硬</text>
+  <text x="88" y="180" class="subtitle">主线：长周期执行 / 开源多模态 / 依赖日志安全</text>
+
+  <g transform="translate(54 230)">
+    <rect width="402" height="360" rx="24" fill="#ffffff" filter="url(#shadow)"/>
+    <rect x="28" y="28" width="124" height="38" rx="19" fill="#2563eb"/>
+    <text x="48" y="54" class="badge">长任务</text>
+    <text x="28" y="118" class="card-title">Opus 4.8</text>
+    <text x="28" y="160" class="card-title">Dynamic Workflows</text>
+    <text x="28" y="220" class="card-text">数十到数百 subagents</text>
+    <text x="28" y="258" class="card-text">进度可恢复</text>
+    <text x="28" y="296" class="card-text">token 预算必须前置</text>
+  </g>
+
+  <g transform="translate(500 230)">
+    <rect width="402" height="360" rx="24" fill="#ffffff" filter="url(#shadow)"/>
+    <rect x="28" y="28" width="124" height="38" rx="19" fill="#16a34a"/>
+    <text x="48" y="54" class="badge">开源多模态</text>
+    <text x="28" y="118" class="card-title">Step 3.7 Flash</text>
+    <text x="28" y="160" class="card-title">押注 agent 成本战</text>
+    <text x="28" y="220" class="card-text">196B 级 MoE</text>
+    <text x="28" y="258" class="card-text">看图、搜索、用工具</text>
+    <text x="28" y="296" class="card-text">兼容主流 agent harness</text>
+  </g>
+
+  <g transform="translate(946 230)">
+    <rect width="400" height="360" rx="24" fill="#ffffff" filter="url(#shadow)"/>
+    <rect x="28" y="28" width="148" height="38" rx="19" fill="#dc2626"/>
+    <text x="48" y="54" class="badge">日志攻击面</text>
+    <text x="28" y="118" class="card-title">jqwik 事件</text>
+    <text x="28" y="160" class="card-title">依赖输出也能注入</text>
+    <text x="28" y="220" class="card-text">CI / 测试日志不是指令</text>
+    <text x="28" y="258" class="card-text">agent 必须隔离读取</text>
+    <text x="28" y="296" class="card-text">先过滤，再执行</text>
+  </g>
+
+  <rect x="54" y="638" width="1292" height="118" rx="26" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="88" y="694" class="action">今天最值钱的动作：给 agent 加“长任务预算 + 日志隔离”</text>
+  <text x="88" y="735" class="action-sub">模型更强不等于更安全；工具输出默认当数据，不当命令</text>
+  <path d="M1180 686h80m0 0-30-30m30 30-30 30" stroke="#2563eb" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
