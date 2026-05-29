@@ -1,0 +1,33 @@
+{
+  "url": "https://www.dmit.io/cart.php",
+  "intervalSeconds": 600,
+  "chromePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "appSupportDir": "~/Library/Application Support/FluxDmitStockMonitor",
+  "logDir": "~/Library/Logs/FluxDmitStockMonitor",
+  "checkTimeoutMs": 60000,
+  "cloudflareNotifyCooldownMs": 21600000,
+  "outOfStockKeywords": [
+    "缺货中",
+    "缺貨中",
+    "Out of Stock",
+    "Sold Out",
+    "Unavailable"
+  ],
+  "cloudflareKeywords": [
+    "Just a moment",
+    "正在进行安全验证",
+    "Enable JavaScript and cookies",
+    "Cloudflare",
+    "cf-turnstile-response"
+  ],
+  "products": [
+    {
+      "name": "LAX.AN5.Pro.TINY",
+      "requiredKeywordsAny": ["USD", "12.98"]
+    },
+    {
+      "name": "LAX.AN5.Pro.Pocket",
+      "requiredKeywordsAny": ["USD", "18.90"]
+    }
+  ]
+}
