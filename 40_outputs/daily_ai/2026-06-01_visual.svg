@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-labelledby="title desc">
+  <title id="title">AI News 2026-06-01</title>
+  <desc id="desc">三条高价值 AI 情报：Codex 远程工作站、企业 SRE agent 评测、证据化长期记忆。</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#d8dee8" flood-opacity="0.7"/>
+    </filter>
+    <style>
+      .base { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .kicker { font-size: 24px; font-weight: 800; fill: #2563eb; }
+      .headline { font-size: 48px; font-weight: 900; fill: #111827; }
+      .sub { font-size: 27px; font-weight: 500; fill: #475569; }
+      .badge { font-size: 22px; font-weight: 800; fill: #ffffff; }
+      .card-title { font-size: 34px; font-weight: 900; fill: #111827; }
+      .card-text { font-size: 25px; font-weight: 520; fill: #334155; }
+      .action { font-size: 29px; font-weight: 900; fill: #111827; }
+      .action-sub { font-size: 25px; font-weight: 520; fill: #475569; }
+    </style>
+  </defs>
+  <rect width="1400" height="820" fill="#f8fafc"/>
+
+  <g class="base">
+    <rect x="54" y="48" width="1292" height="150" rx="26" fill="#ffffff" filter="url(#shadow)"/>
+    <text x="88" y="94" class="kicker">AI NEWS 2026-06-01</text>
+    <text x="88" y="145" class="headline">Agent 进入可远程、可评测、可记忆阶段</text>
+    <text x="88" y="181" class="sub">主线：托管执行 / 真实任务评测 / 证据化长期记忆</text>
+
+    <g transform="translate(54 230)">
+      <rect width="400" height="360" rx="24" fill="#ffffff" filter="url(#shadow)"/>
+      <rect x="28" y="28" width="142" height="38" rx="19" fill="#2563eb"/>
+      <text x="48" y="54" class="badge">远程工作站</text>
+      <text x="28" y="118" class="card-title">Codex Windows</text>
+      <text x="28" y="160" class="card-title">手机接管长任务</text>
+      <text x="28" y="220" class="card-text">项目仍在主机上跑</text>
+      <text x="28" y="258" class="card-text">token / 活动可追踪</text>
+      <text x="28" y="296" class="card-text">权限边界更重要</text>
+    </g>
+
+    <g transform="translate(500 230)">
+      <rect width="400" height="360" rx="24" fill="#ffffff" filter="url(#shadow)"/>
+      <rect x="28" y="28" width="142" height="38" rx="19" fill="#16a34a"/>
+      <text x="48" y="54" class="badge">真实评测</text>
+      <text x="28" y="118" class="card-title">ITBench-AA</text>
+      <text x="28" y="160" class="card-title">SRE agent 未过半</text>
+      <text x="28" y="220" class="card-text">59 个 K8s 事故任务</text>
+      <text x="28" y="258" class="card-text">长轨迹不等于好答案</text>
+      <text x="28" y="296" class="card-text">成本 / 准确率要同看</text>
+    </g>
+
+    <g transform="translate(946 230)">
+      <rect width="400" height="360" rx="24" fill="#ffffff" filter="url(#shadow)"/>
+      <rect x="28" y="28" width="156" height="38" rx="19" fill="#dc2626"/>
+      <text x="48" y="54" class="badge">长期记忆</text>
+      <text x="28" y="118" class="card-title">Eywa Memory</text>
+      <text x="28" y="160" class="card-title">先证据后信念</text>
+      <text x="28" y="220" class="card-text">原始证据不可变</text>
+      <text x="28" y="258" class="card-text">检索不调用 LLM</text>
+      <text x="28" y="296" class="card-text">上下文不混指令</text>
+    </g>
+
+    <rect x="54" y="638" width="1292" height="118" rx="26" fill="#ffffff" filter="url(#shadow)"/>
+    <text x="88" y="694" class="action">今天最值钱的动作：建“任务日志 + 评测表 + 证据记忆”三张账</text>
+    <text x="88" y="735" class="action-sub">不要只让 agent 跑更久；要让它可追踪、可打分、可回滚</text>
+    <path d="M1228 657 L1264 693 L1228 729" fill="none" stroke="#2563eb" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="1178" y1="693" x2="1261" y2="693" stroke="#2563eb" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>
