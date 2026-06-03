@@ -46,6 +46,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-06-03: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-03.md` 与精华图 `40_outputs/daily_ai/2026-06-03_visual.svg`；主线是 agent 从工具变成可运营系统，关注 OpenAI role-based plugins、Microsoft Build 2026 agent trust stack、vLLM SAAR 会话级路由
 - 2026-06-02: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-02.md` 与精华图 `40_outputs/daily_ai/2026-06-02_visual.svg`；主线是 agent 红利转向开放模型、生产制度和 skill 安全，关注 MiniMax M3、Google SRE AI、SkillHarm 技能攻击
 - 2026-06-01: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-01.md` 与精华图 `40_outputs/daily_ai/2026-06-01_visual.svg`；主线是 agent 进入可远程托管、可评测、可记忆阶段，关注 Codex Windows/remote/profiles、ITBench-AA 企业 SRE agent 评测、Eywa 证据化长期记忆架构
 - 2026-05-29: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-05-29.md` 与精华图 `40_outputs/daily_ai/2026-05-29_visual.svg`；主线是 Claude Opus 4.8 / Dynamic Workflows 提升长周期 agent 能力，Step 3.7 Flash 押注低成本多模态 agent 执行器，jqwik 事件暴露依赖日志 prompt injection 风险
@@ -118,6 +119,7 @@ status: active
 ### Outputs
 
 - daily_ai:
+  - 2026-06-03: `40_outputs/daily_ai/2026-06-03.md`
   - 2026-06-02: `40_outputs/daily_ai/2026-06-02.md`
   - 2026-06-01: `40_outputs/daily_ai/2026-06-01.md`
   - 2026-05-29: `40_outputs/daily_ai/2026-05-29.md`
