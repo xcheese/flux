@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-labelledby="title desc">
+  <title id="title">Codex + Obsidian 知识库视频分析精华图</title>
+  <desc id="desc">展示视频核心：知识库不是收藏夹，而是输入、消化、技能化、输出回流的自循环系统。</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#d7dee9" flood-opacity="0.7"/>
+    </filter>
+    <style>
+      .bg{fill:#f6f8fb}
+      .card{fill:#fff;filter:url(#shadow)}
+      .t{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;fill:#111827}
+      .h{font-weight:900}
+      .b{font-weight:780}
+      .m{fill:#4b5563}
+      .tag{fill:#fff;font-weight:850}
+    </style>
+  </defs>
+  <rect class="bg" width="1400" height="820"/>
+
+  <rect class="card" x="54" y="48" width="1292" height="168" rx="26"/>
+  <text class="t h" x="88" y="99" font-size="27" fill="#2563eb">VIDEO ANALYSIS · HIGH EVIDENCE</text>
+  <text class="t h" x="88" y="154" font-size="49">知识库不是收藏夹，是一个生产循环</text>
+  <text class="t b m" x="88" y="191" font-size="27">输入 → 消化 → 技能化 → 输出 → 回流；Codex 负责持续维护</text>
+
+  <rect class="card" x="54" y="250" width="286" height="330" rx="22"/>
+  <rect x="82" y="274" width="116" height="38" rx="19" fill="#2563eb"/>
+  <text class="t tag" x="105" y="300" font-size="22">输入</text>
+  <text class="t h" x="82" y="357" font-size="33">10_raw</text>
+  <text class="t b m" x="82" y="424" font-size="27">网页 / 视频</text>
+  <text class="t b m" x="82" y="466" font-size="27">论文 / 会议</text>
+  <text class="t b m" x="82" y="508" font-size="27">RSS / GitHub</text>
+
+  <rect class="card" x="384" y="250" width="286" height="330" rx="22"/>
+  <rect x="412" y="274" width="116" height="38" rx="19" fill="#16a34a"/>
+  <text class="t tag" x="435" y="300" font-size="22">消化</text>
+  <text class="t h" x="412" y="357" font-size="33">20_wiki</text>
+  <text class="t b m" x="412" y="424" font-size="27">抽概念</text>
+  <text class="t b m" x="412" y="466" font-size="27">去重复</text>
+  <text class="t b m" x="412" y="508" font-size="27">定期复盘</text>
+
+  <rect class="card" x="714" y="250" width="286" height="330" rx="22"/>
+  <rect x="742" y="274" width="116" height="38" rx="19" fill="#7c3aed"/>
+  <text class="t tag" x="765" y="300" font-size="22">技能</text>
+  <text class="t h" x="742" y="357" font-size="33">90_skills</text>
+  <text class="t b m" x="742" y="424" font-size="27">方法论</text>
+  <text class="t b m" x="742" y="466" font-size="27">文风</text>
+  <text class="t b m" x="742" y="508" font-size="27">质量闸门</text>
+
+  <rect class="card" x="1044" y="250" width="300" height="330" rx="22"/>
+  <rect x="1072" y="274" width="116" height="38" rx="19" fill="#dc2626"/>
+  <text class="t tag" x="1095" y="300" font-size="22">输出</text>
+  <text class="t h" x="1072" y="357" font-size="33">40_outputs</text>
+  <text class="t b m" x="1072" y="424" font-size="27">日报 / 报告</text>
+  <text class="t b m" x="1072" y="466" font-size="27">PPT / 图片</text>
+  <text class="t b m" x="1072" y="508" font-size="27">再回流复盘</text>
+
+  <rect class="card" x="54" y="640" width="1292" height="116" rx="22"/>
+  <text class="t h" x="88" y="694" font-size="31">对你的动作：不是照搬 Obsidian，而是把现有知识库闭环补齐</text>
+  <text class="t b m" x="88" y="735" font-size="25">先加 source registry、定期蒸馏、skill 评测和 API key 安全边界</text>
+  <path d="M1222 656 L1268 702 L1222 746" fill="none" stroke="#2563eb" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1178 702 H1262" fill="none" stroke="#2563eb" stroke-width="12" stroke-linecap="round"/>
+</svg>
