@@ -47,6 +47,7 @@ status: active
 ## Recent Changes
 
 - 2026-06-04: 新增用户 AI 投资与个人杠杆路径画像：38 岁、10 年+互联网技术、港美股经验、近 3 个月深用 AI coding；后续用芒格防错 + 纳瓦尔杠杆框架继续细化
+- 2026-06-04: 分析差评硬件部抖音视频 `10_raw/videos/2026-06-04_douyin_7640457019010338082/analysis.md`；证据等级 `medium`、置信度 `medium`，结论是 OpenClaw 的长期价值在于可控个人 agent 底座，但安全、成本、评测和停止机制必须先于复杂自动化
 - 2026-06-04: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-04.md` 与精华图 `40_outputs/daily_ai/2026-06-04_visual.svg`；主线是 agent 生产化先补上下文供给、系统级观测和浏览器防污染，关注 Microsoft Web IQ、AgentSight、agent-browser-shield
 - 2026-06-03: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-03.md` 与精华图 `40_outputs/daily_ai/2026-06-03_visual.svg`；主线是 agent 从工具变成可运营系统，关注 OpenAI role-based plugins、Microsoft Build 2026 agent trust stack、vLLM SAAR 会话级路由
 - 2026-06-02: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-02.md` 与精华图 `40_outputs/daily_ai/2026-06-02_visual.svg`；主线是 agent 红利转向开放模型、生产制度和 skill 安全，关注 MiniMax M3、Google SRE AI、SkillHarm 技能攻击
@@ -151,6 +152,7 @@ status: active
 ### Raw Inputs
 
 - douyin:
+  - 2026-06-04 / 差评硬件部 OpenClaw 核心开发者访谈: `10_raw/videos/2026-06-04_douyin_7640457019010338082/analysis.md`
   - 2026-05-25 / 萌萌本萌 Codex Skills: `10_raw/videos/2026-05-25_douyin_7642361133782160113/analysis.md`
   - 2026-05-25 / 产品君 AI 周报: `10_raw/videos/2026-05-25_douyin_7643493803533323570/analysis.md`
   - 2026-05-13: `10_raw/links/2026-05-13_douyin_guo-yu_ai_life_changes.md`

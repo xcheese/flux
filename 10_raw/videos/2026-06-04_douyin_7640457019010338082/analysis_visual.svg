@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-labelledby="title desc">
+  <title id="title">OpenClaw 访谈分析精华图</title>
+  <desc id="desc">展示 OpenClaw 核心开发者访谈的核心判断：价值不在跟风安装，而在构建可控的个人 agent 底座。</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#d7dee9" flood-opacity="0.7"/>
+    </filter>
+    <style>
+      .bg{fill:#f6f8fb}
+      .card{fill:#fff;filter:url(#shadow)}
+      .t{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;fill:#111827}
+      .h{font-weight:900}
+      .b{font-weight:780}
+      .m{fill:#4b5563}
+      .tag{fill:#fff;font-weight:850}
+    </style>
+  </defs>
+  <rect class="bg" width="1400" height="820"/>
+
+  <rect class="card" x="54" y="48" width="1292" height="168" rx="26"/>
+  <text class="t h" x="88" y="99" font-size="27" fill="#2563eb">VIDEO ANALYSIS · MEDIUM EVIDENCE</text>
+  <text class="t h" x="88" y="154" font-size="49">OpenClaw 的价值，不是装一个工具</text>
+  <text class="t b m" x="88" y="191" font-size="27">而是把 agent 做成：有记忆、有技能、有边界的个人工作底座</text>
+
+  <rect class="card" x="54" y="250" width="398" height="330" rx="22"/>
+  <rect x="82" y="274" width="154" height="38" rx="19" fill="#2563eb"/>
+  <text class="t tag" x="104" y="300" font-size="22">真正优势</text>
+  <text class="t h" x="82" y="357" font-size="33">控制权 + 个性化</text>
+  <text class="t b m" x="82" y="424" font-size="27">记忆知道你是谁</text>
+  <text class="t b m" x="82" y="466" font-size="27">skills 定义怎么做事</text>
+  <text class="t b m" x="82" y="508" font-size="27">渠道让它随时触达</text>
+
+  <rect class="card" x="500" y="250" width="398" height="330" rx="22"/>
+  <rect x="528" y="274" width="154" height="38" rx="19" fill="#16a34a"/>
+  <text class="t tag" x="550" y="300" font-size="22">最大误区</text>
+  <text class="t h" x="528" y="357" font-size="33">复杂自动化太早</text>
+  <text class="t b m" x="528" y="424" font-size="27">token 成本会爆</text>
+  <text class="t b m" x="528" y="466" font-size="27">技能没评测就会漂</text>
+  <text class="t b m" x="528" y="508" font-size="27">模型变了方法也变</text>
+
+  <rect class="card" x="946" y="250" width="398" height="330" rx="22"/>
+  <rect x="974" y="274" width="154" height="38" rx="19" fill="#dc2626"/>
+  <text class="t tag" x="996" y="300" font-size="22">必须先做</text>
+  <text class="t h" x="974" y="357" font-size="33">安全和停机机制</text>
+  <text class="t b m" x="974" y="424" font-size="27">先隔离环境</text>
+  <text class="t b m" x="974" y="466" font-size="27">再给权限和凭证</text>
+  <text class="t b m" x="974" y="508" font-size="27">保留 /stop 和日志</text>
+
+  <rect class="card" x="54" y="640" width="1292" height="116" rx="22"/>
+  <text class="t h" x="88" y="694" font-size="31">对你的动作：用小任务训练 agent，而不是一上来托管生活和公司</text>
+  <text class="t b m" x="88" y="735" font-size="25">先做权限表、停止按钮、评测清单；记忆和 skills 都要可回滚</text>
+  <path d="M1222 656 L1268 702 L1222 746" fill="none" stroke="#2563eb" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1178 702 H1262" fill="none" stroke="#2563eb" stroke-width="12" stroke-linecap="round"/>
+</svg>
