@@ -2,7 +2,7 @@
 type: shared_memory
 owner: momo
 scope: cross-agent
-updated_at: 2026-05-26
+updated_at: 2026-06-04
 status: active
 ---
 
@@ -24,7 +24,7 @@ status: active
 
 - Type: `shared_memory`
 - Scope: `cross-agent`
-- Updated: `2026-05-26`
+- Updated: `2026-06-04`
 - Status: `active`
 
 ## Purpose
@@ -38,14 +38,15 @@ status: active
 ## Current Focus
 
 - Active project: `thinking-lens-system`
-- Current goal: 优化专家团信息源感知范围、沉浸式 persona rendering 与人物还原度
+- Current goal: 优化专家团信息源感知范围、沉浸式 persona rendering 与人物还原度；同时沉淀用户 AI 投资/个人成长参与路径
 - Latest artifact: `90_system/skills/skill_router.md`
 - Memory entry: `90_system/shared_memory/memory.md`
-- Next action for ChatGPT: 若用户提到“专家团 / lens / 沉浸式讨论 / 用某某口吻”，优先读取 Thinking Lens System；若 raw index/router 失败，直接使用本文件的 Single-file Fallback Router
+- Next action for ChatGPT: 若用户提到“专家团 / lens / 沉浸式讨论 / 用某某口吻”，优先读取 Thinking Lens System；若用户继续聊 AI 投资/职业成长，先读取 `90_system/shared_memory/entries/growth/mem-20260604-ai-investment-growth-path.md`
 - Blockers: 暂无
 
 ## Recent Changes
 
+- 2026-06-04: 新增用户 AI 投资与个人杠杆路径画像：38 岁、10 年+互联网技术、港美股经验、近 3 个月深用 AI coding；后续用芒格防错 + 纳瓦尔杠杆框架继续细化
 - 2026-06-04: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-04.md` 与精华图 `40_outputs/daily_ai/2026-06-04_visual.svg`；主线是 agent 生产化先补上下文供给、系统级观测和浏览器防污染，关注 Microsoft Web IQ、AgentSight、agent-browser-shield
 - 2026-06-03: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-03.md` 与精华图 `40_outputs/daily_ai/2026-06-03_visual.svg`；主线是 agent 从工具变成可运营系统，关注 OpenAI role-based plugins、Microsoft Build 2026 agent trust stack、vLLM SAAR 会话级路由
 - 2026-06-02: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-02.md` 与精华图 `40_outputs/daily_ai/2026-06-02_visual.svg`；主线是 agent 红利转向开放模型、生产制度和 skill 安全，关注 MiniMax M3、Google SRE AI、SkillHarm 技能攻击
@@ -86,6 +87,7 @@ status: active
 - lifecycle: `90_system/shared_memory/lifecycle.md`
 - current index: `90_system/shared_memory/indexes/current.md`
 - entries root: `90_system/shared_memory/entries/`
+- AI investing/growth profile: `90_system/shared_memory/entries/growth/mem-20260604-ai-investment-growth-path.md`
 - templates root: `90_system/shared_memory/templates/`
 - validation script: `90_system/shared_memory/scripts/validate_memory.mjs`
 - index builder: `90_system/shared_memory/scripts/build_indexes.mjs`
@@ -254,6 +256,35 @@ Routing rules:
 - 史蒂夫·乔布斯（Steve Jobs）、查理·芒格（Charlie Munger）属于已故人物；不能声称其对去世后事件有真实观点，只能标为 `lens 推断`
 
 ## Active Records
+
+### 2026-06-04 / ai-investment-growth-path
+
+- Project: `personal-growth-ai-investing`
+- Status: `active`
+- Priority: `high`
+- Updated: `2026-06-04`
+- Context: 用户希望从国内视角参与 AI / 科技股 / 宏大叙事下的发展收益，但觉得芒格/纳瓦尔此前建议仍偏宽泛，因此补充了个人背景和焦虑点。
+- User profile:
+  - 38 岁，10 年以上互联网公司技术背景。
+  - 有港股和美股经验，主要买自己熟悉行业的公司。
+  - 自述看不懂金融概念，过去凭行业新闻、信息和自身理解投资中概股/互联网公司，前几年总体亏损。
+  - 去年买宁德时代赚钱；小米之前赚过，近期有回撤或亏损。
+  - 最近约 3 个月深入使用 AI 编程相关工具：Claude、Gemini、Codex 等。
+  - 正在大量了解 AI 信息和上下游产业：芯片、算力、存储、中美生态位。
+  - 关注 Anthropic、OpenAI、Google、智谱 GLM、MiniMax、Kimi 等。
+  - 核心焦虑：如何有效参与 AI 变革，是投钱、投精力，还是其他方式；缺少明确方向和路径。
+- Lens synthesis:
+  - 芒格：用户最该防止把“熟悉行业新闻”误认为“懂生意”；应缩小能力圈，每次买单股前写一页纸，讲清赚钱方式、AI 对收入/成本影响、失败路径和卖出条件。
+  - 纳瓦尔：用户更重要的机会不是只买 AI 股票，而是把 10 年技术背景 + AI coding 深度使用变成个人杠杆，逐步拥有可复用资产或非工资型成果。
+- Recommended path:
+  - 资本参与：小比例、低杠杆、用宽基/科技/AI 产业链 ETF 或能写清楚一页纸的单股保持市场体感。
+  - 能力参与：主仓位放在 AI coding agent workflow、RAG/MCP/评估、真实业务自动化和团队研发流程提效。
+  - 所有权参与：12 个月内尝试做一个小产品、垂直知识库、自动化服务、工作流模板或咨询交付包。
+  - 未来 3 个月：建 AI 投资观察清单；每周写 500 字产业/投资笔记；用 AI 做一个真实可交付项目；设置小比例 AI 主题仓位但不影响生活安全感。
+- Entry:
+  - `90_system/shared_memory/entries/growth/mem-20260604-ai-investment-growth-path.md`
+- Next:
+  - For ChatGPT: 用户一会儿接着聊时，先读取这条 entry，不要重新泛泛科普；继续用“芒格防错 + 纳瓦尔杠杆”的双 lens 给具体路径。
 
 ### 2026-05-20 / add-mark-zuckerberg-lens
 

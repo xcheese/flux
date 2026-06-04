@@ -6,6 +6,7 @@
 
 - `thinking-lens-system`：专家团 / lens / persona fidelity 仍是当前活跃系统。
 - `shared-memory-v1`：本次新增轻量结构化记忆协议、模板、索引和校验。
+- `personal-growth-ai-investing`：用户正在用芒格 / 纳瓦尔 lens 拆解如何从国内视角参与 AI 变革，核心路径是小仓位资本参与 + 大仓位 AI 能力/所有权杠杆。
 
 ## 当前重点目标
 
@@ -27,12 +28,14 @@
 
 ## 最新重要产物
 
+- `90_system/shared_memory/entries/growth/mem-20260604-ai-investment-growth-path.md`
 - `90_system/shared_memory/entries/growth/mem-20260516-ai-high-value-usage-map.md`
 - `90_system/shared_memory/entries/internalized/mem-20260520-global-codex-guardrails.md`
 - `90_system/shared_memory/entries/growth/mem-20260520-thinking-lens-system.md`
 
 ## 最近有效变化
 
+- 2026-06-04：新增用户 AI 投资与个人杠杆路径画像；记录 38 岁、10 年+互联网技术背景、港美股经验、近 3 个月深用 AI coding、关注 AI 上下游与中美生态，后续用芒格防错 + 纳瓦尔杠杆框架继续。
 - 2026-05-26：Shared Memory 升级为轻量记忆系统 v1，新增协议、schema、生命周期、模板、样例 entries、索引和校验脚本。
 - 2026-05-26：生成 `AI news` 日报 `40_outputs/daily_ai/2026-05-26.md` 与精华图 `40_outputs/daily_ai/2026-05-26_visual.svg`。
 - 2026-05-25：新增 `20_wiki/skills/agent_skill_candidate_list.md`，用于评估可纳入 Flux 的 agent skills。
