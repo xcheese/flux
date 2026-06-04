@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-labelledby="title desc">
+  <title id="title">AI news 2026-06-04 精华图</title>
+  <desc id="desc">展示 2026-06-04 AI 高价值信息：agent 生产化的三件套是上下文供给、系统级观测和浏览器防污染。</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#d4dde8" flood-opacity="0.65"/>
+    </filter>
+    <style>
+      .bg{fill:#f6f8fb}
+      .card{fill:#fff;filter:url(#shadow)}
+      .title{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;fill:#111827;font-weight:900}
+      .muted{fill:#4b5563}
+      .body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;fill:#374151;font-weight:750}
+      .tag{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;fill:#fff;font-weight:850}
+      .small{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;fill:#4b5563;font-weight:750}
+    </style>
+  </defs>
+
+  <rect class="bg" width="1400" height="820"/>
+
+  <rect class="card" x="54" y="48" width="1292" height="162" rx="26"/>
+  <text class="title" x="88" y="98" font-size="27" fill="#2563eb">AI NEWS 2026-06-04</text>
+  <text class="title" x="88" y="151" font-size="51">Agent 生产化，先补三层基础设施</text>
+  <text class="title muted" x="88" y="187" font-size="27">不是再追一个模型：先管好上下文、行动轨迹和网页输入</text>
+
+  <rect class="card" x="54" y="244" width="398" height="345" rx="22"/>
+  <rect x="82" y="268" width="168" height="38" rx="19" fill="#2563eb"/>
+  <text class="tag" x="102" y="294" font-size="22">上下文供给</text>
+  <text class="title" x="82" y="350" font-size="33">Microsoft Web IQ</text>
+  <text class="title" x="82" y="393" font-size="33">搜索变 grounding</text>
+  <text class="body" x="82" y="454" font-size="27">MCP-native / model-agnostic</text>
+  <text class="body" x="82" y="494" font-size="27">返回 citation-ready context</text>
+  <text class="body" x="82" y="534" font-size="27">AnySearch 要学会供证据</text>
+
+  <rect class="card" x="500" y="244" width="398" height="345" rx="22"/>
+  <rect x="528" y="268" width="168" height="38" rx="19" fill="#16a34a"/>
+  <text class="tag" x="548" y="294" font-size="22">系统级观测</text>
+  <text class="title" x="528" y="350" font-size="33">AgentSight</text>
+  <text class="title" x="528" y="393" font-size="33">看见 agent 做了什么</text>
+  <text class="body" x="528" y="454" font-size="27">process / file / network</text>
+  <text class="body" x="528" y="494" font-size="27">prompt / model / token</text>
+  <text class="body" x="528" y="534" font-size="27">日志独立于 agent 自述</text>
+
+  <rect class="card" x="946" y="244" width="398" height="345" rx="22"/>
+  <rect x="974" y="268" width="190" height="38" rx="19" fill="#dc2626"/>
+  <text class="tag" x="994" y="294" font-size="22">浏览器防污染</text>
+  <text class="title" x="974" y="350" font-size="33">Agent Browser Shield</text>
+  <text class="title" x="974" y="393" font-size="33">先过滤再喂模型</text>
+  <text class="body" x="974" y="454" font-size="27">hidden text / PII / dark pattern</text>
+  <text class="body" x="974" y="494" font-size="27">减少上下文噪声和注入</text>
+  <text class="body" x="974" y="534" font-size="27">网页 agent 不能裸奔</text>
+
+  <rect class="card" x="54" y="640" width="1292" height="116" rx="22"/>
+  <text class="title" x="88" y="694" font-size="31">今天最值钱的动作：把 AI news 做成可审计的 context router</text>
+  <text class="small" x="88" y="735" font-size="25">每条信息都记录：来源、权限、过滤、证据、工具动作、成本和可回放轨迹</text>
+  <path d="M1222 656 L1268 702 L1222 746" fill="none" stroke="#2563eb" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M1178 702 H1262" fill="none" stroke="#2563eb" stroke-width="12" stroke-linecap="round"/>
+</svg>
