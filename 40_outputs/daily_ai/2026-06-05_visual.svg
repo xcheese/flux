@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-labelledby="title desc">
+  <title id="title">2026-06-05 AI 情报精华图</title>
+  <desc id="desc">Agent 生产化从演示转向可验收产出、上下文效率和视觉资产化。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbfdff"/>
+      <stop offset="1" stop-color="#f2f6fb"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#24425f" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .label{font:600 24px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;fill:#5a6b7f}
+      .title{font:800 48px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;fill:#152238}
+      .sub{font:500 26px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;fill:#4a5c6f}
+      .cardTitle{font:800 30px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;fill:#18263a}
+      .cardBody{font:600 23px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;fill:#526579}
+      .tiny{font:700 19px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;fill:#697b8e}
+      .num{font:900 36px -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;fill:#ffffff}
+    </style>
+  </defs>
+  <rect width="1400" height="820" fill="url(#bg)"/>
+  <rect x="44" y="42" width="1312" height="736" rx="34" fill="#ffffff" stroke="#dbe5ef" filter="url(#softShadow)"/>
+
+  <text x="92" y="112" class="label">AI NEWS · 2026-06-05</text>
+  <text x="92" y="178" class="title">Agent 开始拼可验收产出</text>
+  <text x="92" y="224" class="sub">从“能做演示”转向“能计量、能复用、能沉淀”</text>
+
+  <g transform="translate(92 286)">
+    <rect x="0" y="0" width="370" height="246" rx="22" fill="#f6fbff" stroke="#cfe2f3"/>
+    <circle cx="54" cy="55" r="28" fill="#3178c6"/>
+    <text x="43" y="67" class="num">1</text>
+    <text x="94" y="61" class="cardTitle">价值验收</text>
+    <text x="32" y="124" class="cardBody">Cognition 用“有用工时”</text>
+    <text x="32" y="160" class="cardBody">衡量 Devin 产出</text>
+    <text x="32" y="203" class="tiny">启发：建 agent ROI ledger</text>
+  </g>
+
+  <g transform="translate(515 286)">
+    <rect x="0" y="0" width="370" height="246" rx="22" fill="#f8fff8" stroke="#d2e9d2"/>
+    <circle cx="54" cy="55" r="28" fill="#2f8f55"/>
+    <text x="43" y="67" class="num">2</text>
+    <text x="94" y="61" class="cardTitle">上下文加速</text>
+    <text x="32" y="124" class="cardBody">CodeFuse 把代码库</text>
+    <text x="32" y="160" class="cardBody">变成符号文件系统</text>
+    <text x="32" y="203" class="tiny">启发：少 grep，多索引</text>
+  </g>
+
+  <g transform="translate(938 286)">
+    <rect x="0" y="0" width="370" height="246" rx="22" fill="#fff9f3" stroke="#efd8bf"/>
+    <circle cx="54" cy="55" r="28" fill="#d9782f"/>
+    <text x="43" y="67" class="num">3</text>
+    <text x="94" y="61" class="cardTitle">内容资产化</text>
+    <text x="32" y="124" class="cardBody">小黑 Scenes 把配图</text>
+    <text x="32" y="160" class="cardBody">沉淀成 Codex Skill</text>
+    <text x="32" y="203" class="tiny">启发：一图只讲一判断</text>
+  </g>
+
+  <g transform="translate(112 612)">
+    <rect x="0" y="0" width="1176" height="86" rx="20" fill="#18263a"/>
+    <text x="42" y="54" style="font:800 27px -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;fill:#ffffff">今天动作：先量化产出，再优化上下文，最后把高频表达做成可复用 skill</text>
+  </g>
+</svg>
