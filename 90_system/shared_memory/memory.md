@@ -2,7 +2,7 @@
 type: shared_memory
 owner: momo
 scope: cross-agent
-updated_at: 2026-06-05
+updated_at: 2026-06-08
 status: active
 ---
 
@@ -24,7 +24,7 @@ status: active
 
 - Type: `shared_memory`
 - Scope: `cross-agent`
-- Updated: `2026-06-05`
+- Updated: `2026-06-08`
 - Status: `active`
 
 ## Purpose
@@ -46,6 +46,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-06-08: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-08.md` 与精华图 `40_outputs/daily_ai/2026-06-08_visual.svg`；主线是 agent 红利转向可控闭环，关注 OpenAI moderation scores / Lockdown Mode、RHO retro-harness、Memorix cross-agent memory
 - 2026-06-05: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-05.md` 与精华图 `40_outputs/daily_ai/2026-06-05_visual.svg`；主线是 agent 生产化从演示转向可验收产出、可索引上下文和可复用视觉/内容 skill，关注 Cognition AI Productivity Guarantee、CodeFuse、Ian Xiaohei Scenes
 - 2026-06-04: 新增用户 AI 投资与个人杠杆路径画像：38 岁、10 年+互联网技术、港美股经验、近 3 个月深用 AI coding；后续用芒格防错 + 纳瓦尔杠杆框架继续细化
 - 2026-06-04: 分析 Xuan酱抖音视频 `10_raw/videos/2026-06-04_douyin_7645192281837948196/analysis.md`；证据等级 `high`、置信度 `medium_high`，结论是 Codex + Obsidian 的核心不是工具组合，而是 raw -> wiki -> skills -> outputs -> memory 的自生长知识循环
@@ -125,6 +126,7 @@ status: active
 ### Outputs
 
 - daily_ai:
+  - 2026-06-08: `40_outputs/daily_ai/2026-06-08.md`
   - 2026-06-05: `40_outputs/daily_ai/2026-06-05.md`
   - 2026-06-04: `40_outputs/daily_ai/2026-06-04.md`
   - 2026-06-03: `40_outputs/daily_ai/2026-06-03.md`
