@@ -9,7 +9,7 @@ const ROOT = __dirname;
 const PUBLIC_DIR = path.join(ROOT, "public");
 const PORT = Number(process.env.PORT || 4321);
 
-const IGNORED_DIRS = new Set([".git", "node_modules", "public"]);
+const IGNORED_DIRS = new Set([".git", "node_modules", "output", "public", "99_assets"]);
 const IGNORED_FILES = new Set(["AGENTS.md"]);
 const TEXT_EXTENSIONS = new Set([".md", ".markdown", ".txt"]);
 const IMAGE_EXTENSIONS = new Set([".apng", ".avif", ".gif", ".jpg", ".jpeg", ".png", ".svg", ".webp"]);
