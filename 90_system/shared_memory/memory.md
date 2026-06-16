@@ -2,7 +2,7 @@
 type: shared_memory
 owner: momo
 scope: cross-agent
-updated_at: 2026-06-15
+updated_at: 2026-06-16
 status: active
 ---
 
@@ -24,7 +24,7 @@ status: active
 
 - Type: `shared_memory`
 - Scope: `cross-agent`
-- Updated: `2026-06-15`
+- Updated: `2026-06-16`
 - Status: `active`
 
 ## Purpose
@@ -46,6 +46,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-06-16: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-16.md` 与精华图 `40_outputs/daily_ai/2026-06-16_visual.svg`；主线是 Agent 治理进入工具层，关注 Arcade agent authorization、Spanly MCP observability、Greed Is Learned reward-channel addiction
 - 2026-06-15: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-15.md` 与精华图 `40_outputs/daily_ai/2026-06-15_visual.svg`；主线是 Agent 工程化进入可打包、可验收、可继承阶段，关注 Docker Agent、SonarQube MCP Server、Project Context Records
 - 2026-06-08: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-08.md` 与精华图 `40_outputs/daily_ai/2026-06-08_visual.svg`；主线是 agent 红利转向可控闭环，关注 OpenAI moderation scores / Lockdown Mode、RHO retro-harness、Memorix cross-agent memory
 - 2026-06-05: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-05.md` 与精华图 `40_outputs/daily_ai/2026-06-05_visual.svg`；主线是 agent 生产化从演示转向可验收产出、可索引上下文和可复用视觉/内容 skill，关注 Cognition AI Productivity Guarantee、CodeFuse、Ian Xiaohei Scenes
@@ -127,6 +128,7 @@ status: active
 ### Outputs
 
 - daily_ai:
+  - 2026-06-16: `40_outputs/daily_ai/2026-06-16.md`
   - 2026-06-15: `40_outputs/daily_ai/2026-06-15.md`
   - 2026-06-08: `40_outputs/daily_ai/2026-06-08.md`
   - 2026-06-05: `40_outputs/daily_ai/2026-06-05.md`
