@@ -2,7 +2,7 @@
 type: shared_memory
 owner: momo
 scope: cross-agent
-updated_at: 2026-06-18
+updated_at: 2026-06-23
 status: active
 ---
 
@@ -24,7 +24,7 @@ status: active
 
 - Type: `shared_memory`
 - Scope: `cross-agent`
-- Updated: `2026-06-18`
+- Updated: `2026-06-23`
 - Status: `active`
 
 ## Purpose
@@ -46,6 +46,7 @@ status: active
 
 ## Recent Changes
 
+- 2026-06-23: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-23.md` 与精华图 `40_outputs/daily_ai/2026-06-23_visual.svg`；主线是 agent 生产化进入可信执行阶段，关注 Five Eyes / CISA AI cyber risk、Claude extended thinking 审计边界、Selector Forge live DOM verification
 - 2026-06-18: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-18.md` 与精华图 `40_outputs/daily_ai/2026-06-18_visual.svg`；主线是 agent 进入专业工作台和持久控制面，关注 CADAM、Data Intelligence Agents、Codex Control Plane MCP
 - 2026-06-16: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-16.md` 与精华图 `40_outputs/daily_ai/2026-06-16_visual.svg`；主线是 Agent 治理进入工具层，关注 Arcade agent authorization、Spanly MCP observability、Greed Is Learned reward-channel addiction
 - 2026-06-15: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-15.md` 与精华图 `40_outputs/daily_ai/2026-06-15_visual.svg`；主线是 Agent 工程化进入可打包、可验收、可继承阶段，关注 Docker Agent、SonarQube MCP Server、Project Context Records
@@ -129,6 +130,7 @@ status: active
 ### Outputs
 
 - daily_ai:
+  - 2026-06-23: `40_outputs/daily_ai/2026-06-23.md`
   - 2026-06-18: `40_outputs/daily_ai/2026-06-18.md`
   - 2026-06-16: `40_outputs/daily_ai/2026-06-16.md`
   - 2026-06-15: `40_outputs/daily_ai/2026-06-15.md`
