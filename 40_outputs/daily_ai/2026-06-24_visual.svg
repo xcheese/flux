@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820" role="img" aria-labelledby="title desc">
+  <title id="title">2026-06-24 AI 高价值信息精华图</title>
+  <desc id="desc">三条信号：Agent Name Service、NVIDIA BioNeMo Agent Toolkit、Gensee Crate。</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .card { fill: #ffffff; stroke: #d8e1ee; stroke-width: 2; }
+      .ink { fill: #111827; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .muted { fill: #5c677a; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .blue { fill: #2563eb; }
+      .green { fill: #12a66a; }
+      .orange { fill: #e07822; }
+      .line { stroke: #c9d6e8; stroke-width: 3; stroke-linecap: round; }
+      .big { font-size: 48px; font-weight: 800; }
+      .small { font-size: 27px; }
+      .mid { font-size: 33px; font-weight: 760; }
+      .label { font-size: 21px; font-weight: 800; }
+      .tiny { font-size: 22px; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1400" height="820"/>
+  <text class="ink big" x="70" y="92">今天主线：Agent 需要“身份、技能、护栏”</text>
+  <text class="muted small" x="72" y="138">从能干活，进入能被信任地跨系统干活。</text>
+
+  <line class="line" x1="220" y1="292" x2="660" y2="292"/>
+  <line class="line" x1="740" y1="292" x2="1180" y2="292"/>
+
+  <rect class="card" x="70" y="205" width="340" height="310" rx="18"/>
+  <circle class="blue" cx="128" cy="252" r="31"/>
+  <text fill="#ffffff" font-size="25" font-weight="800" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" x="111" y="261">ID</text>
+  <text class="ink label" x="178" y="260">Agent Name Service</text>
+  <text class="ink mid" x="105" y="330">先证明是谁</text>
+  <text class="muted small" x="105" y="386">DNS 锚定身份</text>
+  <text class="muted small" x="105" y="430">验证代表谁、权限</text>
+  <text class="muted small" x="105" y="474">跨平台互信基础层</text>
+
+  <rect class="card" x="530" y="205" width="340" height="310" rx="18"/>
+  <circle class="green" cx="588" cy="252" r="31"/>
+  <text fill="#ffffff" font-size="25" font-weight="800" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" x="571" y="261">SK</text>
+  <text class="ink label" x="638" y="260">BioNeMo Toolkit</text>
+  <text class="ink mid" x="565" y="330">技能开始行业化</text>
+  <text class="muted small" x="565" y="386">生命科学 agent skills</text>
+  <text class="muted small" x="565" y="430">工具、模型、工作流打包</text>
+  <text class="muted small" x="565" y="474">Codex / Claude 可安装</text>
+
+  <rect class="card" x="990" y="205" width="340" height="310" rx="18"/>
+  <circle class="orange" cx="1048" cy="252" r="31"/>
+  <text fill="#ffffff" font-size="25" font-weight="800" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" x="1031" y="261">GR</text>
+  <text class="ink label" x="1098" y="260">Gensee Crate</text>
+  <text class="ink mid" x="1025" y="330">本地运行要护栏</text>
+  <text class="muted small" x="1025" y="386">Codex / Claude hooks</text>
+  <text class="muted small" x="1025" y="430">策略、溯源、沙箱</text>
+  <text class="muted small" x="1025" y="474">先试验，不进主环境</text>
+
+  <rect x="70" y="590" width="1260" height="150" rx="24" fill="#eef6ff" stroke="#bfd7ff" stroke-width="2"/>
+  <text class="ink mid" x="112" y="652">今天可执行</text>
+  <text class="muted small" x="320" y="652">给工具候选加身份/权限/护栏评分；BioNeMo 当作 skill 资产范式观察。</text>
+  <text class="muted tiny" x="112" y="700">下一步盯：ANS 技术标准是否被平台采用，Gensee 是否稳定支持 Codex hooks。</text>
+</svg>
