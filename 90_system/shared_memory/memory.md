@@ -2,7 +2,7 @@
 type: shared_memory
 owner: momo
 scope: cross-agent
-updated_at: 2026-06-24
+updated_at: 2026-06-25
 status: active
 ---
 
@@ -24,7 +24,7 @@ status: active
 
 - Type: `shared_memory`
 - Scope: `cross-agent`
-- Updated: `2026-06-24`
+- Updated: `2026-06-25`
 - Status: `active`
 
 ## Purpose
@@ -39,13 +39,14 @@ status: active
 
 - Active project: `thinking-lens-system`
 - Current goal: 优化专家团信息源感知范围、沉浸式 persona rendering 与人物还原度；同时沉淀用户 AI 投资/个人成长参与路径
-- Latest artifact: `90_system/skills/skill_router.md`
+- Latest artifact: `40_outputs/daily_ai/2026-06-25.md`
 - Memory entry: `90_system/shared_memory/memory.md`
 - Next action for ChatGPT: 若用户提到“专家团 / lens / 沉浸式讨论 / 用某某口吻”，优先读取 Thinking Lens System；若用户继续聊 AI 投资/职业成长，先读取 `90_system/shared_memory/entries/growth/mem-20260604-ai-investment-growth-path.md`
 - Blockers: 暂无
 
 ## Recent Changes
 
+- 2026-06-25: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-25.md` 与精华图 `40_outputs/daily_ai/2026-06-25_visual.svg`；主线是 agent 生产化开始补动作授权、持久工作区和工作线程入口三类基础件，关注 Lelu、SmolFS、OpenTag
 - 2026-06-24: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-24.md` 与精华图 `40_outputs/daily_ai/2026-06-24_visual.svg`；主线是 agent 进入身份、行业 skills 和本地 runtime safety 三层基础设施建设阶段，关注 Linux Foundation Agent Name Service、NVIDIA BioNeMo Agent Toolkit、Gensee Crate
 - 2026-06-23: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-23.md` 与精华图 `40_outputs/daily_ai/2026-06-23_visual.svg`；主线是 agent 生产化进入可信执行阶段，关注 Five Eyes / CISA AI cyber risk、Claude extended thinking 审计边界、Selector Forge live DOM verification
 - 2026-06-18: 生成 `AI news` 日报 `40_outputs/daily_ai/2026-06-18.md` 与精华图 `40_outputs/daily_ai/2026-06-18_visual.svg`；主线是 agent 进入专业工作台和持久控制面，关注 CADAM、Data Intelligence Agents、Codex Control Plane MCP
@@ -131,6 +132,7 @@ status: active
 ### Outputs
 
 - daily_ai:
+  - 2026-06-25: `40_outputs/daily_ai/2026-06-25.md`
   - 2026-06-24: `40_outputs/daily_ai/2026-06-24.md`
   - 2026-06-23: `40_outputs/daily_ai/2026-06-23.md`
   - 2026-06-18: `40_outputs/daily_ai/2026-06-18.md`

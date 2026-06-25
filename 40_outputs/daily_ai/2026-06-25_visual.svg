@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1400" viewBox="0 0 1400 1400" role="img" aria-labelledby="title desc">
+  <title id="title">2026-06-25 AI 高价值信息精华图</title>
+  <desc id="desc">三条信号：Lelu、SmolFS、OpenTag，指向 Agent 工程化的授权、状态和入口三类基础件。</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7f9fc; }
+      .card { fill: #ffffff; stroke: #d9e2ef; stroke-width: 2; }
+      .note { fill: #eef5ff; stroke: #bdd5ff; stroke-width: 2; }
+      .ink { fill: #132033; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .muted { fill: #5f6f85; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .red { fill: #d64545; }
+      .green { fill: #0f9f6e; }
+      .blue { fill: #2563eb; }
+      .title { font-size: 58px; font-weight: 840; letter-spacing: 0; }
+      .subtitle { font-size: 31px; letter-spacing: 0; }
+      .num { font-size: 28px; font-weight: 820; letter-spacing: 0; }
+      .label { font-size: 28px; font-weight: 760; letter-spacing: 0; }
+      .project { font-size: 46px; font-weight: 840; letter-spacing: 0; }
+      .big { font-size: 38px; font-weight: 820; letter-spacing: 0; }
+      .small { font-size: 27px; letter-spacing: 0; }
+      .bottom { font-size: 32px; font-weight: 820; letter-spacing: 0; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1400" height="1400"/>
+
+  <text class="ink title" x="92" y="120">Agent 工程化：先补三类基础件</text>
+  <text class="muted subtitle" x="96" y="178">不是再找一个更会聊天的模型，而是让 agent 可控、可继承、可进入工作流。</text>
+
+  <rect class="card" x="92" y="270" width="1216" height="245" rx="18"/>
+  <circle class="red" cx="172" cy="348" r="45"/>
+  <text fill="#ffffff" class="num" x="152" y="358">01</text>
+  <text class="label" x="240" y="329">动作风险</text>
+  <text class="project" x="240" y="386">Lelu</text>
+  <text class="ink big" x="650" y="348">每次 tool call 先过闸门</text>
+  <text class="muted small" x="650" y="404">prompt injection / confidence / human review / audit</text>
+  <text class="muted small" x="240" y="465">价值：把“授权过的 agent”升级为“这一次动作也可信”。</text>
+
+  <rect class="card" x="92" y="570" width="1216" height="245" rx="18"/>
+  <circle class="green" cx="172" cy="648" r="45"/>
+  <text fill="#ffffff" class="num" x="152" y="658">02</text>
+  <text class="label" x="240" y="629">工作状态</text>
+  <text class="project" x="240" y="686">SmolFS</text>
+  <text class="ink big" x="650" y="648">Agent 退出后，文件还在</text>
+  <text class="muted small" x="650" y="704">mount / flush / remount / SQLite / Redis / S3</text>
+  <text class="muted small" x="240" y="765">价值：让长任务和多 runtime 协作不再每次从零开始。</text>
+
+  <rect class="card" x="92" y="870" width="1216" height="245" rx="18"/>
+  <circle class="blue" cx="172" cy="948" r="45"/>
+  <text fill="#ffffff" class="num" x="152" y="958">03</text>
+  <text class="label" x="240" y="929">工作入口</text>
+  <text class="project" x="240" y="986">OpenTag</text>
+  <text class="ink big" x="650" y="948">在 GitHub / Slack 直接 @agent</text>
+  <text class="muted small" x="650" y="1004">Codex / Claude runner / branch / PR / callbacks</text>
+  <text class="muted small" x="240" y="1065">价值：把 agent 带回真实任务线程，而不是新开聊天框。</text>
+
+  <rect class="note" x="92" y="1210" width="1216" height="120" rx="18"/>
+  <text class="ink bottom" x="130" y="1262">今天判断</text>
+  <text class="muted small" x="310" y="1261">高价值不是立刻安装，而是把三条信号变成 agent 工具评估 checklist。</text>
+  <text class="muted small" x="310" y="1305">下一步：watchlist + 隔离试用；通过验证后再吸收到主知识库工作流。</text>
+</svg>
