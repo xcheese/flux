@@ -1,0 +1,118 @@
+{
+  "created": "2026-11-06T18:11:25.282059+08:00",
+  "kind": "public portable reference, merge before applying",
+  "redactions": [
+    "local usernames and absolute home paths",
+    "company intranet hostname"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "edbf9daa3658168c16756acdd9c615f2a90632da5d41a2438d7ed0be15e7c443",
+      "git_blob_sha": "13bd90d0a7aa65633aac5e4ae905cc97f673ca9b",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/AGENTS.md",
+      "sha256": "9b452e418be1e0942956c3a8732f897f3a35f394dacde81b0dfc3431ceb27eca",
+      "git_blob_sha": "25c3c80457899b3486a525904c10f489371a32d6",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/README.md",
+      "sha256": "c1c9db6485f35ead2ac732d2d4a1bbf07a38be5978f1a2d80db2ffdc2b987865",
+      "git_blob_sha": "2665b9f54d762a028c0231126e822a7c95a232e7",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/skills/code-review/LICENSE",
+      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "git_blob_sha": "f1dd2c09108dde1a5f56097cee8461b3ea834499",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/skills/code-review/SKILL.md",
+      "sha256": "0e839d5c03aa12ac1e6a7d21a9636774784d217edfdbb0bb59176c6d61285e7f",
+      "git_blob_sha": "e7c2afe7552ab3327f10b9eeb96dfa4fe5842b50",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/skills/code-review/agents/openai.yaml",
+      "sha256": "9b4e99105711130e2d6ea7bf1b3c330811de83213eb78934fe31a3ce2e3c9ecb",
+      "git_blob_sha": "2e4e829dc5aee21e8e8abbd8e3e12c368303b05f",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/skills/coding-guardrails/SKILL.md",
+      "sha256": "d3780c18b42aca5f2d59d1acf86920cdebf4217f9d5b073bcf89c7831f2cea3b",
+      "git_blob_sha": "5af628a400abd98041ca84b223b4db62c467fb3b",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/skills/diagnosing-bugs/LICENSE",
+      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "git_blob_sha": "f1dd2c09108dde1a5f56097cee8461b3ea834499",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/skills/diagnosing-bugs/SKILL.md",
+      "sha256": "70fe9cdb85d30d6443110494018ddb16e437176a94983a37e7153498e904aaf4",
+      "git_blob_sha": "86a5cda88ca9101962a521173ce940c0b6be0ba1",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/skills/diagnosing-bugs/agents/openai.yaml",
+      "sha256": "7b893a75b8cd1bb35b2faed87e58ec81611444857de83bad9e621d031b294435",
+      "git_blob_sha": "62cc47bc4814ba4ea672f662702017e849861f44",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/skills/long-goal-execution/SKILL.md",
+      "sha256": "36f4bba844c0187b771f1722e4152e98621f49de3ddcc61010b79bfbcce68c18",
+      "git_blob_sha": "64a4585b2c8ae88021f09b88e39f8a78e1ebb488",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/skills/long-goal-execution/agents/openai.yaml",
+      "sha256": "5700c4773027f0154aeb218e81961cccb35e0d1afc096d2b71bae51afe46e355",
+      "git_blob_sha": "7b135b23ba4a2103cdd10734eac5ad992cf43bdc",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/skills/tdd/LICENSE",
+      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "git_blob_sha": "f1dd2c09108dde1a5f56097cee8461b3ea834499",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/skills/tdd/SKILL.md",
+      "sha256": "0df44774ecc7bfbb3565f1164ce0c5b4b09526cf0810c07d1ddb9e7acd98d804",
+      "git_blob_sha": "1f1d11d2070969b342126a171d06553e82629922",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/skills/tdd/agents/openai.yaml",
+      "sha256": "9279ac05ad85f979b9261ab7b51c6c6fce5d4627911f990ae85ac1d505915037",
+      "git_blob_sha": "96841b1a1ada6c90254384675cb0690202b688ef",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/sync.py",
+      "sha256": "f2fceb957a7140f9d48e58406f6ee5e8e2b0ae8917947c736a9eec70638c1774",
+      "git_blob_sha": "5f6ba99c8d43398e24a76ffa3d77769839167747",
+      "mode": 420
+    },
+    {
+      "path": "reference/global_codex/sync.sh",
+      "sha256": "372729ac0c80414d9442674f3eecf60f0f259598348b7824c3cc62cb584d02a8",
+      "git_blob_sha": "2332ea243018b65cf8dee6f54ecfb14db3eb88e5",
+      "mode": 493
+    },
+    {
+      "path": "reference/global_codex/tests/test_sync.py",
+      "sha256": "328fce31ac6cfac9754b959f048c748a8ffbcfb5c6be57794f8df3f981f89251",
+      "git_blob_sha": "ec740132b8622f320536e193a334e556425added",
+      "mode": 420
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+interface:
+  display_name: "疑难问题诊断"
+  short_description: "先建立可验证证据再定位根因，疑难与偶现问题自动按需使用"
+policy:
+  allow_implicit_invocation: true

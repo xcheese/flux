@@ -1,0 +1,5 @@
+interface:
+  display_name: "行为驱动测试"
+  short_description: "围绕真实行为和关键边界逐步补测试，复用现有工具与验收"
+policy:
+  allow_implicit_invocation: true

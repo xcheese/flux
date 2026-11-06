@@ -1,0 +1,7 @@
+interface:
+  display_name: "长期目标执行"
+  short_description: "复用既有目标与证据，控制长期任务的增量恢复、失败修复和交付边界"
+  default_prompt: "使用 $long-goal-execution 复用既有目标、授权和证据，推进当前长期任务并核对交付边界。"
+
+policy:
+  allow_implicit_invocation: true

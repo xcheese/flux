@@ -1,0 +1,5 @@
+interface:
+  display_name: "需求与回归审查"
+  short_description: "对照真实需求审查提交及未提交改动，优先报告可复现回归"
+policy:
+  allow_implicit_invocation: true
