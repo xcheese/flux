@@ -8,14 +8,14 @@
   "files": [
     {
       "path": "README.md",
-      "sha256": "edbf9daa3658168c16756acdd9c615f2a90632da5d41a2438d7ed0be15e7c443",
-      "git_blob_sha": "13bd90d0a7aa65633aac5e4ae905cc97f673ca9b",
+      "sha256": "00a3df728e6608ff935b4e0fdd894b748ed433409dbc6eb7c358fe17f54cf683",
+      "git_blob_sha": "29628712a800583b2680291c7707eb8ddd29b3ef",
       "mode": 420
     },
     {
       "path": "reference/global_codex/AGENTS.md",
-      "sha256": "9b452e418be1e0942956c3a8732f897f3a35f394dacde81b0dfc3431ceb27eca",
-      "git_blob_sha": "25c3c80457899b3486a525904c10f489371a32d6",
+      "sha256": "8a4d9d71c028188c96b65b7b0a8d12f1cf4f2816d9634e92bae9ff6bf42a3381",
+      "git_blob_sha": "66c54bf80dd9de00b0d347929e03e6227f0154aa",
       "mode": 420
     },
     {
@@ -68,8 +68,8 @@
     },
     {
       "path": "reference/global_codex/skills/long-goal-execution/SKILL.md",
-      "sha256": "36f4bba844c0187b771f1722e4152e98621f49de3ddcc61010b79bfbcce68c18",
-      "git_blob_sha": "64a4585b2c8ae88021f09b88e39f8a78e1ebb488",
+      "sha256": "89328fa01a7690b2d950c1cf0b3bfdbc18d971403126239558fe3d1ba89e9731",
+      "git_blob_sha": "2c790d5c06e3b81eed0f24f9196921d91f04b6d9",
       "mode": 420
     },
     {
@@ -114,5 +114,7 @@
       "git_blob_sha": "ec740132b8622f320536e193a334e556425added",
       "mode": 420
     }
-  ]
+  ],
+  "updated": "2026-11-06T19:26:16.757026+08:00",
+  "revision": "execution-constraints-2026-11-06"
 }
